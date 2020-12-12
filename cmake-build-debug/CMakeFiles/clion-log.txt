@@ -1,1 +1,0 @@
-CMakeLists.txt not found in /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club Select CMakeLists.txt

@@ -1,0 +1,1 @@
+/usr/bin/c++   -static-libstdc++ -static-libgcc -g   CMakeFiles/Projeto_AEDA.dir/main.cpp.o CMakeFiles/Projeto_AEDA.dir/Person/Person.cpp.o CMakeFiles/Projeto_AEDA.dir/Book/Book.cpp.o CMakeFiles/Projeto_AEDA.dir/Club/Club.cpp.o CMakeFiles/Projeto_AEDA.dir/UI/UI.cpp.o  -o Projeto_AEDA 

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Lecture_Club"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Projeto1_AEDA">
+				<Option output="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug/Projeto1_AEDA" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 Projeto1_AEDA"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Projeto1_AEDA/fast">
+				<Option output="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug/Projeto1_AEDA" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 Projeto1_AEDA/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/main.cpp">
+			<Option target="Projeto1_AEDA"/>
+		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Book.cpp">
+			<Option target="Projeto1_AEDA"/>
+		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Book.h">
+			<Option target="Projeto1_AEDA"/>
+		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Club.cpp">
+			<Option target="Projeto1_AEDA"/>
+		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Club.h">
+			<Option target="Projeto1_AEDA"/>
+		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Menu.cpp">
+			<Option target="Projeto1_AEDA"/>
+		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Menu.h">
+			<Option target="Projeto1_AEDA"/>
+		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Person.cpp">
+			<Option target="Projeto1_AEDA"/>
+		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Person.h">
+			<Option target="Projeto1_AEDA"/>
+		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

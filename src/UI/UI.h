@@ -1,0 +1,42 @@
+#ifndef _UI_H
+#define _UI_H
+
+#include<iostream>
+#include "../Book/Book.h"
+void errorMessage();
+
+void printBooksCategory();
+
+void printOwnedBooks(const std::vector<Book*>& ownedBooks);
+
+void printBorrowedBooks(const std::vector<Book*>& borrowedBooks);
+
+void mainMenu(Club &c);
+
+void showCostumersMenu(Club &c);
+
+void showCatalogMenu(Club &c);
+
+bool addBookMenu(Club &c, int i);
+
+void addCostumerMenu(Club &c);
+
+void borrowBookMenu(Club &c);
+
+void renewLoanTimeMenu(Club &c);
+
+void returnBookMenu(Club &c);
+
+void claimBookLoanMenu(Club &c);
+
+void viewBorrowedBooksMenu(Club &c);
+
+void removeBookMenu(Club &c);
+
+void reportBookLostMenu(Club& c);
+
+void menu(Club &c);
+
+void MenuBeginning();
+
+#endif //_UI_H

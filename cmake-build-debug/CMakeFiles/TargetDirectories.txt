@@ -1,0 +1,3 @@
+/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug/CMakeFiles/Projeto1_AEDA.dir

@@ -3,36 +3,10 @@
 #include <sstream>
 #include <algorithm>
 #include "UI.h"
-#include "utils.h"
+#include "../Utils/utils.h"
 
 
 int index = 0;
-
-/**
- * Will check is the string passed is a integer
- * @param str The string to confirm if is a integer
- * @return Bool if the string is a integer, false otherwise
- */
-
-bool isNumeric(std::string& str)
-{
-    if (str.empty()) return false;
-    return std::all_of(str.begin(),str.end(),[](char i){return isdigit(i);});
-}
-
-/**
- * Will check is the string passed is a float
- * @param str The string to confirm if is a float
- * @return Bool if the string is a float, false otherwise
- */
-
-bool isFloat(std::string& str) {
-    std::istringstream iss(str);
-    float f;
-    iss >> std::noskipws >> f; // noskipws considers leading whitespace invalid
-    // Check the entire string was consumed and if either failbit or badbit is set
-    return iss.eof() && !iss.fail();
-}
 
 /**
  * Will print to the screen an Error message in red colour

@@ -18,6 +18,8 @@ class Club
 {
 public:
     Club(float loanFee, float delayPenalty);
+    unsigned int readFile();
+    void writeFile();
     ~Club();
     float getDelayPenalty() const;
     float getLoanFee() const;

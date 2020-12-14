@@ -113,10 +113,9 @@ bool Person::searchBorrowedBook(Book* book)
 {
     auto it = std::find(borrowedBooks.begin(), borrowedBooks.end(), book);
     if (it != borrowedBooks.end())
-    {
         return true;
-    }
-    return false;
+    else
+        return false;
 }
 
 /**
@@ -151,14 +150,13 @@ Book* Person::getBookFromBorrowedBooks(unsigned int id) const
 
 double Person::returnBook(Club &club, Book* book)
 {
-    int delay;
+    unsigned int delay;
     double valueToPay = 0;
-    int returnTime = time(nullptr);
+    unsigned int returnTime = time(nullptr);
     if (returnTime > book->getEndOfLoan())
     {
-        delay = floor((returnTime-book->getEndOfLoan())/86400);
+        delay = returnTime-book->getEndOfLoan()/86400;
         valueToPay = (book->getValue()*club.getDelayPenalty()*delay);
-
     }
     book->setBeginOfLoan(0);
     book->setEndOfLoan(0);

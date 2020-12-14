@@ -2,8 +2,18 @@
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
+#include <fstream>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include "UI.h"
 #include "../Utils/utils.h"
+#include "../Exception/FileException/FileException.h"
+#ifndef WIN32
+#include <unistd.h>
+#endif
+#ifdef WIN32
+#define stat _stat
+#endif
 
 
 int index = 0;
@@ -1146,6 +1156,59 @@ void menu(Club &c){
     if (index == 11) reportBookLostMenu(c);
 }
 
+unsigned int readInfoFile(double &loanFee, double &delayPenalty)
+{
+    std::string input;
+    std::string booksFileString = "../Files/Books.txt";
+    std::string peopleFileString = "../Files/People.txt";
+    std::string infoFileString = "../Files/Info.txt";
+    struct stat result;
+    unsigned long long int  modTimeBooks;
+    unsigned long long int  modTimePeople;
+    unsigned long long int  modTimeInfo;
+    std::ifstream infoFile(infoFileString);
+    std::ifstream booksFile("../Files/Books.txt");
+    std::ifstream peopleFile("../Files/People.txt");
+    if (!infoFile.is_open())
+        throw FileNotFound("Info.txt");
+    if (!booksFile.is_open())
+        throw FileNotFound("Books.txt");
+    if(!peopleFile.is_open())
+        throw FileNotFound("People.txt");
+
+    //getting the last modification time of the files
+    if(!stat(infoFileString.c_str(), &result))
+        modTimeInfo = result.st_mtime;
+    if(!stat(booksFileString.c_str(), &result))
+        modTimeBooks = result.st_mtime;
+    if(!stat(peopleFileString.c_str(), &result))
+        modTimePeople = result.st_mtime;
+    //reading the infoFile, checking if any of the files was edited, and getting the loanFee and delayPenalty
+    if (infoFile.peek() == std::ifstream::traits_type::eof()) //check if the file as any content, if not, means that the programs is being opened for the first time
+        return 1;
+
+    std::getline(infoFile, input);
+    if (isNumeric(input))
+    {
+        if (!(std::stoi(input) == modTimeInfo))
+            throw FileWasModified("Info.txt");
+    }
+    else
+    {
+        throw FileWasModified("Info.txt");
+    }
+    if (!(std::stoi(input) == modTimeBooks))
+        throw FileWasModified("Books.txt");
+    if (!(std::stoi(input) == modTimePeople))
+        throw FileWasModified("People.txt");
+    std::getline(infoFile,input);
+    loanFee = std::stoi(input);
+    std::getline(infoFile,input);
+    delayPenalty = std::stoi(input);
+    return 2;
+}
+
+
 /**
  * Initial function containing a loop until user doesn´t press -1
  * Will also close the club if input = -1
@@ -1153,7 +1216,90 @@ void menu(Club &c){
 
 void MenuBeginning()
 {
-    Club club(5, 15);
+    double loanFee;
+    double delayPenalty;
+    unsigned int returnValue;
+    std::string answer;
+    try
+    {
+        returnValue = readInfoFile(loanFee,delayPenalty);
+    }
+    catch(FileNotFound &e)
+    {
+        std::cout << RED << "The file: " << e.getFileName() << "wasn't found." << NO_COLOR << std::endl;
+        std::cout << "The program can't proceed while the file is not restored." << std::endl;
+        std::cout << "(If yes, the program will crate new blank files, if not the program will close and you have to restore the file in the correct directory, i.e ../Files/)" << std::endl;
+        std::cout << "Do you want the program to create new files: " << std::endl;
+        while(std::getline(std::cin,answer))
+        {
+            if (answer == "y" || answer == "yes" || answer == "Y" || answer == "Yes")
+            { //opens files deleting every thing in them and if any of the files isn't opened it will create it
+                std::ofstream infoFile("../Files/Info.txt", std::ios::trunc);
+                std::ofstream booksFile("../Files/Books.txt", std::ios::trunc);
+                std::ofstream peopleFile("../Files/People.txt", std::ios::trunc);
+                exit(-1);
+            }
+            else if (answer == "n" || answer == "no" || answer == "N" || answer == "No")
+            {
+                exit(-1);
+            }
+            else
+            {
+                errorMessage();
+                std::cout << "Do you want the program to create new files: " << std::endl;
+            }
+        }
+    }
+    catch(FileWasModified &e)
+    {
+        std::cout << RED <<  "The file: " << e.getFileModifiedName() << "was modified." << NO_COLOR << std::endl;
+        std::cout << "The program would not be able to work again because one of the file doesn't have the right information.";
+        std::cout << "New files will be created, but all the old info will be lost." << std::endl;
+        std::ofstream infoFile("../Files/Info.txt", std::ios::trunc);
+        std::ofstream booksFile("../Files/Books.txt", std::ios::trunc);
+        std::ofstream peopleFile("../Files/People.txt", std::ios::trunc);
+        std::cout << "Press ENTER to return...";
+        std::getline(std::cin, answer); //only to acknowledge that the user pressed a key
+        exit(-1);
+    }
+    if (returnValue == 1)
+    {
+        std::cout << "Choose the club's loan fee: ";
+        while(getline(std::cin, answer))
+        {
+            if (isFloat(answer))
+            {
+                if (stoi(answer) >= 0 && std::stof(answer) <= 1)
+                {
+                    loanFee = std::stof(answer);
+                     break;
+                }
+                else
+                {
+                    errorMessage();
+                    std::cout << "Choose the club's loan fee: ";
+                }
+            }
+        }
+        std::cout << "Choose the club's delay penalty: ";
+        while(getline(std::cin, answer))
+        {
+            if (isFloat(answer))
+            {
+                if (stoi(answer) >= 0 && std::stof(answer) <= 1)
+                {
+                    delayPenalty = std::stof(answer);
+                    break;
+                }
+                else
+                {
+                    errorMessage();
+                    std::cout << "Choose the club's delay penalty: ";
+                }
+            }
+        }
+    }
+    Club club(loanFee,delayPenalty);
     while(index != -1)
         menu(club);
     club.close();

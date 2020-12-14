@@ -3,6 +3,10 @@
 
 #include<iostream>
 #include "../Book/Book.h"
+#include <vector>
+
+unsigned int readInfoFile(double &loanFee, double &delayPenalty);
+
 void errorMessage();
 
 void printBooksCategory();

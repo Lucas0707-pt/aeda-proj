@@ -18,9 +18,9 @@ class Club
 {
 public:
     Club(float loanFee, float delayPenalty);
+    ~Club();
     unsigned int readFile();
     void writeFile();
-    ~Club();
     float getDelayPenalty() const;
     float getLoanFee() const;
     void addPerson(Person* person);

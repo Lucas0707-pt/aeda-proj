@@ -3,16 +3,6 @@
 #include "../Utils/utils.h"
 #include <fstream>
 #include <algorithm>
-#include <sys/types.h>
-#include <sys/stat.h>
-
-#ifndef WIN32
-#include <unistd.h>
-#endif
-
-#ifdef WIN32
-#define stat _stat
-#endif
 
 /**
  * Will initialize an object of Club and read from the files all books and people from the club that already exists
@@ -20,11 +10,7 @@
  * @param delayPenalty The club default penalty
  */
 
-Club::Club(float loanFee, float delayPenalty)
-{
-    this->loanFee = loanFee;
-    this->delayPenalty = delayPenalty;
-}
+Club::Club(float loanFee, float delayPenalty) : loanFee(loanFee), delayPenalty(delayPenalty) {}
 
 /**
  * Club Destructor that will delete every person and book dynamically created
@@ -44,56 +30,12 @@ unsigned int Club::readFile()
     Book* ptrBook;
     Member* ptrMember;
     NonMember* ptrNonMember;
-    std::string booksFileString = "../Files/Books.txt";
-    std::string peopleFileString = "../Files/People.txt";
-    std::string infoFileString = "../Files/Info.txt";
-    unsigned long long int  modTimeBooks;
-    unsigned long long int  modTimePeople;
-    unsigned long long int  modTimeInfo;
-    struct stat result;
-
-    std::ifstream infoFile(infoFileString);
-    std::ifstream booksFile(booksFileString);
-    std::ifstream peopleFile(peopleFileString);
-
-    if (!infoFile.is_open())
-        throw FileNotFound("Info.txt");
+    std::ifstream booksFile("../Files/Books.txt");
+    std::ifstream peopleFile("../Files/People.txt");
     if (!booksFile.is_open())
         throw FileNotFound("Books.txt");
     if(!peopleFile.is_open())
         throw FileNotFound("People.txt");
-
-    //getting the last modification time of the files
-    if(!stat(infoFileString.c_str(), &result))
-        modTimeInfo = result.st_mtime;
-    if(!stat(booksFileString.c_str(), &result))
-        modTimeBooks = result.st_mtime;
-    if(!stat(peopleFileString.c_str(), &result))
-        modTimePeople = result.st_mtime;
-
-
-    //reading the infoFile, checking if any of the files was edited, and getting the loanFee and delayPenalty
-    if (infoFile.peek() == std::ifstream::traits_type::eof()) //check if the file as any content, if not, means that the programs is being opened for the first time
-        return 1;
-
-    std::getline(infoFile, input);
-    if (isNumeric(input))
-    {
-        if (!(std::stoi(input) == modTimeInfo))
-            throw FileWasModified("Info.txt");
-    }
-    else
-    {
-        throw FileWasModified("Info.txt");
-    }
-    if (!(std::stoi(input) == modTimeBooks))
-        throw FileWasModified("Books.txt");
-    if (!(std::stoi(input) == modTimePeople))
-        throw FileWasModified("People.txt");
-    std::getline(infoFile,input);
-    loanFee = std::stoi(input);
-    std::getline(infoFile,input);
-    delayPenalty = std::stoi(input);
 
     //adding books to the catalog
     while(!booksFile.eof()) {
@@ -348,9 +290,11 @@ std::vector<Person*> Club::getPeople() const {return people;}
  */
 
 Person * Club::getPersonById(unsigned int id) {
-    for(const auto& person : people)
-        if(person->getID() == id) return person;
-    return nullptr;
+    auto it = std::find_if(people.begin(), people.end(), [&id](Person *person){return person->getID() == id;});
+    if (it != people.end())
+        return *it;
+    else
+        return nullptr;
 }
 
 /**
@@ -360,9 +304,11 @@ Person * Club::getPersonById(unsigned int id) {
  */
 
 Book * Club::getBookById(unsigned int id) {
-    for(const auto& book : catalog)
-        if(book->getBookId() == id) return book;
-    return nullptr;
+    auto it = std::find_if(catalog.begin(), catalog.end(), [&id](Book *book){return book->getBookId() == id;});
+    if (it != catalog.end())
+        return *it;
+    else
+        return nullptr;
 }
 
 /**
@@ -372,7 +318,7 @@ Book * Club::getBookById(unsigned int id) {
 
 void Club::updateBookID(unsigned int id)
 {
-    for (const auto &book : catalog )
+    for (auto &book : catalog )
     {
         if (book->getBookId() > id)
             book->setBookId(book->getBookId()-1);

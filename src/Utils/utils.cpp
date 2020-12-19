@@ -12,6 +12,7 @@ bool isFloat(std::string& str)
     std::istringstream iss(str);
     float f;
     iss >> std::noskipws >> f;
+    str = std::to_string(f);
     return iss.eof() && !iss.fail();
 }
 

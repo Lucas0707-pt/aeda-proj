@@ -125,17 +125,9 @@ void mainMenu(Club &c){
             {
                 break;
             }
-            else
-            {
-                errorMessage();
-                std::cout << "Choose: ";
-            }
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Choose: ";
-        }
+        errorMessage();
+        std::cout << "Choose: ";
     }
     std::cout << CLEAR_SCREEN;
 }
@@ -259,17 +251,9 @@ bool addBookMenu(Club &c, int i){
             {
                 break;
             }
-            else
-            {
-                errorMessage();
-                std::cout << "Book's category (from 1-18): ";
-            }
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Book's category (from 1-18): ";
-        }
+        errorMessage();
+        std::cout << "Book's category (from 1-18): ";
     }
     if(i==-1){
         std::cout << "Book's owner by ID: ";
@@ -295,17 +279,9 @@ bool addBookMenu(Club &c, int i){
                 {
                     break;
                 }
-                else
-                {
-                    errorMessage();
-                    std::cout << "Book's owner by ID: ";
-                }
             }
-            else
-            {
-                errorMessage();
-                std::cout << "Book's owner by ID: ";
-            }
+            errorMessage();
+            std::cout << "Book's owner by ID: ";
         }
     } else {
         owner = std::to_string(i);
@@ -323,17 +299,9 @@ bool addBookMenu(Club &c, int i){
             {
                 break;
             }
-            else
-            {
-                errorMessage();
-                std::cout << "Book's value in euros: ";
-            }
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Book's value in euros: ";
-        }
+        errorMessage();
+        std::cout << "Book's value in euros: ";
     }
     std::cout << "How many days can be borrowed: ";
     while(std::getline(std::cin, days))
@@ -508,17 +476,9 @@ void borrowBookMenu(Club &c)
             {
                 break;
             }
-            else
-            {
-                errorMessage();
-                std::cout << "Person ID that will borrow the book: ";
-            }
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Person ID that will borrow the book: ";
-        }
+        errorMessage();
+        std::cout << "Person ID that will borrow the book: ";
     }
     std::cout << CLEAR_SCREEN;
     showCatalogMenu(c);
@@ -617,23 +577,10 @@ void renewLoanTimeMenu(Club &c)
                 {
                     break;
                 }
-                else
-                {
-                    errorMessage();
-                    std::cout << "Person ID to renew loan time: ";
-                }
-            }
-            else
-            {
-                errorMessage();
-                std::cout << "Person ID to renew loan time: ";
             }
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Person ID to renew loan time: ";
-        }
+        errorMessage();
+        std::cout << "Person ID to renew loan time: ";
     }
     printBorrowedBooks(ptrMember->getBorrowedBooks());
     std::cout << "Book ID to renew loan time: ";
@@ -723,23 +670,10 @@ void returnBookMenu(Club &c)
                 {
                     break;
                 }
-                else
-                {
-                    errorMessage();
-                    std::cout << "Person ID that will return the book: ";
-                }
-            }
-            else
-            {
-                errorMessage();
-                std::cout << "Person ID that will return the book: ";
             }
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Person ID that will return the book: ";
-        }
+        errorMessage();
+        std::cout << "Person ID that will return the book: ";
     }
     std::cout << CLEAR_SCREEN;
     printBorrowedBooks(borrowedBooks);
@@ -757,17 +691,9 @@ void returnBookMenu(Club &c)
             {
                 break;
             }
-            else
-            {
-                errorMessage();
-                std::cout << "Book ID that will be returned: ";
-            }
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Book ID that will be returned: ";
-        }
+        errorMessage();
+        std::cout << "Book ID that will be returned: ";
     }
     std::cout << "Add a rating to the book(0-5). Press Enter for no rating: ";
     while(std::getline(std::cin, rating)) {
@@ -784,11 +710,8 @@ void returnBookMenu(Club &c)
             ptrBook->addRating(std::stoi(rating));
             break;
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Add a rating to the book(0-5). Press Enter for no rating: ";
-        }
+        errorMessage();
+        std::cout << "Add a rating to the book(0-5). Press Enter for no rating: ";
     }
     std::cout << std::endl << "Add a comment to the book(max 100 characters). Press Enter for no comment: ";
     while(std::getline(std::cin, comment))
@@ -806,11 +729,8 @@ void returnBookMenu(Club &c)
             ptrBook->addComment(comment);
             break;
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Add a rating to the book(max 100 characters). Press Enter for no comment: ";
-        }
+        errorMessage();
+        std::cout << "Add a rating to the book(max 100 characters). Press Enter for no comment: ";
     }
     valueToPay = ptrPerson->returnBook(c, ptrBook);
     if (valueToPay == 0.0)
@@ -856,17 +776,9 @@ void claimBookLoanMenu(Club &c)
             {
                 break;
             }
-            else
-            {
-                errorMessage();
-                std::cout << "Person ID to claim the book loan: ";
-            }
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Person ID to claim the book loan: ";
-        }
+        errorMessage();
+        std::cout << "Person ID to claim the book loan: ";
     }
     showCatalogMenu(c);
     std::cout << "Book ID to be claimed: ";
@@ -890,23 +802,10 @@ void claimBookLoanMenu(Club &c)
                 {
                     break;
                 }
-                else
-                {
-                    errorMessage();
-                    std::cout << "Book ID to be claimed: ";
-                }
-            }
-            else
-            {
-                errorMessage();
-                std::cout << "Book ID to be claimed: ";
             }
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Book ID to be claimed: ";
-        }
+        errorMessage();
+        std::cout << "Book ID to be claimed: ";
     }
     std::cout << "How many days does the person want to borrow the book: ";
     while(std::getline(std::cin, loanDays))
@@ -973,23 +872,10 @@ void viewBorrowedBooksMenu(Club &c)
                 {
                     break;
                 }
-                else
-                {
-                    errorMessage();
-                    std::cout << "Person ID to view borrowed books: ";
-                }
-            }
-            else
-            {
-                errorMessage();
-                std::cout << "Person ID to view borrowed books: ";
             }
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Person ID to view borrowed books: ";
-        }
+        errorMessage();
+        std::cout << "Person ID to view borrowed books: ";
     }
     std::cout << CLEAR_SCREEN;
     printBorrowedBooks(borrowedBooks);
@@ -1021,22 +907,13 @@ void removeBookMenu(Club &c)
         }
         if (isNumeric(personID))
         {
-            ptrMember = dynamic_cast<Member*>(c.getPersonById(std::stoi(personID)));
-            if (ptrMember != nullptr)
-            {
+            ptrMember = dynamic_cast<Member *>(c.getPersonById(std::stoi(personID)));
+            if (ptrMember != nullptr) {
                 break;
             }
-            else
-            {
-                errorMessage();
-                std::cout << "Person ID that wants to remove the book: ";
-            }
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Person ID that wants to remove the book: ";
-        }
+        errorMessage();
+        std::cout << "Person ID that wants to remove the book: ";
     }
     std::cout << CLEAR_SCREEN;
     printOwnedBooks(ptrMember->getOwnedBooks());
@@ -1056,23 +933,10 @@ void removeBookMenu(Club &c)
                 {
                     break;
                 }
-                else
-                {
-                    errorMessage();
-                    std::cout << "Book ID to be removed: ";
-                }
-            }
-            else
-            {
-                errorMessage();
-                std::cout << "Book ID to be removed: ";
             }
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Book ID to be removed: ";
-        }
+        errorMessage();
+        std::cout << "Book ID to be removed: ";
     }
     c.updateBookID(ptrMember->removeOwnedBook(ptrBook));
     c.removeBook(ptrBook);
@@ -1109,18 +973,9 @@ void reportBookLostMenu(Club& c)
             {
                 break;
             }
-            else
-            {
-                errorMessage();
-                std::cout << "Book ID that was lost: ";
-
-            }
         }
-        else
-        {
-            errorMessage();
-            std::cout << "Book ID that was lost: ";
-        }
+        errorMessage();
+        std::cout << "Book ID that was lost: ";
     }
     valueToPay = ptrBook->getValue();
     ptrPerson = c.getPersonById(ptrBook->getOwner());
@@ -1156,7 +1011,7 @@ void menu(Club &c){
     if (index == 11) reportBookLostMenu(c);
 }
 
-unsigned int readInfoFile(double &loanFee, double &delayPenalty)
+unsigned int readInfoFile(float &loanFee, float &delayPenalty)
 {
     std::string input;
     std::string booksFileString = "../Files/Books.txt";
@@ -1166,9 +1021,9 @@ unsigned int readInfoFile(double &loanFee, double &delayPenalty)
     unsigned long long int  modTimeBooks;
     unsigned long long int  modTimePeople;
     unsigned long long int  modTimeInfo;
+    std::ifstream booksFile(booksFileString);
+    std::ifstream peopleFile(peopleFileString);
     std::ifstream infoFile(infoFileString);
-    std::ifstream booksFile("../Files/Books.txt");
-    std::ifstream peopleFile("../Files/People.txt");
     if (!infoFile.is_open())
         throw FileNotFound("Info.txt");
     if (!booksFile.is_open())
@@ -1216,8 +1071,8 @@ unsigned int readInfoFile(double &loanFee, double &delayPenalty)
 
 void MenuBeginning()
 {
-    double loanFee;
-    double delayPenalty;
+    float loanFee;
+    float delayPenalty;
     unsigned int returnValue;
     std::string answer;
     try
@@ -1226,7 +1081,7 @@ void MenuBeginning()
     }
     catch(FileNotFound &e)
     {
-        std::cout << RED << "The file: " << e.getFileName() << "wasn't found." << NO_COLOR << std::endl;
+        std::cout << RED << "The file: " << e.getFileName() << " wasn't found." << NO_COLOR << std::endl;
         std::cout << "The program can't proceed while the file is not restored." << std::endl;
         std::cout << "(If yes, the program will crate new blank files, if not the program will close and you have to restore the file in the correct directory, i.e ../Files/)" << std::endl;
         std::cout << "Do you want the program to create new files: " << std::endl;
@@ -1252,7 +1107,7 @@ void MenuBeginning()
     }
     catch(FileWasModified &e)
     {
-        std::cout << RED <<  "The file: " << e.getFileModifiedName() << "was modified." << NO_COLOR << std::endl;
+        std::cout << RED <<  "The file: " << e.getFileModifiedName() << " was modified." << NO_COLOR << std::endl;
         std::cout << "The program would not be able to work again because one of the file doesn't have the right information.";
         std::cout << "New files will be created, but all the old info will be lost." << std::endl;
         std::ofstream infoFile("../Files/Info.txt", std::ios::trunc);
@@ -1264,42 +1119,39 @@ void MenuBeginning()
     }
     if (returnValue == 1)
     {
+        std::cout << CLEAR_SCREEN;
         std::cout << "Choose the club's loan fee: ";
         while(getline(std::cin, answer))
         {
             if (isFloat(answer))
             {
-                if (stoi(answer) >= 0 && std::stof(answer) <= 1)
+                if (stof(answer) >= 0 && std::stof(answer) <= 1)
                 {
                     loanFee = std::stof(answer);
                      break;
                 }
-                else
-                {
-                    errorMessage();
-                    std::cout << "Choose the club's loan fee: ";
-                }
             }
+            errorMessage();
+            std::cout << "Choose the club's loan fee: ";
         }
         std::cout << "Choose the club's delay penalty: ";
         while(getline(std::cin, answer))
         {
             if (isFloat(answer))
             {
-                if (stoi(answer) >= 0 && std::stof(answer) <= 1)
+                if (stof(answer) >= 0 && std::stof(answer) <= 1)
                 {
                     delayPenalty = std::stof(answer);
                     break;
                 }
-                else
-                {
-                    errorMessage();
-                    std::cout << "Choose the club's delay penalty: ";
-                }
             }
+            errorMessage();
+            std::cout << "Choose the club's delay penalty: ";
         }
+        std::cout << CLEAR_SCREEN;
     }
     Club club(loanFee,delayPenalty);
+    club.readFile();
     while(index != -1)
         menu(club);
     club.close();

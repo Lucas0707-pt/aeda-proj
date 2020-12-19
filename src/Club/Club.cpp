@@ -10,7 +10,7 @@
  * @param delayPenalty The club default penalty
  */
 
-Club::Club(float loanFee, float delayPenalty) : loanFee(loanFee), delayPenalty(delayPenalty) {}
+Club::Club(float lf, float dp) : loanFee(lf), delayPenalty(dp) {}
 
 /**
  * Club Destructor that will delete every person and book dynamically created
@@ -39,9 +39,9 @@ unsigned int Club::readFile()
 
     //adding books to the catalog
     while(!booksFile.eof()) {
-
+        std::getline(booksFile, input);
+        if (input.empty()) break;
         Book *book = new Book();
-        std::getline(booksFile,input);
         book->setTitle(input);
         std::getline(booksFile, input);
         book->setOwner(std::stoi(input));
@@ -98,6 +98,7 @@ unsigned int Club::readFile()
     while(!peopleFile.eof())
     {
         std::getline(peopleFile, input);
+        if(input.empty()) break;
         if(input == "0")
         {
             ptrNonMember = new NonMember();
@@ -211,11 +212,12 @@ void Club::writeFile()
     modTimePeople = time(nullptr);
     peopleFile.close();
     modTimeInfo = time(nullptr);
-    infoFile << modTimeInfo << std::endl
-             << modTimeBooks << std::endl
-             << modTimePeople << std::endl
-             << loanFee << std::endl
-             << delayPenalty << std::endl;
+    std::cout << loanFee << " " << delayPenalty << std::endl;
+    infoFile << std::to_string(modTimeInfo) << std::endl
+             << std::to_string(modTimeBooks) << std::endl
+             << std::to_string(modTimePeople) << std::endl
+             << std::to_string(loanFee) << std::endl
+             << std::to_string(delayPenalty) << std::endl;
     infoFile.close();
 }
 

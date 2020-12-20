@@ -8,7 +8,7 @@
  */
 class FileNotFound
 {
-    std::string fileName;/**File Name that doesn't exist or isn't in the correct directory*/
+    std::string fileName; /**File Name that doesn't exist or isn't in the correct directory*/
 public:
     /**
      * Constructor of the FileNotFound exception

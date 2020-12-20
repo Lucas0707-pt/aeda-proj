@@ -21,6 +21,7 @@ public:
     std::string getName() const;
     void setId(unsigned int id);
     unsigned int getID() const;
+    void updatePersonStaticId();
     void setIsMember(bool isMember);
     bool getIsMember() const;
     unsigned int borrowBook(Book* book, unsigned int loanDays);

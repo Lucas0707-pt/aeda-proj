@@ -45,6 +45,8 @@ void Person::setId(unsigned int id) {this->unique_id = id;}
 
 unsigned int Person::getID() const {return unique_id;}
 
+void Person::updatePersonStaticId() {this->id--;}
+
 /**
  * Sets if a person is a member or not from the lecture club
  * @param isMember Boolean containing true for members, and false for non-members

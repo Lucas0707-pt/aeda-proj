@@ -212,7 +212,6 @@ void Club::writeFile()
     modTimePeople = time(nullptr);
     peopleFile.close();
     modTimeInfo = time(nullptr);
-    std::cout << loanFee << " " << delayPenalty << std::endl;
     infoFile << std::to_string(modTimeInfo) << std::endl
              << std::to_string(modTimeBooks) << std::endl
              << std::to_string(modTimePeople) << std::endl

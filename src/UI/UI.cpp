@@ -339,7 +339,6 @@ bool addBookMenu(Club &c, int i){
     book->setMaximumLoanTime(std::stoi(days)*86400);
     c.addBook(book);
     success = true;
-
     dynamic_cast<Member*>(c.getPersonById(std::stoi(owner)))->addOwnedBook(book);
     std::cout << std::endl << std::endl << "Press ENTER to return...";
     std::getline(std::cin, value);
@@ -430,6 +429,7 @@ void addCostumerMenu(Club &c)
         if (!atLeastOne)
         {
             c.removePerson(m);
+            m->updatePersonStaticId();
             delete m;
         }
         goto END;
@@ -1052,14 +1052,16 @@ unsigned int readInfoFile(float &loanFee, float &delayPenalty)
     {
         throw FileWasModified("Info.txt");
     }
+    std::getline(infoFile, input);
     if (!(std::stoi(input) == modTimeBooks))
         throw FileWasModified("Books.txt");
+    std::getline(infoFile, input);
     if (!(std::stoi(input) == modTimePeople))
         throw FileWasModified("People.txt");
     std::getline(infoFile,input);
-    loanFee = std::stoi(input);
+    loanFee = std::stof(input);
     std::getline(infoFile,input);
-    delayPenalty = std::stoi(input);
+    delayPenalty = std::stof(input);
     return 2;
 }
 
@@ -1109,7 +1111,7 @@ void MenuBeginning()
     {
         std::cout << RED <<  "The file: " << e.getFileModifiedName() << " was modified." << NO_COLOR << std::endl;
         std::cout << "The program would not be able to work again because one of the file doesn't have the right information.";
-        std::cout << "New files will be created, but all the old info will be lost." << std::endl;
+        std::cout << " New files will be created, but all the old info will be lost." << std::endl;
         std::ofstream infoFile("../Files/Info.txt", std::ios::trunc);
         std::ofstream booksFile("../Files/Books.txt", std::ios::trunc);
         std::ofstream peopleFile("../Files/People.txt", std::ios::trunc);
@@ -1152,6 +1154,7 @@ void MenuBeginning()
     }
     Club club(loanFee,delayPenalty);
     club.readFile();
+    std::cout << CLEAR_SCREEN;
     while(index != -1)
         menu(club);
     club.close();

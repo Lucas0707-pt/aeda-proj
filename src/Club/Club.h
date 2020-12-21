@@ -32,7 +32,6 @@ public:
     Person* getPersonById(unsigned int id);
     Book* getBookById(unsigned int id);
     void updateBookID(unsigned int id);
-    void close();
 
 private:
     float loanFee; /**<Loan fee for Non-Members*/

@@ -5,7 +5,6 @@
 #include "../Book/Book.h"
 #include <vector>
 
-unsigned int readInfoFile(double &loanFee, double &delayPenalty);
 
 void errorMessage();
 
@@ -38,6 +37,11 @@ void viewBorrowedBooksMenu(Club &c);
 void removeBookMenu(Club &c);
 
 void reportBookLostMenu(Club& c);
+
+unsigned int readInfoFile(double &loanFee, double &delayPenalty);
+
+void saveInfo(Club& c);
+
 
 void menu(Club &c);
 

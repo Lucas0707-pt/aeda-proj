@@ -1,7 +1,7 @@
 #include "FileException.h"
 
 //FileNotFound exception
-FileNotFound::FileNotFound(std::string name) {this->fileName = fileName;}
+FileNotFound::FileNotFound(std::string fileName) {this->fileName = fileName;}
 std::string FileNotFound::getFileName() {return fileName;}
 
 //FileWasModified

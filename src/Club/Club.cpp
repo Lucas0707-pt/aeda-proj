@@ -165,6 +165,13 @@ void Club::writeFile()
     unsigned long long int  modTimePeople;
     unsigned long long int  modTimeInfo;
 
+    if (!infoFile.is_open())
+        throw FileNotFound("Info.txt");
+    if (!booksFile.is_open())
+        throw FileNotFound("Books.txt");
+    if (!peopleFile.is_open())
+        throw FileNotFound("People.txt");
+
     for(const auto &book : catalog){
         booksFile << book->getTitle() << std::endl;
         booksFile << book->getOwner() << std::endl;
@@ -324,13 +331,4 @@ void Club::updateBookID(unsigned int id)
         if (book->getBookId() > id)
             book->setBookId(book->getBookId()-1);
     }
-}
-
-/**
- * Will write to the files all the existing books and the people from the club in trunc mode
- */
-
-void Club::close()
-{
-    writeFile();
 }

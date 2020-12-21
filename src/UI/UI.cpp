@@ -3,7 +3,6 @@
 #include <sstream>
 #include <algorithm>
 #include <fstream>
-#include <sys/types.h>
 #include <sys/stat.h>
 #include "UI.h"
 #include "../Utils/utils.h"
@@ -113,6 +112,7 @@ void mainMenu(Club &c){
     std::cout << "View Borrowed Books     |9" << std::endl;
     std::cout << "Remove a book           |10" << std::endl;
     std::cout << "Report a book loss      |11" << std::endl;
+    std::cout << "Save info               |12" << std::endl;
     std::cout << "Exit                    |-1" << std::endl << std::endl;
 
     std::cout << "Choose: ";
@@ -121,7 +121,7 @@ void mainMenu(Club &c){
         if (isNumeric(value) || value == "-1")
         {
             index = std::stoi(value);
-            if(index == -1 || (index >=0 && index <= 11))
+            if(index == -1 || (index >=0 && index <= 12))
             {
                 break;
             }
@@ -145,10 +145,14 @@ void showCostumersMenu(Club &c){
 
     const char separator = ' ';
     for(const auto& person : c.getPeople())
+    {
         std::cout << "Id: " << std::left << std::setw(40) << std::setfill(separator) << person->getID()
-                  << "Name: " << person->getName() << std::endl << std::endl;
-
-
+                  << "Name: " << person->getName() << std::endl << "Is member: ";
+        if (person->getIsMember())
+            std::cout << "Yes" << std::endl << std::endl;
+        else
+            std::cout << "No" << std::endl << std::endl;
+    }
 
     std::cout << "Press ENTER to return...";
     std::getline(std::cin, value); //only to acknowledge that the user pressed a key
@@ -180,7 +184,11 @@ void showCatalogMenu(Club &c){
             std::cout << "Rating: " << std::fixed << std::setprecision(1) << book->getRating() << std::endl;
         std::cout << "Maximum loan time: " << std::left << std::setw(25) << std::setfill(separator)
                   << std::setprecision(0) << book->getMaximumLoanTime()/86400
-                  << "Is Borrowed: " << book->getIsBorrowed() << std::endl;
+                  << "Is Borrowed: ";
+        if(book->getIsBorrowed())
+            std::cout << "Yes" << std::endl;
+        else
+            std::cout << "No" << std::endl;
         if(!book->getComments().empty())
         {
             std::cout << "Comments: " << std::endl;
@@ -191,6 +199,10 @@ void showCatalogMenu(Club &c){
                 {
                     std::cout << *(it) << std::endl;
                     count++;
+                }
+                else
+                {
+                    break;
                 }
             }
             count = 0;
@@ -256,6 +268,8 @@ bool addBookMenu(Club &c, int i){
         std::cout << "Book's category (from 1-18): ";
     }
     if(i==-1){
+        std::cout << CLEAR_SCREEN;
+        showCostumersMenu(c);
         std::cout << "Book's owner by ID: ";
         bool found = false;
         while(std::getline(std::cin, owner))
@@ -303,7 +317,7 @@ bool addBookMenu(Club &c, int i){
         errorMessage();
         std::cout << "Book's value in euros: ";
     }
-    std::cout << "How many days can be borrowed: ";
+    std::cout << "How many days can the book be borrowed: ";
     while(std::getline(std::cin, days))
     {
         if (days == "-1")
@@ -326,7 +340,7 @@ bool addBookMenu(Club &c, int i){
         else
         {
             errorMessage();
-            std::cout << "How many days can be borrowed: ";
+            std::cout << "How many days can the book be borrowed: ";
         }
     }
     book = new Book();
@@ -872,6 +886,11 @@ void viewBorrowedBooksMenu(Club &c)
                 {
                     break;
                 }
+                else
+                {
+                    std::cout << RED << "This person doesn't have any borrowed book." << NO_COLOR << std::endl;
+                    goto END2;
+                }
             }
         }
         errorMessage();
@@ -879,6 +898,7 @@ void viewBorrowedBooksMenu(Club &c)
     }
     std::cout << CLEAR_SCREEN;
     printBorrowedBooks(borrowedBooks);
+    END2:
     std::cout << std::endl << "Press ENTER to return...";
     std::getline(std::cin, personID); //only to acknowledge that the user pressed a key
     END:
@@ -991,26 +1011,6 @@ void reportBookLostMenu(Club& c)
     index = 0;
 }
 
-/**
- * "Mother" function that will call the other function according to the user input
- * @param c The club is passed by reference to this function, so that the function can use is methods
- */
-
-void menu(Club &c){
-    if(index == 0) mainMenu(c);
-    if(index == 1) showCostumersMenu(c);
-    if(index == 2) showCatalogMenu(c);
-    if(index == 3) addCostumerMenu(c);
-    if(index == 4) addBookMenu(c,-1);
-    if(index == 5) borrowBookMenu(c);
-    if(index == 6) renewLoanTimeMenu(c);
-    if(index == 7) returnBookMenu(c);
-    if(index == 8) claimBookLoanMenu(c);
-    if(index == 9) viewBorrowedBooksMenu(c);
-    if(index == 10) removeBookMenu(c);
-    if (index == 11) reportBookLostMenu(c);
-}
-
 unsigned int readInfoFile(float &loanFee, float &delayPenalty)
 {
     std::string input;
@@ -1041,7 +1041,6 @@ unsigned int readInfoFile(float &loanFee, float &delayPenalty)
     //reading the infoFile, checking if any of the files was edited, and getting the loanFee and delayPenalty
     if (infoFile.peek() == std::ifstream::traits_type::eof()) //check if the file as any content, if not, means that the programs is being opened for the first time
         return 1;
-
     std::getline(infoFile, input);
     if (isNumeric(input))
     {
@@ -1062,9 +1061,71 @@ unsigned int readInfoFile(float &loanFee, float &delayPenalty)
     loanFee = std::stof(input);
     std::getline(infoFile,input);
     delayPenalty = std::stof(input);
+    infoFile.close();
+    booksFile.close();
+    peopleFile.close();
     return 2;
 }
 
+void saveInfo(Club& c)
+{
+    std::string answer;
+    try
+    {
+        c.writeFile();
+    }
+    catch(FileNotFound &e)
+    {
+        std::cout << RED << "The file: " << e.getFileName() << " wasn't found." << NO_COLOR << std::endl;
+        std::cout << "The program can't proceed while the file is not restored." << std::endl;
+        std::cout << "(If yes, the program will crate new blank files, if not, the program will close and you have to restore the file in the correct directory, i.e ../Files/)" << std::endl;
+        std::cout << "Do you want the program to create new files: ";
+        while(std::getline(std::cin,answer))
+        {
+            if (answer == "y" || answer == "yes" || answer == "Y" || answer == "Yes")
+            { //opens files deleting every thing in them and if any of the files isn't opened it will create it
+                std::ofstream infoFile("../Files/Info.txt", std::ios::trunc);
+                std::ofstream booksFile("../Files/Books.txt", std::ios::trunc);
+                std::ofstream peopleFile("../Files/People.txt", std::ios::trunc);
+                exit(-1);
+            }
+            else if (answer == "n" || answer == "no" || answer == "N" || answer == "No")
+            {
+                exit(-1);
+            }
+            else
+            {
+                errorMessage();
+                std::cout << "Do you want the program to create new files: ";
+            }
+        }
+    }
+    std::cout << "Info was successfully saved into files." << std::endl;
+    sleep(5);
+    index = 0;
+    std::cout << CLEAR_SCREEN;
+}
+
+/**
+ * "Mother" function that will call the other function according to the user input
+ * @param c The club is passed by reference to this function, so that the function can use is methods
+ */
+
+void menu(Club &c){
+    if(index == 0) mainMenu(c);
+    if(index == 1) showCostumersMenu(c);
+    if(index == 2) showCatalogMenu(c);
+    if(index == 3) addCostumerMenu(c);
+    if(index == 4) addBookMenu(c,-1);
+    if(index == 5) borrowBookMenu(c);
+    if(index == 6) renewLoanTimeMenu(c);
+    if(index == 7) returnBookMenu(c);
+    if(index == 8) claimBookLoanMenu(c);
+    if(index == 9) viewBorrowedBooksMenu(c);
+    if(index == 10) removeBookMenu(c);
+    if (index == 11) reportBookLostMenu(c);
+    if (index == 12) saveInfo(c);
+}
 
 /**
  * Initial function containing a loop until user doesn´t press -1
@@ -1085,8 +1146,8 @@ void MenuBeginning()
     {
         std::cout << RED << "The file: " << e.getFileName() << " wasn't found." << NO_COLOR << std::endl;
         std::cout << "The program can't proceed while the file is not restored." << std::endl;
-        std::cout << "(If yes, the program will crate new blank files, if not the program will close and you have to restore the file in the correct directory, i.e ../Files/)" << std::endl;
-        std::cout << "Do you want the program to create new files: " << std::endl;
+        std::cout << "(If yes, the program will crate new blank files, if not, the program will close and you have to restore the file in the correct directory, i.e ../Files/)" << std::endl;
+        std::cout << "Do you want the program to create new files: ";
         while(std::getline(std::cin,answer))
         {
             if (answer == "y" || answer == "yes" || answer == "Y" || answer == "Yes")
@@ -1103,15 +1164,15 @@ void MenuBeginning()
             else
             {
                 errorMessage();
-                std::cout << "Do you want the program to create new files: " << std::endl;
+                std::cout << "Do you want the program to create new files: ";
             }
-        }
+        }    std::cout << "Info was saved successfully to the files.";
     }
     catch(FileWasModified &e)
     {
         std::cout << RED <<  "The file: " << e.getFileModifiedName() << " was modified." << NO_COLOR << std::endl;
         std::cout << "The program would not be able to work again because one of the file doesn't have the right information.";
-        std::cout << " New files will be created, but all the old info will be lost." << std::endl;
+        std::cout << " New files will be created, but all the old info will be lost." << std::endl << std::endl;
         std::ofstream infoFile("../Files/Info.txt", std::ios::trunc);
         std::ofstream booksFile("../Files/Books.txt", std::ios::trunc);
         std::ofstream peopleFile("../Files/People.txt", std::ios::trunc);
@@ -1157,6 +1218,6 @@ void MenuBeginning()
     std::cout << CLEAR_SCREEN;
     while(index != -1)
         menu(club);
-    club.close();
+    saveInfo(club);
 }
 

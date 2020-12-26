@@ -3,6 +3,7 @@
 #include "../Utils/utils.h"
 #include <fstream>
 #include <algorithm>
+#include <ctime>
 
 /**
  * Will initialize an object of Club and read from the files all books and people from the club that already exists

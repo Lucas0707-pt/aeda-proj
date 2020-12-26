@@ -11,7 +11,7 @@
 #include <unistd.h>
 #endif
 #ifdef WIN32
-#define <windows.h>
+#include <windows.h>
 #define stat _stat
 #endif
 

@@ -11,6 +11,7 @@
 #include <unistd.h>
 #endif
 #ifdef WIN32
+#define <windows.h>
 #define stat _stat
 #endif
 
@@ -1101,7 +1102,12 @@ void saveInfo(Club& c)
         }
     }
     std::cout << "Info was successfully saved into files." << std::endl;
+    #ifdef WIN32
+    Sleep(5000);
+    #else
     sleep(5);
+    #endif
+
     index = 0;
     std::cout << CLEAR_SCREEN;
 }

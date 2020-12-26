@@ -24,18 +24,6 @@ vector
 ../Book/Book.h
 /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Book/Book.h
 
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Club/Club.cpp
-Club.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Club/Club.h
-../Exception/FileException/FileException.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Exception/FileException/FileException.h
-../Utils/utils.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Utils/utils.h
-fstream
--
-algorithm
--
-
 /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Club/Club.h
 ../Person/Person.h
 /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Person/Person.h

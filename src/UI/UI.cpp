@@ -268,7 +268,7 @@ bool addBookMenu(Club &c, int i){
         std::cout << "Book's category (from 1-18): ";
     }
     if(i==-1){
-        std::cout << CLEAR_SCREEN;
+        std::cout << CLEAR_SCREEN << std::endl;
         showCostumersMenu(c);
         std::cout << "Book's owner by ID: ";
         bool found = false;
@@ -1014,13 +1014,13 @@ void reportBookLostMenu(Club& c)
 unsigned int readInfoFile(float &loanFee, float &delayPenalty)
 {
     std::string input;
-    std::string booksFileString = "../Files/Books.txt";
-    std::string peopleFileString = "../Files/People.txt";
-    std::string infoFileString = "../Files/Info.txt";
+    std::string booksFileString = "../src/Files/Books.txt";
+    std::string peopleFileString = "../src/Files/People.txt";
+    std::string infoFileString = "../src/Files/Info.txt";
     struct stat result;
+    unsigned long long int  modTimeInfo;
     unsigned long long int  modTimeBooks;
     unsigned long long int  modTimePeople;
-    unsigned long long int  modTimeInfo;
     std::ifstream booksFile(booksFileString);
     std::ifstream peopleFile(peopleFileString);
     std::ifstream infoFile(infoFileString);
@@ -1078,15 +1078,15 @@ void saveInfo(Club& c)
     {
         std::cout << RED << "The file: " << e.getFileName() << " wasn't found." << NO_COLOR << std::endl;
         std::cout << "The program can't proceed while the file is not restored." << std::endl;
-        std::cout << "(If yes, the program will crate new blank files, if not, the program will close and you have to restore the file in the correct directory, i.e ../Files/)" << std::endl;
+        std::cout << "(If yes, the program will create new blank files, if not, the program will close and you have to restore the file in the correct directory, i.e ../src/Files/)" << std::endl;
         std::cout << "Do you want the program to create new files: ";
         while(std::getline(std::cin,answer))
         {
             if (answer == "y" || answer == "yes" || answer == "Y" || answer == "Yes")
             { //opens files deleting every thing in them and if any of the files isn't opened it will create it
-                std::ofstream infoFile("../Files/Info.txt", std::ios::trunc);
-                std::ofstream booksFile("../Files/Books.txt", std::ios::trunc);
-                std::ofstream peopleFile("../Files/People.txt", std::ios::trunc);
+                std::ofstream infoFile("../src/Files/Info.txt", std::ios::trunc);
+                std::ofstream booksFile("../src/Files/Books.txt", std::ios::trunc);
+                std::ofstream peopleFile("../src/Files/People.txt", std::ios::trunc);
                 exit(-1);
             }
             else if (answer == "n" || answer == "no" || answer == "N" || answer == "No")
@@ -1146,15 +1146,15 @@ void MenuBeginning()
     {
         std::cout << RED << "The file: " << e.getFileName() << " wasn't found." << NO_COLOR << std::endl;
         std::cout << "The program can't proceed while the file is not restored." << std::endl;
-        std::cout << "(If yes, the program will crate new blank files, if not, the program will close and you have to restore the file in the correct directory, i.e ../Files/)" << std::endl;
+        std::cout << "(If yes, the program will crate new blank files, if not, the program will close and you have to restore the file in the correct directory, i.e ../src/Files/)" << std::endl;
         std::cout << "Do you want the program to create new files: ";
         while(std::getline(std::cin,answer))
         {
             if (answer == "y" || answer == "yes" || answer == "Y" || answer == "Yes")
             { //opens files deleting every thing in them and if any of the files isn't opened it will create it
-                std::ofstream infoFile("../Files/Info.txt", std::ios::trunc);
-                std::ofstream booksFile("../Files/Books.txt", std::ios::trunc);
-                std::ofstream peopleFile("../Files/People.txt", std::ios::trunc);
+                std::ofstream infoFile("../src/Files/Info.txt", std::ios::trunc);
+                std::ofstream booksFile("../src/Files/Books.txt", std::ios::trunc);
+                std::ofstream peopleFile("../src/Files/People.txt", std::ios::trunc);
                 exit(-1);
             }
             else if (answer == "n" || answer == "no" || answer == "N" || answer == "No")
@@ -1173,9 +1173,9 @@ void MenuBeginning()
         std::cout << RED <<  "The file: " << e.getFileModifiedName() << " was modified." << NO_COLOR << std::endl;
         std::cout << "The program would not be able to work again because one of the file doesn't have the right information.";
         std::cout << " New files will be created, but all the old info will be lost." << std::endl << std::endl;
-        std::ofstream infoFile("../Files/Info.txt", std::ios::trunc);
-        std::ofstream booksFile("../Files/Books.txt", std::ios::trunc);
-        std::ofstream peopleFile("../Files/People.txt", std::ios::trunc);
+        std::ofstream infoFile("../src/Files/Info.txt", std::ios::trunc);
+        std::ofstream booksFile("../src/Files/Books.txt", std::ios::trunc);
+        std::ofstream peopleFile("../src/Files/People.txt", std::ios::trunc);
         std::cout << "Press ENTER to return...";
         std::getline(std::cin, answer); //only to acknowledge that the user pressed a key
         exit(-1);

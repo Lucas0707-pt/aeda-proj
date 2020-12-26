@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Projeto_AEDA.dir/src/Book/Book.cpp.o"
+  "CMakeFiles/Projeto_AEDA.dir/src/BookStore/BookStore.cpp.o"
   "CMakeFiles/Projeto_AEDA.dir/src/Club/Club.cpp.o"
   "CMakeFiles/Projeto_AEDA.dir/src/Exception/FileException/FileException.cpp.o"
   "CMakeFiles/Projeto_AEDA.dir/src/Person/Person.cpp.o"

@@ -88,6 +88,12 @@
 		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Book/Book.h">
 			<Option target="Projeto_AEDA"/>
 		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/BookStore/BookStore.cpp">
+			<Option target="Projeto_AEDA"/>
+		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/BookStore/BookStore.h">
+			<Option target="Projeto_AEDA"/>
+		</Unit>
 		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Club/Club.cpp">
 			<Option target="Projeto_AEDA"/>
 		</Unit>

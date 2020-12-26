@@ -170,6 +170,33 @@ src/Book/Book.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/Book/Book.cpp.s
 .PHONY : src/Book/Book.cpp.s
 
+src/BookStore/BookStore.o: src/BookStore/BookStore.cpp.o
+
+.PHONY : src/BookStore/BookStore.o
+
+# target to build an object file
+src/BookStore/BookStore.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/BookStore/BookStore.cpp.o
+.PHONY : src/BookStore/BookStore.cpp.o
+
+src/BookStore/BookStore.i: src/BookStore/BookStore.cpp.i
+
+.PHONY : src/BookStore/BookStore.i
+
+# target to preprocess a source file
+src/BookStore/BookStore.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/BookStore/BookStore.cpp.i
+.PHONY : src/BookStore/BookStore.cpp.i
+
+src/BookStore/BookStore.s: src/BookStore/BookStore.cpp.s
+
+.PHONY : src/BookStore/BookStore.s
+
+# target to generate assembly for a file
+src/BookStore/BookStore.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/BookStore/BookStore.cpp.s
+.PHONY : src/BookStore/BookStore.cpp.s
+
 src/Club/Club.o: src/Club/Club.cpp.o
 
 .PHONY : src/Club/Club.o
@@ -344,6 +371,9 @@ help:
 	@echo "... src/Book/Book.o"
 	@echo "... src/Book/Book.i"
 	@echo "... src/Book/Book.s"
+	@echo "... src/BookStore/BookStore.o"
+	@echo "... src/BookStore/BookStore.i"
+	@echo "... src/BookStore/BookStore.s"
 	@echo "... src/Club/Club.o"
 	@echo "... src/Club/Club.i"
 	@echo "... src/Club/Club.s"

@@ -24,14 +24,14 @@ Club::~Club()
     for(it2 = catalog.begin(); it2 != catalog.end(); ++it2) delete *it2;
 }
 
-unsigned int Club::readFile()
+void Club::readFile()
 {
     std::string input;
     Book* ptrBook;
     Member* ptrMember;
     NonMember* ptrNonMember;
-    std::ifstream booksFile("../Files/Books.txt");
-    std::ifstream peopleFile("../Files/People.txt");
+    std::ifstream booksFile("../src/Files/Books.txt");
+    std::ifstream peopleFile("../src/Files/People.txt");
     if (!booksFile.is_open())
         throw FileNotFound("Books.txt");
     if(!peopleFile.is_open())
@@ -158,9 +158,9 @@ unsigned int Club::readFile()
 
 void Club::writeFile()
 {
-    std::ofstream infoFile("../Files/Info.txt", std::ios::trunc);
-    std::ofstream booksFile("../Files/Books.txt", std::ios::trunc);
-    std::ofstream peopleFile("../Files/People.txt", std::ios::trunc);
+    std::ofstream infoFile("../src/Files/Info.txt", std::ios::trunc);
+    std::ofstream booksFile("../src/Files/Books.txt", std::ios::trunc);
+    std::ofstream peopleFile("../src/Files/People.txt", std::ios::trunc);
     unsigned long long int  modTimeBooks;
     unsigned long long int  modTimePeople;
     unsigned long long int  modTimeInfo;

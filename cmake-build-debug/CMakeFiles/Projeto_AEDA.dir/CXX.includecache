@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Book/Book.cpp
-Book.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Book/Book.h
-ctime
--
-
 /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Book/Book.h
 ../Person/Person.h
 /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Person/Person.h
@@ -21,6 +15,14 @@ vector
 -
 queue
 -
+
+/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/BookStore/BookStore.h
+iostream
+-
+vector
+-
+../Book/Book.h
+/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Book/Book.h
 
 /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Club/Club.cpp
 Club.h
@@ -39,27 +41,17 @@ algorithm
 /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Person/Person.h
 ../Book/Book.h
 /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Book/Book.h
+../BookStore/BookStore.h
+/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/BookStore/BookStore.h
 vector
 -
 string
 -
-
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Exception/FileException/FileException.cpp
-FileException.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Exception/FileException/FileException.h
+set
+-
 
 /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Exception/FileException/FileException.h
 string
--
-
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Person/Person.cpp
-Person.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Person/Person.h
-ctime
--
-cmath
--
-algorithm
 -
 
 /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Person/Person.h
@@ -102,21 +94,9 @@ iostream
 vector
 -
 
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Utils/utils.cpp
-utils.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Utils/utils.h
-sstream
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Utils/sstream
-
 /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Utils/utils.h
 string
 /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Utils/string
 algorithm
 /home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Utils/algorithm
-
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/main.cpp
-UI/UI.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/UI/UI.h
-Windows.h
--
 

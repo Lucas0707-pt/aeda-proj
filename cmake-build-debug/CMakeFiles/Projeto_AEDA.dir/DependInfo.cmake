@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Book/Book.cpp" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Book/Book.cpp.o"
+  "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/BookStore/BookStore.cpp" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/BookStore/BookStore.cpp.o"
   "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Club/Club.cpp" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Club/Club.cpp.o"
   "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Exception/FileException/FileException.cpp" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Exception/FileException/FileException.cpp.o"
   "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/src/Person/Person.cpp" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Person/Person.cpp.o"

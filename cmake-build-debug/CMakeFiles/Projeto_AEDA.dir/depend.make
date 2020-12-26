@@ -3,10 +3,18 @@
 
 CMakeFiles/Projeto_AEDA.dir/src/Book/Book.cpp.o: ../src/Book/Book.cpp
 CMakeFiles/Projeto_AEDA.dir/src/Book/Book.cpp.o: ../src/Book/Book.h
+CMakeFiles/Projeto_AEDA.dir/src/Book/Book.cpp.o: ../src/BookStore/BookStore.h
 CMakeFiles/Projeto_AEDA.dir/src/Book/Book.cpp.o: ../src/Club/Club.h
 CMakeFiles/Projeto_AEDA.dir/src/Book/Book.cpp.o: ../src/Person/Person.h
 
+CMakeFiles/Projeto_AEDA.dir/src/BookStore/BookStore.cpp.o: ../src/Book/Book.h
+CMakeFiles/Projeto_AEDA.dir/src/BookStore/BookStore.cpp.o: ../src/BookStore/BookStore.cpp
+CMakeFiles/Projeto_AEDA.dir/src/BookStore/BookStore.cpp.o: ../src/BookStore/BookStore.h
+CMakeFiles/Projeto_AEDA.dir/src/BookStore/BookStore.cpp.o: ../src/Club/Club.h
+CMakeFiles/Projeto_AEDA.dir/src/BookStore/BookStore.cpp.o: ../src/Person/Person.h
+
 CMakeFiles/Projeto_AEDA.dir/src/Club/Club.cpp.o: ../src/Book/Book.h
+CMakeFiles/Projeto_AEDA.dir/src/Club/Club.cpp.o: ../src/BookStore/BookStore.h
 CMakeFiles/Projeto_AEDA.dir/src/Club/Club.cpp.o: ../src/Club/Club.cpp
 CMakeFiles/Projeto_AEDA.dir/src/Club/Club.cpp.o: ../src/Club/Club.h
 CMakeFiles/Projeto_AEDA.dir/src/Club/Club.cpp.o: ../src/Exception/FileException/FileException.h
@@ -17,11 +25,13 @@ CMakeFiles/Projeto_AEDA.dir/src/Exception/FileException/FileException.cpp.o: ../
 CMakeFiles/Projeto_AEDA.dir/src/Exception/FileException/FileException.cpp.o: ../src/Exception/FileException/FileException.h
 
 CMakeFiles/Projeto_AEDA.dir/src/Person/Person.cpp.o: ../src/Book/Book.h
+CMakeFiles/Projeto_AEDA.dir/src/Person/Person.cpp.o: ../src/BookStore/BookStore.h
 CMakeFiles/Projeto_AEDA.dir/src/Person/Person.cpp.o: ../src/Club/Club.h
 CMakeFiles/Projeto_AEDA.dir/src/Person/Person.cpp.o: ../src/Person/Person.cpp
 CMakeFiles/Projeto_AEDA.dir/src/Person/Person.cpp.o: ../src/Person/Person.h
 
 CMakeFiles/Projeto_AEDA.dir/src/UI/UI.cpp.o: ../src/Book/Book.h
+CMakeFiles/Projeto_AEDA.dir/src/UI/UI.cpp.o: ../src/BookStore/BookStore.h
 CMakeFiles/Projeto_AEDA.dir/src/UI/UI.cpp.o: ../src/Club/Club.h
 CMakeFiles/Projeto_AEDA.dir/src/UI/UI.cpp.o: ../src/Exception/FileException/FileException.h
 CMakeFiles/Projeto_AEDA.dir/src/UI/UI.cpp.o: ../src/Person/Person.h
@@ -33,6 +43,7 @@ CMakeFiles/Projeto_AEDA.dir/src/Utils/utils.cpp.o: ../src/Utils/utils.cpp
 CMakeFiles/Projeto_AEDA.dir/src/Utils/utils.cpp.o: ../src/Utils/utils.h
 
 CMakeFiles/Projeto_AEDA.dir/src/main.cpp.o: ../src/Book/Book.h
+CMakeFiles/Projeto_AEDA.dir/src/main.cpp.o: ../src/BookStore/BookStore.h
 CMakeFiles/Projeto_AEDA.dir/src/main.cpp.o: ../src/Club/Club.h
 CMakeFiles/Projeto_AEDA.dir/src/main.cpp.o: ../src/Person/Person.h
 CMakeFiles/Projeto_AEDA.dir/src/main.cpp.o: ../src/UI/UI.h

@@ -2,11 +2,14 @@
 #define _CLUB_H
 #include "../Person/Person.h"
 #include "../Book/Book.h"
+#include "../BookStore/BookStore.h"
 #include <vector>
 #include <string>
+#include <set>
 
 class Person;
 class Book;
+class BookStore;
 
 /**
  * Class used to store all the information from the club, i.e books, members, non-members, delay penalty and loan fee.
@@ -19,7 +22,7 @@ class Club
 public:
     Club(float loanFee, float delayPenalty);
     ~Club();
-    unsigned int readFile();
+    void readFile();
     void writeFile();
     float getDelayPenalty() const;
     float getLoanFee() const;
@@ -38,8 +41,7 @@ private:
     float delayPenalty; /**<Delay penalty for people that return the book after end of loan time */
     std::vector<Person*> people; /**<Vector containing all the club's people */
     std::vector<Book*> catalog; /**<Vector  containing all the club's books*/
-
-
+    std::set<BookStore> bookStores;
 };
 
 #endif //_CLUB_H

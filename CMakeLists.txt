@@ -4,7 +4,7 @@ project(Lecture_Club)
 set(CMAKE_CXX_STANDARD 14)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libstdc++ -static-libgcc")
 
-add_executable(Projeto_AEDA src/main.cpp src/Book/Book.cpp src/BookStore/BookStore.cpp src/Club/Club.cpp src/Exception/FileException/FileException.cpp src/Person/Person.cpp src/UI/UI.cpp src/Utils/utils.cpp)
+add_executable(Projeto_AEDA src/main.cpp src/Book/Book.cpp src/Club_BookStore/Club.cpp src/Club_BookStore/BookStore.cpp src/Exception/FileException/FileException.cpp src/Person/Person.cpp src/UI/UI.cpp src/Utils/utils.cpp)
 
 # Doxygen Build
 find_package(Doxygen)

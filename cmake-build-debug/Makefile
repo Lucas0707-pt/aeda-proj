@@ -68,10 +68,10 @@ RM = /snap/clion/137/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club"
+CMAKE_SOURCE_DIR = "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug"
+CMAKE_BINARY_DIR = "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug/CMakeFiles" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -170,59 +170,59 @@ src/Book/Book.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/Book/Book.cpp.s
 .PHONY : src/Book/Book.cpp.s
 
-src/BookStore/BookStore.o: src/BookStore/BookStore.cpp.o
+src/Club_BookStore/BookStore.o: src/Club_BookStore/BookStore.cpp.o
 
-.PHONY : src/BookStore/BookStore.o
-
-# target to build an object file
-src/BookStore/BookStore.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/BookStore/BookStore.cpp.o
-.PHONY : src/BookStore/BookStore.cpp.o
-
-src/BookStore/BookStore.i: src/BookStore/BookStore.cpp.i
-
-.PHONY : src/BookStore/BookStore.i
-
-# target to preprocess a source file
-src/BookStore/BookStore.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/BookStore/BookStore.cpp.i
-.PHONY : src/BookStore/BookStore.cpp.i
-
-src/BookStore/BookStore.s: src/BookStore/BookStore.cpp.s
-
-.PHONY : src/BookStore/BookStore.s
-
-# target to generate assembly for a file
-src/BookStore/BookStore.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/BookStore/BookStore.cpp.s
-.PHONY : src/BookStore/BookStore.cpp.s
-
-src/Club/Club.o: src/Club/Club.cpp.o
-
-.PHONY : src/Club/Club.o
+.PHONY : src/Club_BookStore/BookStore.o
 
 # target to build an object file
-src/Club/Club.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/Club/Club.cpp.o
-.PHONY : src/Club/Club.cpp.o
+src/Club_BookStore/BookStore.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/Club_BookStore/BookStore.cpp.o
+.PHONY : src/Club_BookStore/BookStore.cpp.o
 
-src/Club/Club.i: src/Club/Club.cpp.i
+src/Club_BookStore/BookStore.i: src/Club_BookStore/BookStore.cpp.i
 
-.PHONY : src/Club/Club.i
+.PHONY : src/Club_BookStore/BookStore.i
 
 # target to preprocess a source file
-src/Club/Club.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/Club/Club.cpp.i
-.PHONY : src/Club/Club.cpp.i
+src/Club_BookStore/BookStore.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/Club_BookStore/BookStore.cpp.i
+.PHONY : src/Club_BookStore/BookStore.cpp.i
 
-src/Club/Club.s: src/Club/Club.cpp.s
+src/Club_BookStore/BookStore.s: src/Club_BookStore/BookStore.cpp.s
 
-.PHONY : src/Club/Club.s
+.PHONY : src/Club_BookStore/BookStore.s
 
 # target to generate assembly for a file
-src/Club/Club.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/Club/Club.cpp.s
-.PHONY : src/Club/Club.cpp.s
+src/Club_BookStore/BookStore.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/Club_BookStore/BookStore.cpp.s
+.PHONY : src/Club_BookStore/BookStore.cpp.s
+
+src/Club_BookStore/Club.o: src/Club_BookStore/Club.cpp.o
+
+.PHONY : src/Club_BookStore/Club.o
+
+# target to build an object file
+src/Club_BookStore/Club.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/Club_BookStore/Club.cpp.o
+.PHONY : src/Club_BookStore/Club.cpp.o
+
+src/Club_BookStore/Club.i: src/Club_BookStore/Club.cpp.i
+
+.PHONY : src/Club_BookStore/Club.i
+
+# target to preprocess a source file
+src/Club_BookStore/Club.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/Club_BookStore/Club.cpp.i
+.PHONY : src/Club_BookStore/Club.cpp.i
+
+src/Club_BookStore/Club.s: src/Club_BookStore/Club.cpp.s
+
+.PHONY : src/Club_BookStore/Club.s
+
+# target to generate assembly for a file
+src/Club_BookStore/Club.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/Club_BookStore/Club.cpp.s
+.PHONY : src/Club_BookStore/Club.cpp.s
 
 src/Exception/FileException/FileException.o: src/Exception/FileException/FileException.cpp.o
 
@@ -371,12 +371,12 @@ help:
 	@echo "... src/Book/Book.o"
 	@echo "... src/Book/Book.i"
 	@echo "... src/Book/Book.s"
-	@echo "... src/BookStore/BookStore.o"
-	@echo "... src/BookStore/BookStore.i"
-	@echo "... src/BookStore/BookStore.s"
-	@echo "... src/Club/Club.o"
-	@echo "... src/Club/Club.i"
-	@echo "... src/Club/Club.s"
+	@echo "... src/Club_BookStore/BookStore.o"
+	@echo "... src/Club_BookStore/BookStore.i"
+	@echo "... src/Club_BookStore/BookStore.s"
+	@echo "... src/Club_BookStore/Club.o"
+	@echo "... src/Club_BookStore/Club.i"
+	@echo "... src/Club_BookStore/Club.s"
 	@echo "... src/Exception/FileException/FileException.o"
 	@echo "... src/Exception/FileException/FileException.i"
 	@echo "... src/Exception/FileException/FileException.s"

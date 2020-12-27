@@ -1,7 +1,7 @@
 #ifndef _PERSON_H
 #define _PERSON_H
 #include "../Book/Book.h"
-#include "../Club/Club.h"
+#include "../Club_BookStore/Club_BookStore.h"
 #include <iostream>
 #include <vector>
 

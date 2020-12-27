@@ -20,9 +20,13 @@ void showCostumersMenu(Club &c);
 
 void showCatalogMenu(Club &c);
 
+void showBookStoresMenu(Club &c);
+
 bool addBookMenu(Club &c, int i);
 
 void addCostumerMenu(Club &c);
+
+void addBookStoreMenu(Club &c);
 
 void borrowBookMenu(Club &c);
 

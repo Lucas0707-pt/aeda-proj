@@ -104,16 +104,18 @@ void mainMenu(Club &c){
     std::string value;
     std::cout << "Show costumers          |1" << std::endl;
     std::cout << "Show catalog            |2" << std::endl;
-    std::cout << "Add a new costumer      |3" << std::endl;
-    std::cout << "Add a new book          |4" << std::endl;
-    std::cout << "Borrow a book           |5" << std::endl;
-    std::cout << "Renew loan              |6" << std::endl;
-    std::cout << "Return a book           |7" << std::endl;
-    std::cout << "Claim loan book         |8" << std::endl;
-    std::cout << "View Borrowed Books     |9" << std::endl;
-    std::cout << "Remove a book           |10" << std::endl;
-    std::cout << "Report a book loss      |11" << std::endl;
-    std::cout << "Save info               |12" << std::endl;
+    std::cout << "Show stores             |3" << std::endl;
+    std::cout << "Add a new costumer      |4" << std::endl;
+    std::cout << "Add a new book          |5" << std::endl;
+    std::cout << "Add a new book store    |6" << std::endl;
+    std::cout << "Borrow a book           |7" << std::endl;
+    std::cout << "Renew loan              |8" << std::endl;
+    std::cout << "Return a book           |9" << std::endl;
+    std::cout << "Claim loan book         |10" << std::endl;
+    std::cout << "View Borrowed Books     |11" << std::endl;
+    std::cout << "Remove a book           |12" << std::endl;
+    std::cout << "Report a book loss      |13" << std::endl;
+    std::cout << "Save info               |14" << std::endl;
     std::cout << "Exit                    |-1" << std::endl << std::endl;
 
     std::cout << "Choose: ";
@@ -122,7 +124,7 @@ void mainMenu(Club &c){
         if (isNumeric(value) || value == "-1")
         {
             index = std::stoi(value);
-            if(index == -1 || (index >=0 && index <= 12))
+            if(index == -1 || (index >=0 && index <= 13))
             {
                 break;
             }
@@ -209,6 +211,37 @@ void showCatalogMenu(Club &c){
             count = 0;
         }
         std::cout << std::endl;
+    }
+    std::cout << "Press ENTER to return...";
+    std::getline(std::cin, value);
+    std::cout << CLEAR_SCREEN;
+    index = 0;
+}
+
+void showBookStoresMenu(Club &c){
+    std::cout << ".________________________." << std::endl;
+    std::cout << "|         STORES         |" << std::endl;
+    std::cout << ".________________________." << std::endl << std::endl;
+
+    std::string value;
+    BST<BookStore> bs = c.getBookStores();
+    BSTItrIn<BookStore> it(bs);
+    while(!it.isAtEnd())
+    {
+        const char separator = ' ';
+        std::cout << "Name: "  << std::left << std::setw(40) << std::setfill(separator) << it.retrieve().getName()
+                  << "Location: " << it.retrieve().getPlace() << std::endl;
+        std::cout << "Promotion: "  << std::left << std::setw(35) << std::setfill(separator) << it.retrieve().getPromotion()
+                  << "Discount Code: " << it.retrieve().getDiscountCode() << std::endl << std::endl;
+        std::cout << "Available Books:" << std::endl << std::endl;
+        for (const auto& bookTuple : it.retrieve().getStock())
+        {
+            std::cout << "Title: "  << std::left << std::setw(40) << std::setfill(separator) << std::get<1>(bookTuple)->getTitle()
+                      << "Category: " << std::get<1>(bookTuple)->getCategory() << std::endl;
+            std::cout << "Price: "  << std::left << std::setw(40) << std::setfill(separator) << std::get<1>(bookTuple)->getValue()
+                      << "Copies: " << std::get<0>(bookTuple) << std::endl << std::endl;
+        }
+        it.advance();
     }
     std::cout << "Press ENTER to return...";
     std::getline(std::cin, value);
@@ -420,7 +453,7 @@ void addCostumerMenu(Club &c)
                 delete m;
                 goto END;
             }
-            if (isNumeric(nrBooks))
+            if (isNumeric(nrBooks) && !(nrBooks == "0"))
             {
                 break;
             }
@@ -459,6 +492,184 @@ void addCostumerMenu(Club &c)
     std::cout << std::endl << std::endl << "Press ENTER to return...";
     std::getline(std::cin, name); //only to acknowledge that the user pressed a key
     END:
+    std::cout << CLEAR_SCREEN;
+    index = 0;
+}
+
+void addBookStoreMenu(Club &c)
+{
+    std::string bookStoreInfo;
+    std::string bookInfo;
+    bool success = false;
+    BookStore* bookStore = new BookStore("", "");
+    std::cout << "Book Store's name: ";
+    while(std::getline(std::cin, bookStoreInfo))
+    {
+        if (bookStoreInfo == "-1")
+        {
+            goto END;
+        }
+        if (!bookStoreInfo.empty() && bookStoreInfo.size() < 30)
+        {
+            break;
+        }
+        else
+        {
+            errorMessage();
+            std::cout << "Book Store's name: ";
+        }
+    }
+    bookStore->setName(bookStoreInfo);
+    std::cout << "Book Store's location: ";
+    while(std::getline(std::cin, bookStoreInfo))
+    {
+        if (bookStoreInfo == "-1")
+        {
+            goto END;
+        }
+        if (!bookStoreInfo.empty() && bookStoreInfo.size() < 30)
+        {
+            break;
+        }
+        else
+        {
+            errorMessage();
+            std::cout << "Book Store's location: ";
+        }
+    }
+    bookStore->setPlace(bookStoreInfo);
+    std::cout << "Book Store's promotion: ";
+    while(getline(std::cin, bookStoreInfo))
+    {
+        if (isFloat(bookStoreInfo))
+        {
+            if (stof(bookStoreInfo) >= 0 && std::stof(bookStoreInfo) <= 1)
+            {
+                break;
+            }
+        }
+        errorMessage();
+        std::cout << "Book Store's promotion: ";
+    }
+    bookStore->setPromotion(std::stof(bookStoreInfo));
+    std::cout << "Book Store's discount code: ";
+    while(std::getline(std::cin, bookStoreInfo))
+    {
+        if (bookStoreInfo == "-1")
+        {
+            goto END;
+        }
+        if (!bookStoreInfo.empty() && bookStoreInfo.size() < 8)
+        {
+            break;
+        }
+        else
+        {
+            errorMessage();
+            std::cout << "Book Store's discount code: ";
+        }
+    }
+    bookStore->setDiscountCode(bookStoreInfo);
+    std::cout << "How many books (Copies doesn't count): ";
+    while(std::getline(std::cin, bookStoreInfo))
+    {
+        if (bookStoreInfo == "-1")
+        {
+            goto END;
+        }
+        if (isNumeric(bookStoreInfo) && !(bookStoreInfo == "0"))
+        {
+            break;
+        }
+        else
+        {
+            errorMessage();
+            std::cout << "How many books (Copies doesn't count): ";
+        }
+    }
+    for (int i = 0; i < std::stoi(bookStoreInfo); ++i)
+    {
+        std::cout << CLEAR_SCREEN;
+        Book* book = new Book();
+        std::cout << "Book's Title: ";
+        while(std::getline(std::cin, bookInfo))
+        {
+            if (bookInfo == "-1")
+            {
+                goto END;
+            }
+            if (!bookInfo.empty() && bookInfo.size() < 30)
+            {
+                break;
+            }
+            else
+            {
+                errorMessage();
+                std::cout << "Book's Title: ";
+            }
+        }
+        book->setTitle(bookInfo);
+        std::cout << std::endl;
+        printBooksCategory();
+        std::cout << "Book's category (from 1-18): ";
+        while(std::getline(std::cin, bookInfo))
+        {
+            if (bookInfo == "-1")
+            {
+                goto END;
+            }
+            if (isNumeric(bookInfo))
+            {
+                if(std::stoi(bookInfo) >= 1 && std::stoi(bookInfo) <= 18)
+                {
+                    break;
+                }
+            }
+            errorMessage();
+            std::cout << "Book's category (from 1-18): ";
+        }
+        book->setCategory(std::stoi(bookInfo));
+        std::cout << "Book's value in euros: ";
+        while(std::getline(std::cin, bookInfo))
+        {
+            if (bookInfo == "-1")
+            {
+                goto END;
+            }
+            if (isFloat(bookInfo))
+            {
+                if (std::stof(bookInfo) > 0)
+                {
+                    break;
+                }
+            }
+            errorMessage();
+            std::cout << "Book's value in euros: ";
+        }
+        book->setValue(std::stof(bookInfo));
+        std::cout << "Book's copies: ";
+        while(std::getline(std::cin, bookInfo))
+        {
+            if (bookInfo == "-1")
+            {
+                goto END;
+            }
+            if (isNumeric(bookInfo))
+            {
+                if (std::stoi(bookInfo) > 0)
+                {
+                    break;
+                }
+            }
+            errorMessage();
+            std::cout << "Book's copies: ";
+        }
+        bookStore->addBook(std::stoi(bookInfo),book);
+    }
+    success = true;
+    END:
+    if (success)
+        c.addBookStore(bookStore);
     std::cout << CLEAR_SCREEN;
     index = 0;
 }
@@ -1015,20 +1226,25 @@ void reportBookLostMenu(Club& c)
 unsigned int readInfoFile(float &loanFee, float &delayPenalty)
 {
     std::string input;
-    std::string booksFileString = "../src/Files/Books.txt";
-    std::string peopleFileString = "../src/Files/People.txt";
     std::string infoFileString = "../src/Files/Info.txt";
+    std::string booksFileString = "../src/Files/Books.txt";
+    std::string bookStoresFileString = "../src/Files/BookStores.txt";
+    std::string peopleFileString = "../src/Files/People.txt";
     struct stat result;
     unsigned long long int  modTimeInfo;
     unsigned long long int  modTimeBooks;
+    unsigned long long int  modTimeBookStores;
     unsigned long long int  modTimePeople;
-    std::ifstream booksFile(booksFileString);
-    std::ifstream peopleFile(peopleFileString);
     std::ifstream infoFile(infoFileString);
+    std::ifstream booksFile(booksFileString);
+    std::ifstream bookStoresFile(booksFileString);
+    std::ifstream peopleFile(peopleFileString);
     if (!infoFile.is_open())
         throw FileNotFound("Info.txt");
     if (!booksFile.is_open())
         throw FileNotFound("Books.txt");
+    if(!bookStoresFile.is_open())
+        throw FileNotFound("BookStores.txt");
     if(!peopleFile.is_open())
         throw FileNotFound("People.txt");
 
@@ -1037,6 +1253,8 @@ unsigned int readInfoFile(float &loanFee, float &delayPenalty)
         modTimeInfo = result.st_mtime;
     if(!stat(booksFileString.c_str(), &result))
         modTimeBooks = result.st_mtime;
+    if(!stat(booksFileString.c_str(), &result))
+        modTimeBookStores = result.st_mtime;
     if(!stat(peopleFileString.c_str(), &result))
         modTimePeople = result.st_mtime;
     //reading the infoFile, checking if any of the files was edited, and getting the loanFee and delayPenalty
@@ -1056,6 +1274,9 @@ unsigned int readInfoFile(float &loanFee, float &delayPenalty)
     if (!(std::stoi(input) == modTimeBooks))
         throw FileWasModified("Books.txt");
     std::getline(infoFile, input);
+    if (!(std::stoi(input) == modTimeBookStores))
+        throw FileWasModified("BookStores.txt");
+    std::getline(infoFile, input);
     if (!(std::stoi(input) == modTimePeople))
         throw FileWasModified("People.txt");
     std::getline(infoFile,input);
@@ -1064,6 +1285,7 @@ unsigned int readInfoFile(float &loanFee, float &delayPenalty)
     delayPenalty = std::stof(input);
     infoFile.close();
     booksFile.close();
+    bookStoresFile.close();
     peopleFile.close();
     return 2;
 }
@@ -1121,16 +1343,18 @@ void menu(Club &c){
     if(index == 0) mainMenu(c);
     if(index == 1) showCostumersMenu(c);
     if(index == 2) showCatalogMenu(c);
-    if(index == 3) addCostumerMenu(c);
-    if(index == 4) addBookMenu(c,-1);
-    if(index == 5) borrowBookMenu(c);
-    if(index == 6) renewLoanTimeMenu(c);
-    if(index == 7) returnBookMenu(c);
-    if(index == 8) claimBookLoanMenu(c);
-    if(index == 9) viewBorrowedBooksMenu(c);
-    if(index == 10) removeBookMenu(c);
-    if (index == 11) reportBookLostMenu(c);
-    if (index == 12) saveInfo(c);
+    if(index == 3) showBookStoresMenu(c);
+    if(index == 4) addCostumerMenu(c);
+    if(index == 5) addBookMenu(c,-1);
+    if (index == 6) addBookStoreMenu(c);
+    if(index == 7) borrowBookMenu(c);
+    if(index == 8) renewLoanTimeMenu(c);
+    if(index == 9) returnBookMenu(c);
+    if(index == 10) claimBookLoanMenu(c);
+    if(index == 11) viewBorrowedBooksMenu(c);
+    if(index == 12) removeBookMenu(c);
+    if (index == 13) reportBookLostMenu(c);
+    if (index == 14) saveInfo(c);
 }
 
 /**

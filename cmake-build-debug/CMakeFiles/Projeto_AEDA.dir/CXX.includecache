@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/BST/Bst.h
+C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/BST/Bst.h
 iostream
 -
 stack
@@ -14,9 +14,9 @@ stack
 queue
 -
 
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Book/Book.h
+C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Book/Book.h
 ../Person/Person.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Person/Person.h
+C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Person/Person.h
 iostream
 -
 vector
@@ -24,13 +24,13 @@ vector
 queue
 -
 
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Club_BookStore/Club_BookStore.h
+C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Club_BookStore/Club_BookStore.h
 ../Person/Person.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Person/Person.h
+C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Person/Person.h
 ../Book/Book.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Book/Book.h
+C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Book/Book.h
 ../BST/Bst.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/BST/Bst.h
+C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/BST/Bst.h
 vector
 -
 string
@@ -38,55 +38,23 @@ string
 tuple
 -
 
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Exception/FileException/FileException.h
-string
+C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Person/Person.cpp
+Person.h
+C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Person/Person.h
+ctime
+-
+cmath
+-
+algorithm
 -
 
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Person/Person.h
+C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Person/Person.h
 ../Book/Book.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Book/Book.h
+C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Book/Book.h
 ../Club_BookStore/Club_BookStore.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Club_BookStore/Club_BookStore.h
+C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Club_BookStore/Club_BookStore.h
 iostream
 -
 vector
 -
-
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/UI/UI.cpp
-cstdlib
--
-iomanip
--
-sstream
--
-algorithm
--
-fstream
--
-sys/stat.h
--
-UI.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/UI/UI.h
-../Utils/utils.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Utils/utils.h
-../Exception/FileException/FileException.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Exception/FileException/FileException.h
-unistd.h
--
-windows.h
--
-
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/UI/UI.h
-iostream
--
-../Book/Book.h
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Book/Book.h
-vector
--
-
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Utils/utils.h
-string
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Utils/string
-algorithm
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Utils/algorithm
 

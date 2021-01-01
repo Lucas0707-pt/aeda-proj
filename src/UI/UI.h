@@ -22,6 +22,8 @@ void showCatalogMenu(Club &c);
 
 void showBookStoresMenu(Club &c);
 
+void showPriorityQueues(Club &c);
+
 bool addBookMenu(Club &c, int i);
 
 void addCostumerMenu(Club &c);

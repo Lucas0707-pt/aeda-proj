@@ -327,7 +327,7 @@ void Book::addToWaitingListM(unsigned int m) {waitingListM.push(m);}
  */
 
 void Book::addToWaitingListNM(unsigned int nm) {waitingListNM.push(nm);}
-
+void Book::addToWaitingList(Person p) {waitingList.push(p);}
 /**
  * Will return the ID of the first member in the queue
  * @return The ID of the top one, or -1 if the queue is empty

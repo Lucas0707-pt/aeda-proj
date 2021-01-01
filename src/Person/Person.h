@@ -17,6 +17,7 @@ class Person
 public:
     Person();
     virtual ~Person();
+    bool operator<(const Person& p) const;
     void setName(std::string name);
     std::string getName() const;
     void setId(unsigned int id);

@@ -60,6 +60,10 @@ public:
     int getQueueNMFront() const;
     unsigned int getQueueNMSize();
     void manageQueue();
+    void addToWaitingList(Person p);
+    std::priority_queue<Person> &getWaitingList(){return waitingList;}
+    std::queue<unsigned int> &waitingListMM(){return waitingListM;}
+    std::queue<unsigned int> &waitingListNN(){return waitingListNM;}
 
 private:
     std::string title; /**<Book title*/
@@ -77,6 +81,7 @@ private:
     std::vector<std::string> comments; /**<Vector containing all the comments given by the readers*/
     std::queue<unsigned int> waitingListM; /**<Queue containing the members who are waiting to read the book*/
     std::queue<unsigned int> waitingListNM; /**<Queue containing the non members who are waiting to read the book*/
+    std::priority_queue<Person> waitingList;
 };
 
 #endif //_BOOK_H

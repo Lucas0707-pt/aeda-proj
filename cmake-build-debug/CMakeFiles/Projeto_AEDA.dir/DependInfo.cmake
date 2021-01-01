@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Book/Book.cpp" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Book/Book.cpp.o"
-  "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Club_BookStore/BookStore.cpp" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Club_BookStore/BookStore.cpp.o"
-  "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Club_BookStore/Club.cpp" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Club_BookStore/Club.cpp.o"
-  "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Exception/FileException/FileException.cpp" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Exception/FileException/FileException.cpp.o"
-  "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Person/Person.cpp" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Person/Person.cpp.o"
-  "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/UI/UI.cpp" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/UI/UI.cpp.o"
-  "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Utils/utils.cpp" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Utils/utils.cpp.o"
-  "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/main.cpp" "/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/main.cpp.o"
+  "C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Book/Book.cpp" "C:/Users/Droplotus/Desktop/aeda-proj-masterx/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Book/Book.cpp.obj"
+  "C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Club_BookStore/BookStore.cpp" "C:/Users/Droplotus/Desktop/aeda-proj-masterx/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Club_BookStore/BookStore.cpp.obj"
+  "C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Club_BookStore/Club.cpp" "C:/Users/Droplotus/Desktop/aeda-proj-masterx/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Club_BookStore/Club.cpp.obj"
+  "C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Exception/FileException/FileException.cpp" "C:/Users/Droplotus/Desktop/aeda-proj-masterx/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Exception/FileException/FileException.cpp.obj"
+  "C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Person/Person.cpp" "C:/Users/Droplotus/Desktop/aeda-proj-masterx/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Person/Person.cpp.obj"
+  "C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/UI/UI.cpp" "C:/Users/Droplotus/Desktop/aeda-proj-masterx/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/UI/UI.cpp.obj"
+  "C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/Utils/utils.cpp" "C:/Users/Droplotus/Desktop/aeda-proj-masterx/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/Utils/utils.cpp.obj"
+  "C:/Users/Droplotus/Desktop/aeda-proj-masterx/src/main.cpp" "C:/Users/Droplotus/Desktop/aeda-proj-masterx/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir/src/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

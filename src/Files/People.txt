@@ -1,0 +1,13 @@
+1
+Joao
+1
+endBorrowedBooks
+0
+Ricardo
+endBorrowedBooks
+0
+Catia
+endBorrowedBooks
+1
+Dulce
+endBorrowedBooks

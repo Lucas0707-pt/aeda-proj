@@ -116,6 +116,7 @@ void mainMenu(Club &c){
     std::cout << "Remove a book           |12" << std::endl;
     std::cout << "Report a book loss      |13" << std::endl;
     std::cout << "Save info               |14" << std::endl;
+    std::cout << "Show priority queues    |15" << std::endl;
     std::cout << "Exit                    |-1" << std::endl << std::endl;
 
     std::cout << "Choose: ";
@@ -124,7 +125,7 @@ void mainMenu(Club &c){
         if (isNumeric(value) || value == "-1")
         {
             index = std::stoi(value);
-            if(index == -1 || (index >=0 && index <= 13))
+            if(index == -1 || (index >=0 && index <= 15))
             {
                 break;
             }
@@ -246,6 +247,26 @@ void showBookStoresMenu(Club &c){
     std::cout << "Press ENTER to return...";
     std::getline(std::cin, value);
     std::cout << CLEAR_SCREEN;
+    index = 0;
+}
+
+void showPriorityQueues(Club &c){
+    Book *b = c.getCatalog().at(0);
+    std::priority_queue<Person> temp;
+
+    std::cout << "size: " << b->getWaitingList().size() << std::endl;
+    unsigned int size = b->getWaitingList().size();
+    for(int i = 0; i < size; i++){
+        std::cout << b->getWaitingList().top().getName() << std::endl;
+        temp.push(b->getWaitingList().top());
+        b->getWaitingList().pop();
+    }
+
+    for(int i = 0; i < size; i++){
+        b->getWaitingList().push(temp.top());
+        temp.pop();
+    }
+
     index = 0;
 }
 
@@ -1355,6 +1376,7 @@ void menu(Club &c){
     if(index == 12) removeBookMenu(c);
     if (index == 13) reportBookLostMenu(c);
     if (index == 14) saveInfo(c);
+    if (index == 15) showPriorityQueues(c);
 }
 
 /**

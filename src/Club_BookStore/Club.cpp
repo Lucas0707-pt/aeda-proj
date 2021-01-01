@@ -197,6 +197,30 @@ void Club::readFile()
                 break;
             }
         }
+        std::queue<unsigned int> temp;
+        for (int i=0; i<book->waitingListMM().size(); i++){
+            book->addToWaitingList(*getPersonById(book->waitingListMM().front()));
+            temp.push(book->waitingListMM().front());
+            std::cout << book->waitingListMM().front() << std::endl;
+            book->waitingListMM().pop();
+        }
+
+        for (int i=0; i<temp.size(); i++){
+            book->waitingListMM().push(temp.front());
+            temp.pop();
+        }
+
+        for (int i=0; i<book->waitingListNN().size(); i++){
+            book->addToWaitingList(*getPersonById(book->waitingListNN().front()));
+            temp.push(book->waitingListNN().front());
+            std::cout << book->waitingListNN().front() << std::endl;
+            book->waitingListNN().pop();
+        }
+
+        for (int i=0; i<temp.size(); i++){
+            book->waitingListNN().push(temp.front());
+            temp.pop();
+        }
     }
 }
 

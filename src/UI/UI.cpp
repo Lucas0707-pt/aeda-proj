@@ -253,7 +253,6 @@ void showBookStoresMenu(Club &c){
 void showPriorityQueues(Club &c){
     Book *b = c.getCatalog().at(0);
     std::priority_queue<Person> temp;
-
     std::cout << "size: " << b->getWaitingList().size() << std::endl;
     unsigned int size = b->getWaitingList().size();
     for(int i = 0; i < size; i++){
@@ -285,6 +284,7 @@ bool addBookMenu(Club &c, int i){
     std::string days;
     Member* ptrMember;
     Book* book;
+    unsigned int newSize;
     bool success = false;
     std::cout << "Book's title: ";
     while(std::getline(std::cin, title))
@@ -335,7 +335,7 @@ bool addBookMenu(Club &c, int i){
             }
             if (isNumeric(owner))
             {
-                for(const auto& person : c.getPeople())
+                for(auto& person : c.getPeople())
                 {
                     if (person->getID() == std::stoi(owner))
                     {
@@ -409,6 +409,8 @@ bool addBookMenu(Club &c, int i){
     c.addBook(book);
     success = true;
     dynamic_cast<Member*>(c.getPersonById(std::stoi(owner)))->addOwnedBook(book);
+    newSize = c.getPersonById(std::stoi(owner))->getOwnedBooksSize() + 1;
+    c.getPersonById(std::stoi(owner))->setOwnedBooksSize(newSize);
     std::cout << std::endl << std::endl << "Press ENTER to return...";
     std::getline(std::cin, value);
     END:
@@ -500,6 +502,10 @@ void addCostumerMenu(Club &c)
             c.removePerson(m);
             m->updatePersonStaticId();
             delete m;
+        }
+        else
+        {
+            m->setOwnedBooksSize(m->getOwnedBooks().size());
         }
         goto END;
     }
@@ -1040,12 +1046,7 @@ void claimBookLoanMenu(Club &c)
             ptrBook = c.getBookById(std::stoi(bookID));
             if (ptrBook != nullptr)
             {
-                if (ptrBook->getQueueMFront() == ptrPerson->getID())
-                {
-                    break;
-                }
-                else if (ptrBook->getQueueNMFront() == ptrPerson->getID() &&
-                         (ptrBook->getQueueMSize() == 0) && !ptrBook->getIsBorrowed())
+                if (ptrBook->getQueueFront().getID() == ptrPerson->getID())
                 {
                     break;
                 }
@@ -1068,7 +1069,7 @@ void claimBookLoanMenu(Club &c)
             {
                 std::cout << "The book was successfully borrowed!" << std::endl;
                 if(!ptrPerson->getIsMember())
-                    std::cout << "Value to pay:" << c.getLoanFee()*ptrBook->getValue() << std::endl;
+                    std::cout << "Value to pay: " << c.getLoanFee()*ptrBook->getValue() << std::endl;
                 ptrBook->manageQueue();
                 break;
             }
@@ -1192,6 +1193,7 @@ void removeBookMenu(Club &c)
         std::cout << "Book ID to be removed: ";
     }
     c.updateBookID(ptrMember->removeOwnedBook(ptrBook));
+    ptrMember->setOwnedBooksSize(ptrMember->getOwnedBooksSize()-1);
     c.removeBook(ptrBook);
     delete ptrBook;
     std::cout << std::endl << std::endl << "Press ENTER to return...";
@@ -1234,6 +1236,7 @@ void reportBookLostMenu(Club& c)
     ptrPerson = c.getPersonById(ptrBook->getOwner());
     ptrMember = dynamic_cast<Member*>(ptrPerson);
     ptrMember->removeOwnedBook(ptrBook);
+    ptrPerson->setOwnedBooksSize(ptrPerson->getOwnedBooksSize()-1);
     c.removeBook(ptrBook);
     delete ptrBook;
     std::cout << std::endl << "Book value was " << valueToPay << " . This value must be payed to owner with ID: " << ptrMember->getID() << std::endl;

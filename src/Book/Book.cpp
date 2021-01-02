@@ -314,73 +314,10 @@ void Book::addComment(std::string comment) {comments.push_back(comment);}
 
 std::vector<std::string> Book::getComments() const {return comments;}
 
-/**
- * Will add to the members queue the specified member ID
- * @param m The member ID
- */
-
-void Book::addToWaitingListM(unsigned int m) {waitingListM.push(m);}
-
-/**
- * Will add to the non-members queue the specified non-member ID
- * @param nm The non-member ID
- */
-
-void Book::addToWaitingListNM(unsigned int nm) {waitingListNM.push(nm);}
 void Book::addToWaitingList(Person p) {waitingList.push(p);}
-/**
- * Will return the ID of the first member in the queue
- * @return The ID of the top one, or -1 if the queue is empty
- */
 
-int Book::getQueueMFront() const
-{
-    if (!waitingListM.empty())
-        return waitingListM.front();
-    else
-        return -1;
-}
+std::priority_queue<Person> Book::getWaitingList() const {return waitingList;}
 
-/**
- * Will return the members queue size
- * @return The members queue size
- */
+void Book::manageQueue() {waitingList.pop();}
 
-unsigned int Book::getQueueMSize() {return waitingListM.size();}
-
-/**
- * Will return the ID from the first non members in the queue
- * @return The ID of the top one, or -1 if the queue is empty
- */
-
-int Book::getQueueNMFront() const
-{
-    if(!waitingListNM.empty())
-        return waitingListNM.front();
-    else
-        return -1;
-}
-
-/**
- * Will return the non-members queue size
- * @return The non-members queue size
- */
-
-unsigned int Book::getQueueNMSize() {return waitingListNM.size();}
-
-/**
- * Will manage the queue, by first checking if members queue is empty, if not removes the top one and finishes,
- * if the queue is empty, then will check if the non-memebers checks is empty, is not removes the top one
- */
-
-void Book::manageQueue()
-{
-    if(!waitingListM.empty())
-    {
-        waitingListM.pop();
-    }
-    else if (!waitingListNM.empty())
-    {
-        waitingListNM.pop();
-    }
-}
+Person Book::getQueueFront() const {return waitingList.top();}

@@ -11,13 +11,12 @@ int Person::id = 1;
 
 bool Person::operator<(const Person &p) const {
     if(this->isMember && !p.isMember) return false;
-    if(this->isMember && p.isMember){
-        const Member *m1 = dynamic_cast<const Member *>(this);
-        const Member *m2 = dynamic_cast<const Member *>(&p);
-        if(m1->getOwnedBooks().size()/m1->getBorrowedBooks().size() < m2->getOwnedBooks().size()/m2->getBorrowedBooks().size())
-            return false;
+    if(this->isMember && p.isMember)
+    {
+       if (this->getOwnedBooksSize()/(this->getBorrowedBooks().size()+1) < p.getOwnedBooksSize()/(this->getBorrowedBooks().size()+1))
+           return true;
     }
-    return true;
+    return false;
 }
 
 /**
@@ -103,14 +102,7 @@ unsigned int Person::borrowBook(Book* book, unsigned int loanDays)
     }
     else
     {
-        if (this->getIsMember()) {
-            book->addToWaitingListM(this->unique_id);
-            book->addToWaitingList(*this);
-        }
-        else {
-            book->addToWaitingListNM(this->unique_id);
-            book->addToWaitingList(*this);
-        }
+        book->addToWaitingList(*this);
         return 2;
     }
 }
@@ -252,4 +244,3 @@ NonMember::NonMember() : Person() {}
  */
 
 NonMember::~ NonMember() = default;
-

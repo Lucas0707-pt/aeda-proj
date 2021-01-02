@@ -17,7 +17,7 @@ class Person
 public:
     Person();
     virtual ~Person();
-    bool operator<(const Person& p) const;
+    bool operator<(const Person& p) const ;
     void setName(std::string name);
     std::string getName() const;
     void setId(unsigned int id);
@@ -31,6 +31,8 @@ public:
     std::vector<Book*> getBorrowedBooks() const;
     Book* getBookFromBorrowedBooks(unsigned int id) const;
     double returnBook(Club &club, Book* book);
+    void setOwnedBooksSize(unsigned int size){ownedBooksSize = size;}
+    unsigned int getOwnedBooksSize() const {return ownedBooksSize;}
 
 protected:
     std::string name; /**<Person name*/
@@ -38,6 +40,7 @@ protected:
     unsigned int unique_id; /**<Person ID in the club, even non members, must have at least an id to identify them */
     bool isMember; /**<Boolean containing true for member and false for non member*/
     std::vector<Book*> borrowedBooks; /**<Vector containing all the borrowed books by the person*/
+    unsigned int ownedBooksSize;
 };
 
 /**

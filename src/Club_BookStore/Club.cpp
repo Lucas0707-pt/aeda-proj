@@ -4,6 +4,7 @@
 #include <fstream>
 #include <algorithm>
 #include <ctime>
+#include <tuple>
 
 //----------------------------------------------------------------------------------------------------------------
 
@@ -27,6 +28,8 @@ void Club::readFile()
     Book* ptrBook;
     Member* ptrMember;
     NonMember* ptrNonMember;
+    std::vector<std::vector<unsigned int>> waitingListTemp;
+    unsigned int idTemp = 1;
     std::ifstream booksFile("../src/Files/Books.txt");
     std::ifstream peopleFile("../src/Files/People.txt");
     std::ifstream storesFile("../src/Files/BookStores.txt");
@@ -42,6 +45,7 @@ void Club::readFile()
         std::getline(booksFile, input);
         if (input.empty()) break;
         Book *book = new Book();
+        waitingListTemp.push_back({idTemp++});
         book->setTitle(input);
         std::getline(booksFile, input);
         book->setOwner(std::stoi(input));
@@ -77,17 +81,10 @@ void Club::readFile()
         }
         while(std::getline(booksFile,input))
         {
-            if(input == "endBorrowedMember")
+            if(input == "endBorrowedQueue")
                 break;
             else
-                book->addToWaitingListM(std::stoi(input));
-        }
-        while(std::getline(booksFile,input))
-        {
-            if(input == "endBorrowedNonMember")
-                break;
-            else
-                book->addToWaitingListNM(std::stoi(input));
+                waitingListTemp[idTemp-2].push_back(std::stoi(input));
         }
         catalog.push_back(book);
     }
@@ -194,32 +191,17 @@ void Club::readFile()
             {
                 ptrMember = dynamic_cast<Member *>(person);
                 ptrMember->addOwnedBook(book);
+                ptrMember->setOwnedBooksSize(ptrMember->getOwnedBooks().size());
                 break;
             }
         }
-        std::queue<unsigned int> temp;
-        for (int i=0; i<book->waitingListMM().size(); i++){
-            book->addToWaitingList(*getPersonById(book->waitingListMM().front()));
-            temp.push(book->waitingListMM().front());
-            std::cout << book->waitingListMM().front() << std::endl;
-            book->waitingListMM().pop();
-        }
-
-        for (int i=0; i<temp.size(); i++){
-            book->waitingListMM().push(temp.front());
-            temp.pop();
-        }
-
-        for (int i=0; i<book->waitingListNN().size(); i++){
-            book->addToWaitingList(*getPersonById(book->waitingListNN().front()));
-            temp.push(book->waitingListNN().front());
-            std::cout << book->waitingListNN().front() << std::endl;
-            book->waitingListNN().pop();
-        }
-
-        for (int i=0; i<temp.size(); i++){
-            book->waitingListNN().push(temp.front());
-            temp.pop();
+    }
+    for (const auto& bookVector : waitingListTemp)
+    {
+        Book* ptrTemp = getBookById(bookVector[0]);
+        for (int i = 1; i < bookVector.size(); ++i)
+        {
+            ptrTemp->addToWaitingList(*getPersonById(bookVector[i]));
         }
     }
 }
@@ -264,18 +246,12 @@ void Club::writeFile()
         for(const auto &comment : book->getComments())
             booksFile << comment << std::endl;
         booksFile << "endComments" << std::endl;
-        while(book->getQueueMSize())
+        while(book->getWaitingList().size())
         {
-            booksFile << book->getQueueMFront() << std::endl;
+            booksFile << book->getQueueFront().getID() << std::endl;
             book->manageQueue();
         }
-        booksFile << "endBorrowedMember" << std::endl;
-        while(book->getQueueNMSize())
-        {
-            booksFile << book->getQueueNMFront() << std::endl;
-            book->manageQueue();
-        }
-        booksFile << "endBorrowedNonMember" << std::endl;
+        booksFile << "endBorrowedQueue" << std::endl;
     }
     booksFile.close();
     modTimeBooks = time(nullptr);

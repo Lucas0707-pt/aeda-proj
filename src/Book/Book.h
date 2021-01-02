@@ -53,17 +53,10 @@ public:
     std::vector<unsigned int> getRatings() const;
     void addComment(std::string comment);
     std::vector<std::string> getComments() const;
-    void addToWaitingListM(unsigned int m);
-    void addToWaitingListNM(unsigned int nm);
-    int getQueueMFront() const;
-    unsigned int getQueueMSize();
-    int getQueueNMFront() const;
-    unsigned int getQueueNMSize();
-    void manageQueue();
     void addToWaitingList(Person p);
-    std::priority_queue<Person> &getWaitingList(){return waitingList;}
-    std::queue<unsigned int> &waitingListMM(){return waitingListM;}
-    std::queue<unsigned int> &waitingListNN(){return waitingListNM;}
+    std::priority_queue<Person> getWaitingList() const;
+    void manageQueue();
+    Person getQueueFront() const;
 
 private:
     std::string title; /**<Book title*/
@@ -79,8 +72,6 @@ private:
     unsigned long long int endOfLoan=0; /**<Will be set to 0 if book is not loaned in the moment */
     std::vector<unsigned int> ratings; /**<Vector containing all the ratings given by the readers*/
     std::vector<std::string> comments; /**<Vector containing all the comments given by the readers*/
-    std::queue<unsigned int> waitingListM; /**<Queue containing the members who are waiting to read the book*/
-    std::queue<unsigned int> waitingListNM; /**<Queue containing the non members who are waiting to read the book*/
     std::priority_queue<Person> waitingList;
 };
 

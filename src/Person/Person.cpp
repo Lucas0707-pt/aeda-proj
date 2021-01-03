@@ -8,7 +8,6 @@ int Person::id = 1;
 /**
  * Operator to help choosing the priority in the priority_queue
  */
-
 bool Person::operator<(const Person &p) const {
     if(this->isMember && !p.isMember) return false;
     if(this->isMember && p.isMember)
@@ -60,6 +59,18 @@ void Person::setId(unsigned int id) {this->unique_id = id;}
 unsigned int Person::getID() const {return unique_id;}
 
 void Person::updatePersonStaticId() {this->id--;}
+
+/**
+ * Sets the email address from the person
+ * @param emailAddress The email address
+ */
+void Person::setEmailAddress(std::string emailAddress) {this->emailAddress = emailAddress;}
+
+/**
+ * Returns the email address from the person
+ * @return the email address from the person
+ */
+std::string Person::getEmailAddress() const {return emailAddress;}
 
 /**
  * Sets if a person is a member or not from the lecture club

@@ -23,6 +23,8 @@ public:
     void setId(unsigned int id);
     unsigned int getID() const;
     void updatePersonStaticId();
+    void setEmailAddress(std::string emailAddress);
+    std::string getEmailAddress() const;
     void setIsMember(bool isMember);
     bool getIsMember() const;
     unsigned int borrowBook(Book* book, unsigned int loanDays);
@@ -38,6 +40,7 @@ protected:
     std::string name; /**<Person name*/
     static int id; /**<Id counter, to be increment in Person Constructor*/
     unsigned int unique_id; /**<Person ID in the club, even non members, must have at least an id to identify them */
+    std::string emailAddress;
     bool isMember; /**<Boolean containing true for member and false for non member*/
     std::vector<Book*> borrowedBooks; /**<Vector containing all the borrowed books by the person*/
     unsigned int ownedBooksSize;

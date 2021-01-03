@@ -115,17 +115,17 @@ void mainMenu(Club &c){
     std::cout << "View Borrowed Books     |11" << std::endl;
     std::cout << "Remove a book           |12" << std::endl;
     std::cout << "Report a book loss      |13" << std::endl;
-    std::cout << "Save info               |14" << std::endl;
-    std::cout << "Show priority queues    |15" << std::endl;
+    std::cout << "Show Book Queue         |14" << std::endl;
+    std::cout << "Menu Preferences        |15" << std::endl;
+    std::cout << "Save info               |16" << std::endl;
     std::cout << "Exit                    |-1" << std::endl << std::endl;
-
     std::cout << "Choose: ";
     while(std::getline(std::cin, value))
     {
         if (isNumeric(value) || value == "-1")
         {
             index = std::stoi(value);
-            if(index == -1 || (index >=0 && index <= 15))
+            if(index == -1 || (index >=1 && index <= 16))
             {
                 break;
             }
@@ -134,6 +134,102 @@ void mainMenu(Club &c){
         std::cout << "Choose: ";
     }
     std::cout << CLEAR_SCREEN;
+}
+
+void showBookQueue(Book* book){
+    std::string value;
+    auto queueTemp = book->getQueue();
+    std::cout << ".________________________." << std::endl;
+    std::cout << "|      WAITING LIST      |" << std::endl;
+    std::cout << ".________________________." << std::endl << std::endl;
+
+    const char separator = ' ';
+    while(queueTemp.size())
+    {
+        std::cout << "Id: " << std::left << std::setw(40) << std::setfill(separator) << queueTemp.top().getID()
+                  << "Name: " << queueTemp.top().getName() << std::endl << "Is member: ";
+        if (queueTemp.top().getIsMember())
+            std::cout << "Yes" << std::endl << std::endl;
+        else
+            std::cout << "No" << std::endl << std::endl;
+        queueTemp.pop();
+    }
+}
+
+void showPersonPreferences(Club& c, Person* person){
+    std::string value;
+    auto personPreferences = c.getPersonPreferences();
+    auto personRecords = personPreferences.find(PersonRecords(person->getEmailAddress()));
+    if (!personRecords->getFavoritesCategories().size())
+    {
+        std::cout << "This person has no preferences yet." << std::endl;
+    }
+    else
+    {
+        std::cout << ".________________________." << std::endl;
+        std::cout << "|      Preferences       |" << std::endl;
+        std::cout << ".________________________." << std::endl << std::endl;
+        for (const auto& preference : personRecords->getFavoritesCategories())
+        {
+            switch(preference)
+            {
+                case 0:
+                    std::cout << "1: Adventure" << std::endl;
+                    break;
+                case 1:
+                    std::cout << "2: Arts" << std::endl;
+                    break;
+                case 2:
+                    std::cout << "3: Biography" << std::endl;
+                    break;
+                case 3:
+                    std::cout << "4: Comics" << std::endl;
+                    break;
+                case 4:
+                    std::cout << "5: Cooking" << std::endl;
+                    break;
+                case 5:
+                    std::cout << "6: Crime" << std::endl;
+                    break;
+                case 6:
+                    std::cout << "7: Entertainment" << std::endl;
+                    break;
+                case 7:
+                    std::cout << "8: Health" << std::endl;
+                    break;
+                case 8:
+                    std::cout << "9: History" << std::endl;
+                    break;
+                case 9:
+                    std::cout << "10: Horror" << std::endl;
+                    break;
+                case 10:
+                    std::cout << "11: Kids" << std::endl;
+                    break;
+                case 11:
+                    std::cout << "12: Medical" << std::endl;
+                    break;
+                case 12:
+                    std::cout << "13: Romance" << std::endl;
+                    break;
+                case 13:
+                    std::cout << "14: SciFi" << std::endl;
+                    break;
+                case 14:
+                    std::cout << "15: Science" << std::endl;
+                    break;
+                case 15:
+                    std::cout << "16: Sports" << std::endl;
+                    break;
+                case 16:
+                    std::cout << "17: Suspense" << std::endl;
+                    break;
+                case 17:
+                    std::cout << "18: Other" << std::endl;
+                    break;
+            }
+        }
+    }
 }
 
 /**
@@ -151,11 +247,12 @@ void showCostumersMenu(Club &c){
     for(const auto& person : c.getPeople())
     {
         std::cout << "Id: " << std::left << std::setw(40) << std::setfill(separator) << person->getID()
-                  << "Name: " << person->getName() << std::endl << "Is member: ";
+                  << "Name: " << person->getName()<< std::endl << "Is member: ";
         if (person->getIsMember())
-            std::cout << "Yes" << std::endl << std::endl;
+            std::cout << "Yes" << std::endl;
         else
-            std::cout << "No" << std::endl << std::endl;
+            std::cout << "No" << std::endl;
+        std::cout << "Email: " << person->getEmailAddress() << std::endl << std::endl;
     }
 
     std::cout << "Press ENTER to return...";
@@ -250,25 +347,6 @@ void showBookStoresMenu(Club &c){
     index = 0;
 }
 
-void showPriorityQueues(Club &c){
-    Book *b = c.getCatalog().at(0);
-    std::priority_queue<Person> temp;
-    std::cout << "size: " << b->getWaitingList().size() << std::endl;
-    unsigned int size = b->getWaitingList().size();
-    for(int i = 0; i < size; i++){
-        std::cout << b->getWaitingList().top().getName() << std::endl;
-        temp.push(b->getWaitingList().top());
-        b->getWaitingList().pop();
-    }
-
-    for(int i = 0; i < size; i++){
-        b->getWaitingList().push(temp.top());
-        temp.pop();
-    }
-
-    index = 0;
-}
-
 /**
  * Will ask the user to input every book specs and then create a book and finally add it to the catalog
  * @param c The club is passed to this function, so that the function can use is methods
@@ -323,7 +401,7 @@ bool addBookMenu(Club &c, int i){
         std::cout << "Book's category (from 1-18): ";
     }
     if(i==-1){
-        std::cout << CLEAR_SCREEN << std::endl;
+        std::cout << CLEAR_SCREEN;
         showCostumersMenu(c);
         std::cout << "Book's owner by ID: ";
         bool found = false;
@@ -427,6 +505,7 @@ bool addBookMenu(Club &c, int i){
 void addCostumerMenu(Club &c)
 {
     std::string name;
+    std::string email;
     std::string membership;
     std::string nrBooks;
     std::cout << "Costumer's name: ";
@@ -444,6 +523,23 @@ void addCostumerMenu(Club &c)
         {
             errorMessage();
             std::cout << "Costumer's name: ";
+        }
+    }
+    std::cout << "Costumer's email: ";
+    while(std::getline(std::cin, email))
+    {
+        if (name == "-1")
+        {
+            goto END;
+        }
+        if (!email.empty() && email.size() < 50)
+        {
+            break;
+        }
+        else
+        {
+            errorMessage();
+            std::cout << "Costumer's email: ";
         }
     }
     std::cout << "Is this costumer a member? (y/n): ";
@@ -468,6 +564,7 @@ void addCostumerMenu(Club &c)
         Member *m = new Member();
         m->setIsMember(true);
         m->setName(name);
+        m->setEmailAddress(email);
         std::cout << "How many books: ";
         while(std::getline(std::cin, nrBooks))
         {
@@ -506,6 +603,8 @@ void addCostumerMenu(Club &c)
         else
         {
             m->setOwnedBooksSize(m->getOwnedBooks().size());
+            PersonRecords personRecord(email);
+            c.addPersonRecord(personRecord);
         }
         goto END;
     }
@@ -515,6 +614,9 @@ void addCostumerMenu(Club &c)
         c.addPerson(nm);
         nm->setIsMember(false);
         nm->setName(name);
+        nm->setEmailAddress(email);
+        PersonRecords personRecord(email);
+        c.addPersonRecord(personRecord);
     }
     std::cout << std::endl << std::endl << "Press ENTER to return...";
     std::getline(std::cin, name); //only to acknowledge that the user pressed a key
@@ -1314,6 +1416,175 @@ unsigned int readInfoFile(float &loanFee, float &delayPenalty)
     return 2;
 }
 
+void BookQueueMenu(Club &c){
+    std::string bookID;
+    Book* ptrBook;
+    std::cout << "Book ID to see the waiting list: ";
+    while (std::getline(std::cin, bookID)) {
+        if (bookID == "-1") {
+            goto END;
+        }
+        if (isNumeric(bookID))
+        {
+            ptrBook = c.getBookById(std::stoi(bookID));
+            if (ptrBook != nullptr)
+            {
+                if (!ptrBook->getQueueSize())
+                {
+                    std::cout << CLEAR_SCREEN;
+                    std::cout << "This book's waiting list is empty." << std::endl << std::endl;
+                    goto END;
+                }
+            }
+        }
+        errorMessage();
+        std::cout << "Book ID to see the waiting list: ";
+    }
+    showBookQueue(ptrBook);
+    END:
+    std::cout << std::endl << std::endl << "Press ENTER to return...";
+    std::getline(std::cin, bookID); //only to acknowledge that the user pressed a key
+    std::cout << CLEAR_SCREEN;
+    index = 0;
+}
+
+
+
+
+void showMenuPreferences(Club &c, Person* person)
+{
+    int index2 = 0;
+    std::cout << ".________________________." << std::endl;
+    std::cout << "|    Menu Preferences    |" << std::endl;
+    std::cout << ".________________________." << std::endl << std::endl;
+
+    std::string value;
+    std::cout << "Edit Email              |1" << std::endl;
+    std::cout << "View Preferences        |2" << std::endl;
+    std::cout << "Add Preference          |3" << std::endl;
+    std::cout << "Remove Preference       |4" << std::endl;
+    std::cout << "Exit                    |-1" << std::endl << std::endl;
+
+    std::cout << "Choose: ";
+    while(std::getline(std::cin, value))
+    {
+        if (isNumeric(value) || value == "-1")
+        {
+            index2 = std::stoi(value);
+            if(index2 == -1 || (index2 >=1 && index2 <= 4))
+            {
+                break;
+            }
+        }
+        errorMessage();
+        std::cout << "Choose: ";
+    }
+    std::cout << CLEAR_SCREEN;
+    if (index2 == 1)
+    {
+        std::cout << "Costumer's new email: ";
+        while(std::getline(std::cin, value))
+        {
+            if (value == "-1")
+            {
+                goto END;
+            }
+            if (!value.empty() && value.size() < 50)
+            {
+                c.updateEmailPersonRecord(person->getEmailAddress(), value);
+                person->setEmailAddress(value);
+
+                break;
+            }
+            else
+            {
+                errorMessage();
+                std::cout << "Costumer's new email: ";
+            }
+        }
+    }
+    if (index2 == 2)
+    {
+        showPersonPreferences(c, person);
+        std::cout << std::endl << "Press ENTER to return...";
+        std::getline(std::cin, value); //only to acknowledge that the user pressed a key
+        std::cout << CLEAR_SCREEN;
+    }
+    if (index2 == 3)
+    {
+        printBooksCategory();
+        std::cout << "Costumer's new preference: ";
+        while(std::getline(std::cin, value))
+        {
+            if (value == "-1")
+            {
+                goto END;
+            }
+            if (isNumeric(value))
+            {
+                if (std::stoi(value) >= 1 && std::stoi(value) <= 18)
+                {
+                    c.addPreference(std::stoi(value)-1,person->getEmailAddress());
+                    break;
+                }
+            }
+            errorMessage();
+            std::cout << "Costumer's new preference: ";
+        }
+    }
+    if (index2 == 4)
+    {
+        showPersonPreferences(c, person);
+        std::cout << std::endl << "Costumer's preference to remove: ";
+        while(std::getline(std::cin, value))
+        {
+            if (value == "-1")
+            {
+                goto END;
+            }
+            if (isNumeric(value))
+            {
+                if (std::stoi(value) >= 1 && std::stoi(value) <= 18 && c.preferenceExists(std::stoi(value)-1, person->getEmailAddress()))
+                {
+                    c.removePreference(std::stoi(value)-1,person->getEmailAddress());
+                    break;
+                }
+            }
+            errorMessage();
+            std::cout << "Costumer's preference to remove: ";
+        }
+    }
+    END:;
+}
+
+void MenuPreferences(Club &c)
+{
+    std::string personID;
+    Person* ptrPerson;
+    std::cout << CLEAR_SCREEN;
+    showCostumersMenu(c);
+    std::cout << "Person ID: ";
+    while (std::getline(std::cin, personID))
+    {
+        if (personID == "-1") {
+            goto END;
+        }
+        if (isNumeric(personID)) {
+            ptrPerson = c.getPersonById(std::stoi(personID));
+            if (ptrPerson != nullptr) {
+                break;
+            }
+        }
+        errorMessage();
+        std::cout << "Person ID: ";
+    }
+    std::cout << CLEAR_SCREEN;
+    showMenuPreferences(c, ptrPerson);
+    END:
+    std::cout << CLEAR_SCREEN;
+    index = 0;
+}
+
 void saveInfo(Club& c)
 {
     std::string answer;
@@ -1378,8 +1649,9 @@ void menu(Club &c){
     if(index == 11) viewBorrowedBooksMenu(c);
     if(index == 12) removeBookMenu(c);
     if (index == 13) reportBookLostMenu(c);
-    if (index == 14) saveInfo(c);
-    if (index == 15) showPriorityQueues(c);
+    if (index == 14) BookQueueMenu(c);
+    if (index == 15) MenuPreferences(c);
+    if (index == 16) saveInfo(c);
 }
 
 /**

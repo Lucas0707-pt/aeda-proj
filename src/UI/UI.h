@@ -48,7 +48,6 @@ unsigned int readInfoFile(double &loanFee, double &delayPenalty);
 
 void saveInfo(Club& c);
 
-
 void menu(Club &c);
 
 void MenuBeginning();

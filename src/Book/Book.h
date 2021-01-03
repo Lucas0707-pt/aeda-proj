@@ -57,6 +57,8 @@ public:
     std::priority_queue<Person> getWaitingList() const;
     void manageQueue();
     Person getQueueFront() const;
+    unsigned int getQueueSize() const;
+    std::priority_queue<Person> getQueue() const;
 
 private:
     std::string title; /**<Book title*/

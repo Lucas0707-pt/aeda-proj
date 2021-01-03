@@ -3,12 +3,29 @@
 #include "../Person/Person.h"
 #include "../Book/Book.h"
 #include "../BST/Bst.h"
+#include "../PersonRecords/PersonRecords.h"
 #include <vector>
 #include <string>
 #include <tuple>
+#include <unordered_set>
 
 class Person;
 class Book;
+
+struct PersonRecordsHash
+{
+    int operator()(const PersonRecords& person) const {
+        int v = 0;
+        for (const auto & letter : person.getEmailAddress())
+            v += letter;
+        return 37*v;
+    }
+
+    bool operator()(const PersonRecords& person1, const PersonRecords& person2) const {
+        return person1.getEmailAddress() == person2.getEmailAddress();
+    }
+};
+
 
 /**
  * This class holds on the information about a book store, to witch the lecture club offers promotions to its clients
@@ -202,6 +219,12 @@ public:
     void updateBookID(unsigned int id);
     void addBookStore(BookStore* b);
     BST<BookStore> getBookStores();
+    void addPersonRecord(PersonRecords personRecord);
+    void updateEmailPersonRecord(std::string oldEmail, std::string newEmail);
+    unordered_set<PersonRecords, PersonRecordsHash, PersonRecordsHash> getPersonPreferences() const;
+    void addPreference(unsigned int preference, std::string email);
+    void removePreference(unsigned int preference, std::string email);
+    bool preferenceExists(unsigned int preference, std::string email);
 
 private:
     float loanFee; /**<Loan fee for Non-Members*/
@@ -209,6 +232,7 @@ private:
     std::vector<Person*> people; /**<Vector containing all the club's people */
     std::vector<Book*> catalog; /**<Vector  containing all the club's books*/
     BST<BookStore> bookStores;
+    unordered_set<PersonRecords, PersonRecordsHash, PersonRecordsHash> personPreferences;
 };
 
 #endif //_CLUB_H

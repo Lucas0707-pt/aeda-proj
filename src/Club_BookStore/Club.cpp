@@ -1,6 +1,5 @@
 #include "Club_BookStore.h"
 #include "../Exception/FileException/FileException.h"
-#include "../Utils/utils.h"
 #include <fstream>
 #include <algorithm>
 #include <ctime>
@@ -102,6 +101,9 @@ void Club::readFile()
             ptrNonMember->setIsMember(false);
             std::getline(peopleFile, input);
             ptrNonMember->setName(input);
+            std::getline(peopleFile, input);
+            ptrNonMember->setEmailAddress(input);
+            PersonRecords personRecord(input);
             while(std::getline(peopleFile,input)) {
                 if(input == "endBorrowedBooks")
                 {
@@ -113,6 +115,17 @@ void Club::readFile()
                     ptrNonMember->addBorrowedBook(ptrBook);
                 }
             }
+            while(std::getline(peopleFile,input)) {
+                if(input == "endPreferences")
+                {
+                    break;
+                }
+                else
+                {
+                    personRecord.addFavoriteCategory(std::stoi(input));
+                }
+            }
+            personPreferences.insert(personRecord);
             people.push_back(ptrNonMember);
         }
         else
@@ -121,6 +134,8 @@ void Club::readFile()
             ptrMember->setIsMember(true);
             std::getline(peopleFile, input);
             ptrMember->setName(input);
+            std::getline(peopleFile, input);
+            ptrNonMember->setEmailAddress(input);
             while(std::getline(peopleFile,input))
             {
                 if(input == "endBorrowedBooks")
@@ -260,10 +275,14 @@ void Club::writeFile()
         if(person->getIsMember()) peopleFile << "1" << std::endl;
         else peopleFile << "0" << std::endl;
         peopleFile << person->getName() << std::endl;
-
+        peopleFile << person->getEmailAddress() << std::endl;
         for(const auto &book : person->getBorrowedBooks())
             peopleFile << book->getBookId() << std::endl;
         peopleFile << "endBorrowedBooks" << std::endl;
+        auto person2 = personPreferences.find(PersonRecords(person->getEmailAddress()));
+        for (const auto &preference : person2->getFavoritesCategories())
+            peopleFile << preference << std::endl;
+        peopleFile << "endPreferences" << std::endl;
 
     }
     modTimePeople = time(nullptr);
@@ -276,7 +295,6 @@ void Club::writeFile()
         bookStoresFile << it.retrieve().getPlace() << std::endl;
         bookStoresFile << it.retrieve().getPromotion() << std::endl;
         bookStoresFile << it.retrieve().getDiscountCode() << std::endl;
-
         for (const auto& bookTuple : it.retrieve().getStock())
         {
             bookStoresFile << std::get<1>(bookTuple)->getTitle() << std::endl;
@@ -387,3 +405,67 @@ void Club::addBookStore(BookStore* b){ bookStores.insert(*b);}
 BST<BookStore> Club::getBookStores(){ return bookStores; }
 
 //----------------------------------------------------------------------------------------------------------------
+
+void Club::addPersonRecord(PersonRecords personRecord) {personPreferences.insert(personRecord);}
+
+//----------------------------------------------------------------------------------------------------------------
+
+void Club::updateEmailPersonRecord(std::string oldEmail, std::string newEmail)
+{
+    PersonRecords newPerson(newEmail);
+    auto oldPerson = personPreferences.find(PersonRecords(oldEmail));
+    for (const auto& category : oldPerson->getFavoritesCategories())
+    {
+        newPerson.addFavoriteCategory(category);
+    }
+    personPreferences.erase(oldPerson);
+    personPreferences.insert(newPerson);
+}
+
+//----------------------------------------------------------------------------------------------------------------
+
+unordered_set<PersonRecords, PersonRecordsHash, PersonRecordsHash> Club::getPersonPreferences() const {return personPreferences;}
+
+//----------------------------------------------------------------------------------------------------------------
+
+void Club::addPreference(unsigned int preference, std::string email)
+{
+    PersonRecords newPerson(email);
+    auto oldPerson = personPreferences.find(PersonRecords(email));
+    for (const auto& category : oldPerson->getFavoritesCategories())
+    {
+        newPerson.addFavoriteCategory(category);
+    }
+    newPerson.addFavoriteCategory(preference);
+    personPreferences.erase(oldPerson);
+    personPreferences.insert(newPerson);
+}
+
+//----------------------------------------------------------------------------------------------------------------
+
+void Club::removePreference(unsigned int preference, std::string email)
+{
+    PersonRecords newPerson(email);
+    auto oldPerson = personPreferences.find(PersonRecords(email));
+    for (const auto& category : oldPerson->getFavoritesCategories())
+    {
+        if (category != preference)
+            newPerson.addFavoriteCategory(category);
+    }
+    personPreferences.erase(oldPerson);
+    personPreferences.insert(newPerson);
+}
+
+//----------------------------------------------------------------------------------------------------------------
+
+bool Club::preferenceExists(unsigned int preferenceToSearch, std::string email)
+{
+    PersonRecords personSearch(email);
+    auto personFound = personPreferences.find(PersonRecords(email));
+    for (const auto& preference : personFound->getFavoritesCategories())
+    {
+        if (preference == preferenceToSearch)
+            return true;
+    }
+    return false;
+}

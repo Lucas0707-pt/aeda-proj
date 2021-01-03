@@ -106,6 +106,12 @@
 		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/Person/Person.h">
 			<Option target="Projeto_AEDA"/>
 		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/PersonRecords/PersonRecords.cpp">
+			<Option target="Projeto_AEDA"/>
+		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/PersonRecords/PersonRecords.h">
+			<Option target="Projeto_AEDA"/>
+		</Unit>
 		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/src/UI/UI.cpp">
 			<Option target="Projeto_AEDA"/>
 		</Unit>

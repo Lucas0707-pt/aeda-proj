@@ -321,3 +321,7 @@ std::priority_queue<Person> Book::getWaitingList() const {return waitingList;}
 void Book::manageQueue() {waitingList.pop();}
 
 Person Book::getQueueFront() const {return waitingList.top();}
+
+unsigned int Book::getQueueSize() const {return waitingList.size();}
+
+std::priority_queue<Person> Book::getQueue() const {return waitingList;}

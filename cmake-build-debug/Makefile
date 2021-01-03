@@ -278,6 +278,33 @@ src/Person/Person.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/Person/Person.cpp.s
 .PHONY : src/Person/Person.cpp.s
 
+src/PersonRecords/PersonRecords.o: src/PersonRecords/PersonRecords.cpp.o
+
+.PHONY : src/PersonRecords/PersonRecords.o
+
+# target to build an object file
+src/PersonRecords/PersonRecords.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/PersonRecords/PersonRecords.cpp.o
+.PHONY : src/PersonRecords/PersonRecords.cpp.o
+
+src/PersonRecords/PersonRecords.i: src/PersonRecords/PersonRecords.cpp.i
+
+.PHONY : src/PersonRecords/PersonRecords.i
+
+# target to preprocess a source file
+src/PersonRecords/PersonRecords.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/PersonRecords/PersonRecords.cpp.i
+.PHONY : src/PersonRecords/PersonRecords.cpp.i
+
+src/PersonRecords/PersonRecords.s: src/PersonRecords/PersonRecords.cpp.s
+
+.PHONY : src/PersonRecords/PersonRecords.s
+
+# target to generate assembly for a file
+src/PersonRecords/PersonRecords.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_AEDA.dir/build.make CMakeFiles/Projeto_AEDA.dir/src/PersonRecords/PersonRecords.cpp.s
+.PHONY : src/PersonRecords/PersonRecords.cpp.s
+
 src/UI/UI.o: src/UI/UI.cpp.o
 
 .PHONY : src/UI/UI.o
@@ -383,6 +410,9 @@ help:
 	@echo "... src/Person/Person.o"
 	@echo "... src/Person/Person.i"
 	@echo "... src/Person/Person.s"
+	@echo "... src/PersonRecords/PersonRecords.o"
+	@echo "... src/PersonRecords/PersonRecords.i"
+	@echo "... src/PersonRecords/PersonRecords.s"
 	@echo "... src/UI/UI.o"
 	@echo "... src/UI/UI.i"
 	@echo "... src/UI/UI.s"

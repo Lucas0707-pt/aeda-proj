@@ -1,13 +1,6 @@
-1
-Luis Lucas
-endBorrowedBooks
-1
-Ricardo Lucas
+0
+Luis
+luis@gmail.com
 endBorrowedBooks
 0
-Sidonia Lucas
-1
-endBorrowedBooks
-1
-Teste 4
-endBorrowedBooks
+endPreferences

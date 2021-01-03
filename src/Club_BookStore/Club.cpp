@@ -135,7 +135,7 @@ void Club::readFile()
             std::getline(peopleFile, input);
             ptrMember->setName(input);
             std::getline(peopleFile, input);
-            ptrNonMember->setEmailAddress(input);
+            ptrMember->setEmailAddress(input);
             while(std::getline(peopleFile,input))
             {
                 if(input == "endBorrowedBooks")
@@ -148,6 +148,18 @@ void Club::readFile()
                     ptrMember->addBorrowedBook(ptrBook);
                 }
             }
+            PersonRecords personRecord(input);
+            while(std::getline(peopleFile,input)) {
+                if(input == "endPreferences")
+                {
+                    break;
+                }
+                else
+                {
+                    personRecord.addFavoriteCategory(std::stoi(input));
+                }
+            }
+            personPreferences.insert(personRecord);
             people.push_back(ptrMember);
         }
     }

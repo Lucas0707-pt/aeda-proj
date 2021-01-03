@@ -1363,7 +1363,7 @@ unsigned int readInfoFile(float &loanFee, float &delayPenalty)
     unsigned long long int  modTimePeople;
     std::ifstream infoFile(infoFileString);
     std::ifstream booksFile(booksFileString);
-    std::ifstream bookStoresFile(booksFileString);
+    std::ifstream bookStoresFile(bookStoresFileString);
     std::ifstream peopleFile(peopleFileString);
     if (!infoFile.is_open())
         throw FileNotFound("Info.txt");
@@ -1379,7 +1379,7 @@ unsigned int readInfoFile(float &loanFee, float &delayPenalty)
         modTimeInfo = result.st_mtime;
     if(!stat(booksFileString.c_str(), &result))
         modTimeBooks = result.st_mtime;
-    if(!stat(booksFileString.c_str(), &result))
+    if(!stat(bookStoresFileString.c_str(), &result))
         modTimeBookStores = result.st_mtime;
     if(!stat(peopleFileString.c_str(), &result))
         modTimePeople = result.st_mtime;
@@ -1434,6 +1434,10 @@ void BookQueueMenu(Club &c){
                     std::cout << CLEAR_SCREEN;
                     std::cout << "This book's waiting list is empty." << std::endl << std::endl;
                     goto END;
+                }
+                else
+                {
+                    break;
                 }
             }
         }
@@ -1681,6 +1685,7 @@ void MenuBeginning()
             { //opens files deleting every thing in them and if any of the files isn't opened it will create it
                 std::ofstream infoFile("../src/Files/Info.txt", std::ios::trunc);
                 std::ofstream booksFile("../src/Files/Books.txt", std::ios::trunc);
+                std::ofstream booksStoresFile("../src/Files/BookStores.txt", std::ios::trunc);
                 std::ofstream peopleFile("../src/Files/People.txt", std::ios::trunc);
                 exit(-1);
             }

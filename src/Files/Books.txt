@@ -1,0 +1,13 @@
+Livro Teste 1
+1
+1
+0
+0
+32
+1609715450
+3715200
+1611443450
+endRatings
+endComments
+2
+endBorrowedQueue

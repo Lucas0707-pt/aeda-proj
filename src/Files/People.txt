@@ -1,11 +1,11 @@
 1
 Luis
 luis@gmail.com
-1
 endBorrowedBooks
 endPreferences
-0
+1
 Joao
 joao@gmail.com
 endBorrowedBooks
+4
 endPreferences

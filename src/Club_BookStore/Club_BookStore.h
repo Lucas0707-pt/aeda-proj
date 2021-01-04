@@ -34,6 +34,7 @@ struct PersonRecordsHash
 class BookStore
 {
 public:
+    BookStore();
     /**
      * Book Store constructor, will set the name and the place, to n and p, respectively
      * @param n The name of the book store
@@ -126,6 +127,12 @@ public:
      * @return True if the bookStore1 is smaller than the bookStore2, false otherwise
      */
     bool operator<(const BookStore& bookStore2) const;
+    /**
+     * Will see if the book store1 is different from bookStore2
+     * @param BookStore2 book store to be compared
+     * @return True if the bookStore1 is different from bookStore2, false otherwise
+     */
+    bool operator!=(const BookStore& bookStore2) const;
 private:
     std::string name; /**Book store name*/
     std::string place; /**The location of the book store*/
@@ -219,6 +226,7 @@ public:
     void updateBookID(unsigned int id);
     void addBookStore(BookStore* b);
     BST<BookStore> getBookStores();
+    void removeBookStore(BookStore* b);
     void addPersonRecord(PersonRecords personRecord);
     void updateEmailPersonRecord(std::string oldEmail, std::string newEmail);
     unordered_set<PersonRecords, PersonRecordsHash, PersonRecordsHash> getPersonPreferences() const;

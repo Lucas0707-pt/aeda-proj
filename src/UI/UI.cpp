@@ -803,6 +803,84 @@ void addBookStoreMenu(Club &c)
     index = 0;
 }
 
+
+void addBookStoreRating(Club &c)
+{
+    std::string name;
+    std::string location;
+    std::string rating;
+    BookStore bookStore;
+    BookStore bookStoreNotFound("","");
+    BST<BookStore> bookStores(bookStoreNotFound);
+    BookStore bookStoreFound;
+
+    while(true) {
+        std::cout << CLEAR_SCREEN;
+        std::cout << "Book Store's name: ";
+        while (std::getline(std::cin, name)) {
+            if (name == "-1") {
+                goto END;
+            }
+            if (!name.size()) {
+                break;
+            }
+            errorMessage();
+            std::cout << "Book Store's name: ";
+        }
+        std::cout << "Book Store's location: ";
+        while (std::getline(std::cin, location)) {
+            if (name == "-1") {
+                goto END;
+            }
+            if (!location.size()) {
+                break;
+            }
+            errorMessage();
+            std::cout << "Book Store's location: ";
+        }
+        bookStore.setName(name);
+        bookStore.setPlace(location);
+        bookStores = c.getBookStores();
+        bookStoreFound = bookStores.find(bookStore);
+        if (bookStoreFound != bookStoreNotFound)
+        {
+            for (const auto& rating : bookStoreFound.getRatings())
+                bookStore.addRating(rating);
+            std::cout << "Book Store's rating: ";
+            while(std::getline(std::cin, rating))
+            {
+                if (rating == "-1") {
+                    goto END;
+                }
+                if (isNumeric(rating)) {
+                    if (std::stoi(rating) >= 0 && std::stoi(rating) <= 5) {
+                        break;
+                    }
+                }
+                errorMessage();
+                std::cout << "Book Store's rating: ";
+            }
+            bookStore.addRating(std::stoi(rating));
+            c.removeBookStore(&bookStoreFound);
+            c.addBookStore(&bookStore);
+            break;
+        }
+        else {
+            std::cout << RED << "THe Book Store doesn't exist" << std::endl;
+            #ifdef WIN32
+            Sleep(3000);
+            #else
+            sleep(3);
+            #endif
+        }
+    }
+    std::cout << std::endl << std::endl << "Press ENTER to return...";
+    std::getline(std::cin, rating); //only to acknowledge that the user pressed a key
+    END:
+    std::cout << CLEAR_SCREEN;
+    index = 0;
+}
+
 /**
  * Will add to a requested person a book if the inputs were correctly added and book is not currently borrowed
  * or add the person to the Waiting List

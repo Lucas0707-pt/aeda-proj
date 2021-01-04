@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <unordered_set>
 
+BookStore::BookStore(){}
+
 BookStore::BookStore(std::string n, std::string p) : name(n), place(p){}
 
 BookStore::~BookStore()
@@ -71,4 +73,12 @@ bool BookStore::operator<(const BookStore& bookStore2) const
     if (this->getVarietyOfBooks() > bookStore2.getVarietyOfBooks())
         return false;
     else return name < bookStore2.name;
+}
+
+bool BookStore::operator!=(const BookStore& bookStore2) const
+{
+    if ((this->getName() != bookStore2.getName()) || (this->getPlace() != bookStore2.getPlace()))
+        return true;
+    else
+        return false;
 }

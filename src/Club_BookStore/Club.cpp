@@ -136,6 +136,7 @@ void Club::readFile()
             ptrMember->setName(input);
             std::getline(peopleFile, input);
             ptrMember->setEmailAddress(input);
+            PersonRecords personRecord(input);
             while(std::getline(peopleFile,input))
             {
                 if(input == "endBorrowedBooks")
@@ -148,7 +149,6 @@ void Club::readFile()
                     ptrMember->addBorrowedBook(ptrBook);
                 }
             }
-            PersonRecords personRecord(input);
             while(std::getline(peopleFile,input)) {
                 if(input == "endPreferences")
                 {
@@ -415,6 +415,10 @@ void Club::addBookStore(BookStore* b){ bookStores.insert(*b);}
 //----------------------------------------------------------------------------------------------------------------
 
 BST<BookStore> Club::getBookStores(){ return bookStores; }
+
+//----------------------------------------------------------------------------------------------------------------
+
+void Club::removeBookStore(BookStore* b) {bookStores.remove(*b);}
 
 //----------------------------------------------------------------------------------------------------------------
 

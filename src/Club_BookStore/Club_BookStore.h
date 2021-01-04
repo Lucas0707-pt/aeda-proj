@@ -42,10 +42,6 @@ public:
      */
     BookStore(std::string n, std::string p);
     /**
-     * Book Store destructor that will delete every book from the stock
-     */
-    ~BookStore();
-    /**
      * Sets the name of the book store
      * @param name The name of the library
      */
@@ -71,6 +67,17 @@ public:
      * @param book book The book to the added to the stock
      */
     void addBook(unsigned int copies, Book* book);
+    /**
+     * Will edit the number of copies that the book Store has from a book
+     * @param title The title of the book
+     * @param copies The new copies from the book
+     */
+    void editBookCopies(std::string title, unsigned copies);
+    /**
+     * Adds the stock to the Book Store
+     * @param stock The stock to be added
+     */
+    void addStock(std::vector<std::tuple<unsigned int, Book*>> stock);
     /**
      * Returns the stock
      * @return The stock
@@ -224,7 +231,8 @@ public:
      * @param id The id from the book that was removed
      */
     void updateBookID(unsigned int id);
-    void addBookStore(BookStore* b);
+    void addBookStore(BookStore *b);
+    const BookStore findBookStore(BookStore *b);
     BST<BookStore> getBookStores();
     void removeBookStore(BookStore* b);
     void addPersonRecord(PersonRecords personRecord);

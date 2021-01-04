@@ -18,19 +18,12 @@
 
 int index = 0;
 
-/**
- * Will print to the screen an Error message in red colour
- */
-
 void errorMessage()
 {
     std::cin.clear();
     std::cerr << RED << "Error! Choose a valid input." << NO_COLOR << std::endl;
 }
 
-/**
- * Will print to the screen every book's category possible
- */
 
 void printBooksCategory()
 {
@@ -46,10 +39,6 @@ void printBooksCategory()
     std::cout << std::left << std::setw(40) << "9: History" << std::setw(40) << std::setfill(separator) << "18: Other" << std::endl << std::endl;
 }
 
-/**
- * Will print to the screen the owned books passed by reference
- * @param ownedBooks Vector containing the books to be printed to the screen
- */
 
 void printOwnedBooks(const std::vector<Book*>& ownedBooks)
 {
@@ -65,11 +54,6 @@ void printOwnedBooks(const std::vector<Book*>& ownedBooks)
                   << "Is borrowed : " << book->getIsBorrowed() << std::endl << std::endl;
     }
 }
-
-/**
- * Will print to the screen the borrowed books passed by reference
- * @param borrowedBooks Vector containing the books to be printed to the screen
- */
 
 void printBorrowedBooks(const std::vector<Book*>& borrowedBooks)
 {
@@ -89,12 +73,6 @@ void printBorrowedBooks(const std::vector<Book*>& borrowedBooks)
     }
 }
 
-/**
- * Will print to the screen every possible operation by the user,
- * and then ask the user to input an operation and check if it is a valid input
- * @param c The club is passed by reference to this function, so that the function can use is methods
- */
-
 void mainMenu(Club &c){
 
     std::cout << ".________________________." << std::endl;
@@ -102,30 +80,31 @@ void mainMenu(Club &c){
     std::cout << ".________________________." << std::endl << std::endl;
 
     std::string value;
-    std::cout << "Show costumers          |1" << std::endl;
-    std::cout << "Show catalog            |2" << std::endl;
-    std::cout << "Show stores             |3" << std::endl;
-    std::cout << "Add a new costumer      |4" << std::endl;
-    std::cout << "Add a new book          |5" << std::endl;
-    std::cout << "Add a new book store    |6" << std::endl;
-    std::cout << "Borrow a book           |7" << std::endl;
-    std::cout << "Renew loan              |8" << std::endl;
-    std::cout << "Return a book           |9" << std::endl;
-    std::cout << "Claim loan book         |10" << std::endl;
-    std::cout << "View Borrowed Books     |11" << std::endl;
-    std::cout << "Remove a book           |12" << std::endl;
-    std::cout << "Report a book loss      |13" << std::endl;
-    std::cout << "Show Book Queue         |14" << std::endl;
-    std::cout << "Menu Preferences        |15" << std::endl;
-    std::cout << "Save info               |16" << std::endl;
-    std::cout << "Exit                    |-1" << std::endl << std::endl;
+    std::cout << "Show costumers              |1" << std::endl;
+    std::cout << "Show catalog                |2" << std::endl;
+    std::cout << "Show stores                 |3" << std::endl;
+    std::cout << "Add a new costumer          |4" << std::endl;
+    std::cout << "Add a new book              |5" << std::endl;
+    std::cout << "Add a new book store        |6" << std::endl;
+    std::cout << "Menu Book Store             |7" << std::endl;
+    std::cout << "Borrow a book               |8" << std::endl;
+    std::cout << "Renew loan                  |9" << std::endl;
+    std::cout << "Return a book               |10" << std::endl;
+    std::cout << "Claim loan book             |11" << std::endl;
+    std::cout << "View Borrowed Books         |12" << std::endl;
+    std::cout << "Remove a book               |13" << std::endl;
+    std::cout << "Report a book loss          |14" << std::endl;
+    std::cout << "Show Book Queue             |15" << std::endl;
+    std::cout << "Menu Preferences            |16" << std::endl;
+    std::cout << "Save info                   |17" << std::endl;
+    std::cout << "Exit                        |-1" << std::endl << std::endl;
     std::cout << "Choose: ";
     while(std::getline(std::cin, value))
     {
         if (isNumeric(value) || value == "-1")
         {
             index = std::stoi(value);
-            if(index == -1 || (index >=1 && index <= 16))
+            if(index == -1 || (index >=1 && index <= 17))
             {
                 break;
             }
@@ -232,11 +211,6 @@ void showPersonPreferences(Club& c, Person* person){
     }
 }
 
-/**
- * Will print to the screen every costumer (people) from the club
- * @param c The club is passed by reference to this function, so that the function can use is methods
- */
-
 void showCostumersMenu(Club &c){
     std::string value;
     std::cout << ".________________________." << std::endl;
@@ -261,10 +235,6 @@ void showCostumersMenu(Club &c){
     index = 0;
 }
 
-/**
- * Will print to the screen every book from the club
- * @param c The club is passed by reference to this function, so that the function can use is methods
- */
 
 void showCatalogMenu(Club &c){
     std::cout << ".________________________." << std::endl;
@@ -324,19 +294,23 @@ void showBookStoresMenu(Club &c){
     std::string value;
     BST<BookStore> bs = c.getBookStores();
     BSTItrIn<BookStore> it(bs);
+    const char separator = ' ';
     while(!it.isAtEnd())
     {
-        const char separator = ' ';
         std::cout << "Name: "  << std::left << std::setw(40) << std::setfill(separator) << it.retrieve().getName()
                   << "Location: " << it.retrieve().getPlace() << std::endl;
         std::cout << "Promotion: "  << std::left << std::setw(35) << std::setfill(separator) << it.retrieve().getPromotion()
-                  << "Discount Code: " << it.retrieve().getDiscountCode() << std::endl << std::endl;
+                  << "Discount Code: " << it.retrieve().getDiscountCode() << std::endl;
+        if (it.retrieve().getRating() == -1)
+            std::cout << "Rating: " << std::fixed << "No Rating" << std::endl << std::endl;
+        else
+            std::cout << "Rating: " << std::fixed << std::setprecision(1) << it.retrieve().getRating() << std::endl << std::endl;
         std::cout << "Available Books:" << std::endl << std::endl;
         for (const auto& bookTuple : it.retrieve().getStock())
         {
             std::cout << "Title: "  << std::left << std::setw(40) << std::setfill(separator) << std::get<1>(bookTuple)->getTitle()
                       << "Category: " << std::get<1>(bookTuple)->getCategory() << std::endl;
-            std::cout << "Price: "  << std::left << std::setw(40) << std::setfill(separator) << std::get<1>(bookTuple)->getValue()
+            std::cout << "Price: "  << std::left << std::setw(40) << std::setfill(separator) << std::fixed << std::setprecision(2) << std::get<1>(bookTuple)->getValue()
                       << "Copies: " << std::get<0>(bookTuple) << std::endl << std::endl;
         }
         it.advance();
@@ -346,13 +320,6 @@ void showBookStoresMenu(Club &c){
     std::cout << CLEAR_SCREEN;
     index = 0;
 }
-
-/**
- * Will ask the user to input every book specs and then create a book and finally add it to the catalog
- * @param c The club is passed to this function, so that the function can use is methods
- * @param i If i = -1, function will ask the user to input the ID of book's owner, if i != -1, function will assume this value as the ID of book's owner
- * @return True if the book was successfully created and added to the catalog, false otherwise
- */
 
 bool addBookMenu(Club &c, int i){
     std::string title;
@@ -497,11 +464,6 @@ bool addBookMenu(Club &c, int i){
     return success;
 }
 
-/**
- * Will ask the user to input every person specs and then create add that person to the costumer's vector
- * @param c The club is passed by reference to this function, so that the function can use is methods
- */
-
 void addCostumerMenu(Club &c)
 {
     std::string name;
@@ -630,6 +592,7 @@ void addBookStoreMenu(Club &c)
     std::string bookStoreInfo;
     std::string bookInfo;
     bool success = false;
+    unordered_set<std::string> titles;
     BookStore* bookStore = new BookStore("", "");
     std::cout << "Book Store's name: ";
     while(std::getline(std::cin, bookStoreInfo))
@@ -729,13 +692,14 @@ void addBookStoreMenu(Club &c)
             }
             if (!bookInfo.empty() && bookInfo.size() < 30)
             {
-                break;
+                if (titles.find(bookInfo) == titles.end())
+                {
+                    titles.insert(bookInfo);
+                    break;
+                }
             }
-            else
-            {
-                errorMessage();
-                std::cout << "Book's Title: ";
-            }
+            errorMessage();
+            std::cout << "Book's Title: ";
         }
         book->setTitle(bookInfo);
         std::cout << std::endl;
@@ -803,25 +767,199 @@ void addBookStoreMenu(Club &c)
     index = 0;
 }
 
+void showMenuBookStores(Club &c, BookStore &bookStore, BookStore &bookStoreFound)
+{
+    int index2 = 0;
+    std::string input;
+    std::string bookInfo;
+    std::cout << ".________________________." << std::endl;
+    std::cout << "|    Menu Book Store     |" << std::endl;
+    std::cout << ".________________________." << std::endl << std::endl;
 
-void addBookStoreRating(Club &c)
+    std::string value;
+    std::cout << "Add Rating              |1" << std::endl;
+    std::cout << "Edit stock from book    |2" << std::endl;
+    std::cout << "Add Book                |3" << std::endl;
+    std::cout << "Exit                    |-1" << std::endl << std::endl;
+
+    std::cout << "Choose: ";
+    while (std::getline(std::cin, value)) {
+        if (isNumeric(value) || value == "-1") {
+            index2 = std::stoi(value);
+            if (index2 == -1 || (index2 >= 1 && index2 <= 3)) {
+                break;
+            }
+        }
+        errorMessage();
+        std::cout << "Choose: ";
+    }
+    std::cout << CLEAR_SCREEN;
+    if (index2 == 1) {
+        std::cout << "Book Store's rating: ";
+        while (std::getline(std::cin, input)) {
+            if (input == "-1") {
+                goto END;
+            }
+            if (isNumeric(input)) {
+                if (std::stoi(input) >= 0 && std::stoi(input) <= 5) {
+                    break;
+                }
+            }
+            errorMessage();
+            std::cout << "Book Store's rating: ";
+        }
+        bookStore.addRating(std::stoi(input));
+        c.removeBookStore(&bookStoreFound);
+        c.addBookStore(&bookStore);
+    }
+    if (index2 == 2)
+    {
+        std::cout << "Book title to edit stock: ";
+        while (std::getline(std::cin, bookInfo)) {
+            if (input == "-1") {
+                goto END;
+            }
+            if (!bookInfo.empty())
+            {
+                for (auto& tuple : bookStoreFound.getStock())
+                {
+                    if (std::get<1>(tuple)->getTitle() == bookInfo)
+                    {
+                        std::cout << "Book's new stock: ";
+                        while(std::getline(std::cin, input))
+                        {
+                            if (input == "-1")
+                            {
+                                goto END;
+                            }
+                            if (isNumeric(input))
+                            {
+                                bookStore.editBookCopies(bookInfo,std::stoi(input));
+                                c.removeBookStore(&bookStoreFound);
+                                c.addBookStore(&bookStore);
+                                goto END;
+                            }
+                            errorMessage();
+                            std::cout << "Book's new stock: ";
+                        }
+                    }
+                }
+            }
+            errorMessage();
+            std::cout << "Book title to edit stock: ";
+        }
+    }
+    if (index2 == 3)
+    {
+        std::cout << CLEAR_SCREEN;
+        Book* book = new Book();
+        std::cout << "Book's Title: ";
+        while(std::getline(std::cin, bookInfo))
+        {
+            if (bookInfo == "-1")
+            {
+                goto END;
+            }
+            if (!bookInfo.empty() && bookInfo.size() < 30)
+            {
+                bool found = false;
+                for (const auto& tuple : bookStoreFound.getStock())
+                {
+                    if (std::get<1>(tuple)->getTitle() == bookInfo)
+                    {
+                        found = true;
+                    }
+                }
+                if (!found)
+                {
+                    break;
+                }
+            }
+            else
+            {
+                errorMessage();
+                std::cout << "Book's Title: ";
+            }
+        }
+        book->setTitle(bookInfo);
+        std::cout << std::endl;
+        printBooksCategory();
+        std::cout << "Book's category (from 1-18): ";
+        while(std::getline(std::cin, bookInfo))
+        {
+            if (bookInfo == "-1")
+            {
+                goto END;
+            }
+            if (isNumeric(bookInfo))
+            {
+                if(std::stoi(bookInfo) >= 1 && std::stoi(bookInfo) <= 18)
+                {
+                    break;
+                }
+            }
+            errorMessage();
+            std::cout << "Book's category (from 1-18): ";
+        }
+        book->setCategory(std::stoi(bookInfo));
+        std::cout << "Book's value in euros: ";
+        while(std::getline(std::cin, bookInfo))
+        {
+            if (bookInfo == "-1")
+            {
+                goto END;
+            }
+            if (isFloat(bookInfo))
+            {
+                if (std::stof(bookInfo) > 0)
+                {
+                    break;
+                }
+            }
+            errorMessage();
+            std::cout << "Book's value in euros: ";
+        }
+        book->setValue(std::stof(bookInfo));
+        std::cout << "Book's copies: ";
+        while(std::getline(std::cin, bookInfo))
+        {
+            if (bookInfo == "-1")
+            {
+                goto END;
+            }
+            if (isNumeric(bookInfo))
+            {
+                if (std::stoi(bookInfo) > 0)
+                {
+                    break;
+                }
+            }
+            errorMessage();
+            std::cout << "Book's copies: ";
+        }
+        bookStore.addBook(std::stoi(bookInfo),book);
+        c.removeBookStore(&bookStoreFound);
+        c.addBookStore(&bookStore);
+    }
+    END:;
+}
+
+void MenuBookStore(Club &c)
 {
     std::string name;
     std::string location;
-    std::string rating;
     BookStore bookStore;
     BookStore bookStoreNotFound("","");
-    BST<BookStore> bookStores(bookStoreNotFound);
     BookStore bookStoreFound;
-
     while(true) {
         std::cout << CLEAR_SCREEN;
+        showBookStoresMenu(c);
         std::cout << "Book Store's name: ";
         while (std::getline(std::cin, name)) {
             if (name == "-1") {
                 goto END;
             }
-            if (!name.size()) {
+            if (name.size()) {
                 break;
             }
             errorMessage();
@@ -832,7 +970,7 @@ void addBookStoreRating(Club &c)
             if (name == "-1") {
                 goto END;
             }
-            if (!location.size()) {
+            if (location.size()) {
                 break;
             }
             errorMessage();
@@ -840,52 +978,32 @@ void addBookStoreRating(Club &c)
         }
         bookStore.setName(name);
         bookStore.setPlace(location);
-        bookStores = c.getBookStores();
-        bookStoreFound = bookStores.find(bookStore);
-        if (bookStoreFound != bookStoreNotFound)
-        {
-            for (const auto& rating : bookStoreFound.getRatings())
+
+        bookStoreFound = c.findBookStore(&bookStore);
+        if (bookStoreFound != bookStoreNotFound) {
+            bookStore.addStock(bookStoreFound.getStock());
+            bookStore.setDiscountCode(bookStoreFound.getDiscountCode());
+            bookStore.setPromotion(bookStoreFound.getPromotion());
+            for (const auto &rating : bookStoreFound.getRatings())
                 bookStore.addRating(rating);
-            std::cout << "Book Store's rating: ";
-            while(std::getline(std::cin, rating))
-            {
-                if (rating == "-1") {
-                    goto END;
-                }
-                if (isNumeric(rating)) {
-                    if (std::stoi(rating) >= 0 && std::stoi(rating) <= 5) {
-                        break;
-                    }
-                }
-                errorMessage();
-                std::cout << "Book Store's rating: ";
-            }
-            bookStore.addRating(std::stoi(rating));
-            c.removeBookStore(&bookStoreFound);
-            c.addBookStore(&bookStore);
+            std::cout << CLEAR_SCREEN;
+            showMenuBookStores(c, bookStore, bookStoreFound);
             break;
         }
-        else {
-            std::cout << RED << "THe Book Store doesn't exist" << std::endl;
+        else
+        {
+            std::cout << RED << "The Book Store doesn't exist" << NO_COLOR << std::endl;
             #ifdef WIN32
-            Sleep(3000);
+            Sleep(5000);
             #else
-            sleep(3);
+            sleep(5);
             #endif
         }
     }
-    std::cout << std::endl << std::endl << "Press ENTER to return...";
-    std::getline(std::cin, rating); //only to acknowledge that the user pressed a key
     END:
     std::cout << CLEAR_SCREEN;
     index = 0;
 }
-
-/**
- * Will add to a requested person a book if the inputs were correctly added and book is not currently borrowed
- * or add the person to the Waiting List
- * @param c The club is passed by reference to this function, so that the function can use is methods
- */
 
 void borrowBookMenu(Club &c)
 {
@@ -980,11 +1098,6 @@ void borrowBookMenu(Club &c)
     index = 0;
 }
 
-/**
- * Will renew the loan of a book from a member if the book's loan wasn't already asked by the same member
- * @param c The club is passed by reference to this function, so that the function can use is methods
- */
-
 void renewLoanTimeMenu(Club &c)
 {
     std::string personID;
@@ -1069,11 +1182,6 @@ void renewLoanTimeMenu(Club &c)
     index = 0;
 
 }
-
-/**
- * Will return a book to the club and check if the delivery is delayed, and print to the screen how much the person as to pay
- * @param c The club is passed by reference to this function, so that the function can use is methods
- */
 
 void returnBookMenu(Club &c)
 {
@@ -1182,11 +1290,6 @@ void returnBookMenu(Club &c)
     index = 0;
 }
 
-/**
- * Will add a book to the a person if that same person was on the from of the Waiting List
- * @param c The club is passed by reference to this function, so that the function can use is methods
- */
-
 void claimBookLoanMenu(Club &c)
 {
     std::string personID;
@@ -1272,11 +1375,6 @@ void claimBookLoanMenu(Club &c)
     index = 0;
 }
 
-/**
- * Will call the function PrintBorrowedBooks with the borrowed books from a person asked by the function
- * @param c The club is passed by reference to this function, so that the function can use is methods
- */
-
 void viewBorrowedBooksMenu(Club &c)
 {
     std::string personID;
@@ -1319,11 +1417,6 @@ void viewBorrowedBooksMenu(Club &c)
     std::cout << CLEAR_SCREEN;
     index = 0;
 }
-
-/**
- * Will remove a member's book from the catalog
- * @param c The club is passed by reference to this function, so that the function can use is methods
- */
 
 void removeBookMenu(Club &c)
 {
@@ -1382,11 +1475,6 @@ void removeBookMenu(Club &c)
     std::cout << CLEAR_SCREEN;
     index = 0;
 }
-
-/**
- * Will remove the lost book from the catalog and print to the screen the book's owner and the book's value to be payed to the owner
- * @param c The club is passed by reference to this function, so that the function can use is methods
- */
 
 void reportBookLostMenu(Club& c)
 {
@@ -1529,9 +1617,6 @@ void BookQueueMenu(Club &c){
     std::cout << CLEAR_SCREEN;
     index = 0;
 }
-
-
-
 
 void showMenuPreferences(Club &c, Person* person)
 {
@@ -1711,11 +1796,6 @@ void saveInfo(Club& c)
     std::cout << CLEAR_SCREEN;
 }
 
-/**
- * "Mother" function that will call the other function according to the user input
- * @param c The club is passed by reference to this function, so that the function can use is methods
- */
-
 void menu(Club &c){
     if(index == 0) mainMenu(c);
     if(index == 1) showCostumersMenu(c);
@@ -1724,22 +1804,18 @@ void menu(Club &c){
     if(index == 4) addCostumerMenu(c);
     if(index == 5) addBookMenu(c,-1);
     if (index == 6) addBookStoreMenu(c);
-    if(index == 7) borrowBookMenu(c);
-    if(index == 8) renewLoanTimeMenu(c);
-    if(index == 9) returnBookMenu(c);
-    if(index == 10) claimBookLoanMenu(c);
-    if(index == 11) viewBorrowedBooksMenu(c);
-    if(index == 12) removeBookMenu(c);
-    if (index == 13) reportBookLostMenu(c);
-    if (index == 14) BookQueueMenu(c);
-    if (index == 15) MenuPreferences(c);
-    if (index == 16) saveInfo(c);
+    if (index == 7) MenuBookStore(c);
+    if(index == 8) borrowBookMenu(c);
+    if(index == 9) renewLoanTimeMenu(c);
+    if(index == 10) returnBookMenu(c);
+    if(index == 11) claimBookLoanMenu(c);
+    if(index == 12) viewBorrowedBooksMenu(c);
+    if(index == 13) removeBookMenu(c);
+    if (index == 14) reportBookLostMenu(c);
+    if (index == 15) BookQueueMenu(c);
+    if (index == 16) MenuPreferences(c);
+    if (index == 17) saveInfo(c);
 }
-
-/**
- * Initial function containing a loop until user doesn´t press -1
- * Will also close the club if input = -1
- */
 
 void MenuBeginning()
 {

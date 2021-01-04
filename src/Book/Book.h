@@ -23,6 +23,7 @@ enum Category{Adventure, Arts, Biography, Comics, Cooking, Crime, Entertainment,
 class Book
 {
 public:
+    Book(std::string t);
     Book();
     ~Book();
     void setTitle(std::string title);

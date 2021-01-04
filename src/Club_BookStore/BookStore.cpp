@@ -6,12 +6,6 @@ BookStore::BookStore(){}
 
 BookStore::BookStore(std::string n, std::string p) : name(n), place(p){}
 
-BookStore::~BookStore()
-{
-    std::vector<std::tuple<unsigned int, Book*>>::iterator it;
-    for(it = stock.begin(); it != stock.end(); ++it) delete std::get<1>(*it);
-}
-
 void BookStore::setName(std::string name) {this->name = name;}
 
 std::string BookStore::getName() const {return name;}
@@ -21,6 +15,19 @@ void BookStore::setPlace(std::string place) {this->place = place;}
 std::string BookStore::getPlace() const {return place;}
 
 void BookStore::addBook(unsigned int copies, Book* book) {stock.push_back(std::make_tuple(copies, book));}
+
+void BookStore::editBookCopies(std::string title, unsigned copies)
+{
+    for (auto& tuple : stock)
+    {
+        if (std::get<1>(tuple)->getTitle() == title)
+        {
+            std::get<0>(tuple) = copies;
+        }
+    }
+}
+
+void BookStore::addStock(std::vector<std::tuple<unsigned int, Book*>> stock) {this->stock = stock;}
 
 std::vector<std::tuple<unsigned int, Book*>> BookStore::getStock() const {return stock;}
 
@@ -72,7 +79,11 @@ bool BookStore::operator<(const BookStore& bookStore2) const
         return true;
     if (this->getVarietyOfBooks() > bookStore2.getVarietyOfBooks())
         return false;
-    else return name < bookStore2.name;
+    if (this->getName() < bookStore2.getName())
+        return true;
+    if (this->getName() > bookStore2.getName())
+        return false;
+    else return place < bookStore2.place;
 }
 
 bool BookStore::operator!=(const BookStore& bookStore2) const

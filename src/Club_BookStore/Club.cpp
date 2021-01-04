@@ -184,9 +184,8 @@ void Club::readFile()
             }
             else
             {
-                Book *book = new Book();
+                Book *book = new Book(input);
                 book->updateBookStaticId();
-                book->setTitle(input);
                 std::getline(storesFile,input);
                 book->setCategory(std::stoi(input));
                 std::getline(storesFile,input);
@@ -411,6 +410,22 @@ void Club::updateBookID(unsigned int id)
 //----------------------------------------------------------------------------------------------------------------
 
 void Club::addBookStore(BookStore* b){ bookStores.insert(*b);}
+
+//----------------------------------------------------------------------------------------------------------------
+
+const BookStore Club::findBookStore(BookStore *b)
+{
+    BSTItrIn<BookStore> itr(bookStores);
+    while(!itr.isAtEnd())
+    {
+        if (itr.retrieve().getName() == b->getName() && itr.retrieve().getPlace() == b->getPlace())
+        {
+            return itr.retrieve();
+        }
+        itr.advance();
+    }
+    return BookStore("","");
+}
 
 //----------------------------------------------------------------------------------------------------------------
 

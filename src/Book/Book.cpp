@@ -3,6 +3,8 @@
 
 int Book::id = 1;
 
+Book::Book(std::string t) : title(t) {setBookId(this->id++);}
+
 /**
  * Book default constructor, that will set the book ID based on a counter id initialized in the beginning as 1, and then increment it
  */

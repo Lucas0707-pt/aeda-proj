@@ -11,7 +11,6 @@
  * @param str The string to confirm if is a integer
  * @return Bool if the string is a integer, false otherwise
  */
-
 bool isNumeric(std::string& str);
 
 /**
@@ -19,7 +18,6 @@ bool isNumeric(std::string& str);
  * @param str The string to confirm if is a float
  * @return Bool if the string is a float, false otherwise
  */
-
 bool isFloat(std::string& str);
 
 #endif //_UTILS_H

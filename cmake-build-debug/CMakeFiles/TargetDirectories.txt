@@ -1,4 +1,0 @@
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles/Doxygen.dir
-/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug/CMakeFiles/Projeto_AEDA.dir

@@ -11,6 +11,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.17.5/CMakeCCompiler.cmake"
   "CMakeFiles/3.17.5/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.17.5/CMakeSystem.cmake"
+  "../docs/Doxyfile"
   "/snap/clion/138/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCInformation.cmake"
   "/snap/clion/138/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCXXInformation.cmake"
   "/snap/clion/138/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
@@ -46,10 +47,12 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
+  "Doxyfile"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/Doxygen.dir/DependInfo.cmake"
   "CMakeFiles/Projeto_AEDA.dir/DependInfo.cmake"
   )

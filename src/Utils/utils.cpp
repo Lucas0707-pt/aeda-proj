@@ -1,11 +1,15 @@
 #include "utils.h"
 #include "sstream"
 
+//----------------------------------------------------------------------------------------------------------------
+
 bool isNumeric(std::string& str)
 {
     if (str.empty()) return false;
     return std::all_of(str.begin(),str.end(),[](char i){return isdigit(i);});
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 bool isFloat(std::string& str)
 {
@@ -15,5 +19,7 @@ bool isFloat(std::string& str)
     str = std::to_string(f);
     return iss.eof() && !iss.fail();
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 

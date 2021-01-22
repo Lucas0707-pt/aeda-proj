@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['name_187',['name',['../class_person.html#a7594663aadc0de77616506df8a2f4128',1,'Person']]]
+  ['maximumloantime_272',['maximumLoanTime',['../class_book.html#a99e02d744889e72f5b2a2e113f1cbe6a',1,'Book']]]
 ];

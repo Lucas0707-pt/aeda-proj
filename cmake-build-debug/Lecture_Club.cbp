@@ -5,7 +5,7 @@
 		<Option title="Lecture_Club"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\docs\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug"/>
@@ -32,6 +32,16 @@
 				<Option type="4"/>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/aeda-proj/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/aeda-proj/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/aeda-proj/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/aeda-proj/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Doxygen">
+				<Option working_dir="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/aeda-proj/cmake-build-debug/Makefile&quot;  VERBOSE=1 Doxygen"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/aeda-proj/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/aeda-proj/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lucas/Desktop/Universidade/2\ ano/1\ semestre/AEDA/Projetos/Lecture\ Club/aeda-proj/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -129,6 +139,9 @@
 		</Unit>
 		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/lucas/Desktop/Universidade/2 ano/1 semestre/AEDA/Projetos/Lecture Club/aeda-proj/docs/Doxyfile">
+			<Option virtualFolder="CMake Files\docs\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

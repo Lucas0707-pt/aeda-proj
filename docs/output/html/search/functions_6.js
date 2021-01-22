@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['person_147',['Person',['../class_person.html#a0397c6f89fafc12e738923f612bc41a3',1,'Person']]]
+  ['managequeue_212',['manageQueue',['../class_book.html#a196f8ce94bf9a79a8b2f944bf1938d9f',1,'Book']]],
+  ['member_213',['Member',['../class_member.html#a44241aa6aa9b792b550d9cc29e7ad050',1,'Member']]]
 ];

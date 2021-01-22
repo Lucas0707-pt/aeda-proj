@@ -108,8 +108,16 @@ public:
      * @return 0 if the person as nothing to pay, value to pay otherwise (will be the double for non-members)
      */
     double returnBook(Club &club, Book* book);
-    void setOwnedBooksSize(unsigned int size){ownedBooksSize = size;}
-    unsigned int getOwnedBooksSize() const {return ownedBooksSize;}
+    /**
+     * Sets the person owned books number
+     * @param size Person owned books number
+     */
+    void setOwnedBooksSize(unsigned int size);
+    /**
+     * Returns the person owned books number
+     * @return The person owned books number
+     */
+    unsigned int getOwnedBooksSize() const;
     /**
      * Operator to help choosing the priority in the priority_queue
      */
@@ -119,16 +127,15 @@ protected:
     std::string name; /**<Person name*/
     static int id; /**<Id counter, to be increment in Person Constructor*/
     unsigned int unique_id; /**<Person ID in the club, even non members, must have at least an id to identify them */
-    std::string emailAddress;
+    std::string emailAddress; /**<Person email Address*/
     bool isMember; /**<Boolean containing true for member and false for non member*/
     std::vector<Book*> borrowedBooks; /**<Vector containing all the borrowed books by the person*/
-    unsigned int ownedBooksSize;
+    unsigned int ownedBooksSize; /**<The person owned books size*/
 };
 
 /**
  * Derivative class from Person, this class stores exclusive proprieties that only members have
  */
-
 class Member : public Person
 {
 public:

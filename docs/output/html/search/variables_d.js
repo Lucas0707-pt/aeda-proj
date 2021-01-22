@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value_194',['value',['../class_book.html#a43a199c0f1739d50256daef04b44784f',1,'Book']]]
+  ['title_283',['title',['../class_book.html#af2e58fdc67a5ed97d213ba4834b00e9e',1,'Book']]]
 ];

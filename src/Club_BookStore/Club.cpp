@@ -184,7 +184,8 @@ void Club::readFile()
             }
             else
             {
-                Book *book = new Book(input);
+                Book *book = new Book();
+                book->setTitle(input);
                 book->updateBookStaticId();
                 std::getline(storesFile,input);
                 book->setCategory(std::stoi(input));
@@ -413,7 +414,7 @@ void Club::addBookStore(BookStore* b){ bookStores.insert(*b);}
 
 //----------------------------------------------------------------------------------------------------------------
 
-const BookStore Club::findBookStore(BookStore *b)
+BookStore Club::findBookStore(BookStore *b)
 {
     BSTItrIn<BookStore> itr(bookStores);
     while(!itr.isAtEnd())
@@ -500,3 +501,5 @@ bool Club::preferenceExists(unsigned int preferenceToSearch, std::string email)
     }
     return false;
 }
+
+//----------------------------------------------------------------------------------------------------------------

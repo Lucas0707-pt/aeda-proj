@@ -2,19 +2,35 @@
 #include <algorithm>
 #include <unordered_set>
 
+//----------------------------------------------------------------------------------------------------------------
+
 BookStore::BookStore(){}
+
+//----------------------------------------------------------------------------------------------------------------
 
 BookStore::BookStore(std::string n, std::string p) : name(n), place(p){}
 
+//----------------------------------------------------------------------------------------------------------------
+
 void BookStore::setName(std::string name) {this->name = name;}
+
+//----------------------------------------------------------------------------------------------------------------
 
 std::string BookStore::getName() const {return name;}
 
+//----------------------------------------------------------------------------------------------------------------
+
 void BookStore::setPlace(std::string place) {this->place = place;}
+
+//----------------------------------------------------------------------------------------------------------------
 
 std::string BookStore::getPlace() const {return place;}
 
+//----------------------------------------------------------------------------------------------------------------
+
 void BookStore::addBook(unsigned int copies, Book* book) {stock.push_back(std::make_tuple(copies, book));}
+
+//----------------------------------------------------------------------------------------------------------------
 
 void BookStore::editBookCopies(std::string title, unsigned copies)
 {
@@ -27,9 +43,15 @@ void BookStore::editBookCopies(std::string title, unsigned copies)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void BookStore::addStock(std::vector<std::tuple<unsigned int, Book*>> stock) {this->stock = stock;}
 
+//----------------------------------------------------------------------------------------------------------------
+
 std::vector<std::tuple<unsigned int, Book*>> BookStore::getStock() const {return stock;}
+
+//----------------------------------------------------------------------------------------------------------------
 
 void BookStore::removeBook(Book* book)
 {
@@ -37,17 +59,31 @@ void BookStore::removeBook(Book* book)
     stock.erase(it);
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void BookStore::setPromotion(float promotion) {this->promotion = promotion;}
+
+//----------------------------------------------------------------------------------------------------------------
 
 float BookStore::getPromotion() const {return promotion;}
 
+//----------------------------------------------------------------------------------------------------------------
+
 void BookStore::setDiscountCode(std::string discountCode) {this->discountCode = discountCode;}
+
+//----------------------------------------------------------------------------------------------------------------
 
 std::string BookStore::getDiscountCode() const {return discountCode;}
 
+//----------------------------------------------------------------------------------------------------------------
+
 void BookStore::addRating(unsigned int rating) {ratings.push_back(rating);}
 
+//----------------------------------------------------------------------------------------------------------------
+
 std::vector<unsigned int> BookStore::getRatings() const {return ratings;}
+
+//----------------------------------------------------------------------------------------------------------------
 
 float BookStore::getRating() const
 {
@@ -57,6 +93,8 @@ float BookStore::getRating() const
         finalRating += (float) rating;
     return finalRating / ratings.size();
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 unsigned int BookStore::getVarietyOfBooks() const
 {
@@ -68,6 +106,8 @@ unsigned int BookStore::getVarietyOfBooks() const
     }
     return differentTypes.size();
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 bool BookStore::operator<(const BookStore& bookStore2) const
 {
@@ -85,6 +125,8 @@ bool BookStore::operator<(const BookStore& bookStore2) const
         return false;
     else return place < bookStore2.place;
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 bool BookStore::operator!=(const BookStore& bookStore2) const
 {

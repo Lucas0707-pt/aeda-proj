@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['loanfee_53',['loanFee',['../class_club.html#acc3f4b30519e6710baf3bb3c2be7851a',1,'Club']]],
-  ['loanrenew_54',['loanRenew',['../class_book.html#a98bb3791e67f1bf88b4d5f41462a00c9',1,'Book']]]
+  ['id_74',['id',['../class_book.html#a11f9b412838b3bf70af317313e020420',1,'Book::id()'],['../class_person.html#aec48a92f614a854ff380a15eb8e2f479',1,'Person::id()']]],
+  ['isborrowed_75',['isBorrowed',['../class_book.html#a9eddb271982ea0524ef4fa8f30678a1e',1,'Book']]],
+  ['ismember_76',['isMember',['../class_person.html#a6715f6741254222ffd3421bd184f47c2',1,'Person']]]
 ];

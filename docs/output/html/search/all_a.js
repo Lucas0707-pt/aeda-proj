@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ownedbooks_60',['ownedBooks',['../class_member.html#a4dcd384e5a39e3b08dc41dfc15744cd7',1,'Member']]],
-  ['owner_61',['owner',['../class_book.html#a3579a3e3c6aaf9dcf222346e0b19886c',1,'Book']]]
+  ['name_82',['name',['../class_person.html#a7594663aadc0de77616506df8a2f4128',1,'Person']]],
+  ['nonmember_83',['NonMember',['../class_non_member.html',1,'NonMember'],['../class_non_member.html#a269f88e5f0652b4eef9c6567c6455804',1,'NonMember::NonMember()']]]
 ];

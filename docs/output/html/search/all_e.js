@@ -1,4 +1,24 @@
 var searchData=
 [
-  ['title_84',['title',['../class_book.html#af2e58fdc67a5ed97d213ba4834b00e9e',1,'Book']]]
+  ['searchborrowedbook_105',['searchBorrowedBook',['../class_person.html#a56be023fd6d9384c35718986af9d70f5',1,'Person']]],
+  ['searchownedbook_106',['searchOwnedBook',['../class_member.html#ac560175fd07da2c4ace4f4a6a484f246',1,'Member']]],
+  ['setbeginofloan_107',['setBeginOfLoan',['../class_book.html#a14a3d21c85d34b200d689159f5580697',1,'Book']]],
+  ['setbookid_108',['setBookId',['../class_book.html#a251daec3b6e07405322c41e2d4ab0c20',1,'Book']]],
+  ['setcategory_109',['setCategory',['../class_book.html#a44ac05815fddb2fddf276d4ae0616dd3',1,'Book']]],
+  ['setdiscountcode_110',['setDiscountCode',['../class_book_store.html#a16e51ea6967dfbf04eb3aaa21c194f00',1,'BookStore']]],
+  ['setemailaddress_111',['setEmailAddress',['../class_person.html#af453eca8779227422d543871c9e4b6ef',1,'Person::setEmailAddress()'],['../class_person_records.html#ae9ad6e297c581d8701d6bf154f9c31fb',1,'PersonRecords::setEmailAddress()']]],
+  ['setendofloan_112',['setEndOfLoan',['../class_book.html#a7aab1f164adba3561cbf2db88813934e',1,'Book']]],
+  ['setid_113',['setId',['../class_person.html#a8890fe705c706cddc75e21dba42da07c',1,'Person']]],
+  ['setisborrowed_114',['setIsBorrowed',['../class_book.html#aee0fabd5f63e0b68718d1ba709d3a895',1,'Book']]],
+  ['setismember_115',['setIsMember',['../class_person.html#a6249f6a13e676cc13c43f64772da3240',1,'Person']]],
+  ['setloanrenew_116',['setLoanRenew',['../class_book.html#af988aa8961875e739cdfeb4eab4cae56',1,'Book']]],
+  ['setmaximumloantime_117',['setMaximumLoanTime',['../class_book.html#a2b694228a7171231dfd2f0b82ab3c3d7',1,'Book']]],
+  ['setname_118',['setName',['../class_book_store.html#a4d09b082388563d2c97bd05dd4e981dd',1,'BookStore::setName()'],['../class_person.html#ad6e438f456d3ae6f5b477931c0a6aeba',1,'Person::setName()']]],
+  ['setownedbookssize_119',['setOwnedBooksSize',['../class_person.html#a1cc13cec0206e19ad9299211dc49562e',1,'Person']]],
+  ['setowner_120',['setOwner',['../class_book.html#a404bcd9d6eed3ffc5d227dfc1c8d88ea',1,'Book']]],
+  ['setplace_121',['setPlace',['../class_book_store.html#abe324d00c19057a933abf1ebdbf84300',1,'BookStore']]],
+  ['setpromotion_122',['setPromotion',['../class_book_store.html#ad299121de87a19a341f7fb7c9d814f97',1,'BookStore']]],
+  ['settitle_123',['setTitle',['../class_book.html#ab75c2d2508548fefb9d020b7df32364d',1,'Book']]],
+  ['setvalue_124',['setValue',['../class_book.html#aef3befbbce9167752008a953f8cc3e25',1,'Book']]],
+  ['stock_125',['stock',['../class_book_store.html#a9126136502fb2c9435d72f28ac8fa952',1,'BookStore']]]
 ];

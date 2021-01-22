@@ -12,6 +12,9 @@
 class Person;
 class Book;
 
+/**
+ * Struct containing the overloads necessary for the hash function
+ */
 struct PersonRecordsHash
 {
     int operator()(const PersonRecords& person) const {
@@ -130,13 +133,13 @@ public:
     unsigned int getVarietyOfBooks() const;
     /**
      * Will see if the book store1 is smaller than bookStore2
-     * @param BookStore2 book store to be compared
+     * @param bookStore2 book store to be compared
      * @return True if the bookStore1 is smaller than the bookStore2, false otherwise
      */
     bool operator<(const BookStore& bookStore2) const;
     /**
      * Will see if the book store1 is different from bookStore2
-     * @param BookStore2 book store to be compared
+     * @param bookStore2 book store to be compared
      * @return True if the bookStore1 is different from bookStore2, false otherwise
      */
     bool operator!=(const BookStore& bookStore2) const;
@@ -231,15 +234,60 @@ public:
      * @param id The id from the book that was removed
      */
     void updateBookID(unsigned int id);
+    /**
+     * Will add the book store passed by argument to the BST
+     * @param b The pointer to the book Store to be added
+     */
     void addBookStore(BookStore *b);
-    const BookStore findBookStore(BookStore *b);
+    /**
+     * Will search in the BST the book store passed in the argument
+     * @param b The pointer to the book Store to be searched
+     * @return Returns the Book Store founded
+     */
+    BookStore findBookStore(BookStore *b);
+    /**
+     * Returns the BST containing the book stores from the club
+     * @return The BST containing the book stores from the club
+     */
     BST<BookStore> getBookStores();
+    /**
+     * Removes a book store from the BST
+     * @param b The pointer to the book store to be removed
+     */
     void removeBookStore(BookStore* b);
+    /**
+     * Adds a person records to the unordered set
+     * @param personRecord The person records to be added
+     */
     void addPersonRecord(PersonRecords personRecord);
+    /**
+     * Updates the email from one person
+     * @param oldEmail The old email in the unordered set
+     * @param newEmail The new email to update the old one
+     */
     void updateEmailPersonRecord(std::string oldEmail, std::string newEmail);
+    /**
+     * Returns the unordered set containing all the person records from the club
+     * @return The unordered set containing all the person records from the club
+     */
     unordered_set<PersonRecords, PersonRecordsHash, PersonRecordsHash> getPersonPreferences() const;
+    /**
+     * Adds a preference to the person identified by the email passed in the argument
+     * @param preference The book category to be added to the person preferences
+     * @param email The email to identify the person
+     */
     void addPreference(unsigned int preference, std::string email);
+    /**
+     * Removes a preference from the person identified by the email passed in the argument
+     * @param preference The book category to be remove from the person preferences
+     * @param email The email to identify the person
+     */
     void removePreference(unsigned int preference, std::string email);
+    /**
+     * Searches if the preference passed in the argument exists in person records identified by the email passed in the argument
+     * @param preference The book category to be added to the person preferences
+     * @param email The email to identify the person
+     */
     bool preferenceExists(unsigned int preference, std::string email);
 
 private:
@@ -247,8 +295,8 @@ private:
     float delayPenalty; /**<Delay penalty for people that return the book after end of loan time */
     std::vector<Person*> people; /**<Vector containing all the club's people */
     std::vector<Book*> catalog; /**<Vector  containing all the club's books*/
-    BST<BookStore> bookStores;
-    unordered_set<PersonRecords, PersonRecordsHash, PersonRecordsHash> personPreferences;
+    BST<BookStore> bookStores; /**<Binary search tree containing all the book stores that the lecture club has a discount code*/
+    unordered_set<PersonRecords, PersonRecordsHash, PersonRecordsHash> personPreferences; /**<Unordered Set containing the preferences of everyone in the club*/
 };
 
 #endif //_CLUB_H

@@ -15,8 +15,11 @@
 #define stat _stat
 #endif
 
+//----------------------------------------------------------------------------------------------------------------
 
 int index = 0;
+
+//----------------------------------------------------------------------------------------------------------------
 
 void errorMessage()
 {
@@ -24,6 +27,7 @@ void errorMessage()
     std::cerr << RED << "Error! Choose a valid input." << NO_COLOR << std::endl;
 }
 
+//----------------------------------------------------------------------------------------------------------------
 
 void printBooksCategory()
 {
@@ -39,6 +43,7 @@ void printBooksCategory()
     std::cout << std::left << std::setw(40) << "9: History" << std::setw(40) << std::setfill(separator) << "18: Other" << std::endl << std::endl;
 }
 
+//----------------------------------------------------------------------------------------------------------------
 
 void printOwnedBooks(const std::vector<Book*>& ownedBooks)
 {
@@ -54,6 +59,8 @@ void printOwnedBooks(const std::vector<Book*>& ownedBooks)
                   << "Is borrowed : " << book->getIsBorrowed() << std::endl << std::endl;
     }
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 void printBorrowedBooks(const std::vector<Book*>& borrowedBooks)
 {
@@ -72,6 +79,8 @@ void printBorrowedBooks(const std::vector<Book*>& borrowedBooks)
             std::cout << "Loan days remaining: " << 0 << std::endl << std::endl;
     }
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 void mainMenu(Club &c){
 
@@ -115,6 +124,8 @@ void mainMenu(Club &c){
     std::cout << CLEAR_SCREEN;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void showBookQueue(Book* book){
     std::string value;
     auto queueTemp = book->getQueue();
@@ -134,6 +145,8 @@ void showBookQueue(Book* book){
         queueTemp.pop();
     }
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 void showPersonPreferences(Club& c, Person* person){
     std::string value;
@@ -211,6 +224,8 @@ void showPersonPreferences(Club& c, Person* person){
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void showCostumersMenu(Club &c){
     std::string value;
     std::cout << ".________________________." << std::endl;
@@ -235,6 +250,7 @@ void showCostumersMenu(Club &c){
     index = 0;
 }
 
+//----------------------------------------------------------------------------------------------------------------
 
 void showCatalogMenu(Club &c){
     std::cout << ".________________________." << std::endl;
@@ -286,6 +302,8 @@ void showCatalogMenu(Club &c){
     index = 0;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void showBookStoresMenu(Club &c){
     std::cout << ".________________________." << std::endl;
     std::cout << "|         STORES         |" << std::endl;
@@ -320,6 +338,8 @@ void showBookStoresMenu(Club &c){
     std::cout << CLEAR_SCREEN;
     index = 0;
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 bool addBookMenu(Club &c, int i){
     std::string title;
@@ -464,6 +484,8 @@ bool addBookMenu(Club &c, int i){
     return success;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void addCostumerMenu(Club &c)
 {
     std::string name;
@@ -586,6 +608,8 @@ void addCostumerMenu(Club &c)
     std::cout << CLEAR_SCREEN;
     index = 0;
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 void addBookStoreMenu(Club &c)
 {
@@ -767,6 +791,8 @@ void addBookStoreMenu(Club &c)
     index = 0;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void showMenuBookStores(Club &c, BookStore &bookStore, BookStore &bookStoreFound)
 {
     int index2 = 0;
@@ -944,6 +970,8 @@ void showMenuBookStores(Club &c, BookStore &bookStore, BookStore &bookStoreFound
     END:;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void MenuBookStore(Club &c)
 {
     std::string name;
@@ -1004,6 +1032,8 @@ void MenuBookStore(Club &c)
     std::cout << CLEAR_SCREEN;
     index = 0;
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 void borrowBookMenu(Club &c)
 {
@@ -1098,6 +1128,8 @@ void borrowBookMenu(Club &c)
     index = 0;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void renewLoanTimeMenu(Club &c)
 {
     std::string personID;
@@ -1182,6 +1214,8 @@ void renewLoanTimeMenu(Club &c)
     index = 0;
 
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 void returnBookMenu(Club &c)
 {
@@ -1290,6 +1324,8 @@ void returnBookMenu(Club &c)
     index = 0;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void claimBookLoanMenu(Club &c)
 {
     std::string personID;
@@ -1375,6 +1411,8 @@ void claimBookLoanMenu(Club &c)
     index = 0;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void viewBorrowedBooksMenu(Club &c)
 {
     std::string personID;
@@ -1417,6 +1455,8 @@ void viewBorrowedBooksMenu(Club &c)
     std::cout << CLEAR_SCREEN;
     index = 0;
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 void removeBookMenu(Club &c)
 {
@@ -1476,6 +1516,8 @@ void removeBookMenu(Club &c)
     index = 0;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void reportBookLostMenu(Club& c)
 {
     std::string bookID;
@@ -1514,6 +1556,8 @@ void reportBookLostMenu(Club& c)
     std::cout << CLEAR_SCREEN;
     index = 0;
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 unsigned int readInfoFile(float &loanFee, float &delayPenalty)
 {
@@ -1582,6 +1626,8 @@ unsigned int readInfoFile(float &loanFee, float &delayPenalty)
     return 2;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void BookQueueMenu(Club &c){
     std::string bookID;
     Book* ptrBook;
@@ -1617,6 +1663,8 @@ void BookQueueMenu(Club &c){
     std::cout << CLEAR_SCREEN;
     index = 0;
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 void showMenuPreferences(Club &c, Person* person)
 {
@@ -1724,6 +1772,8 @@ void showMenuPreferences(Club &c, Person* person)
     END:;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void MenuPreferences(Club &c)
 {
     std::string personID;
@@ -1752,6 +1802,8 @@ void MenuPreferences(Club &c)
     index = 0;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void saveInfo(Club& c)
 {
     std::string answer;
@@ -1772,6 +1824,11 @@ void saveInfo(Club& c)
                 std::ofstream infoFile("../src/Files/Info.txt", std::ios::trunc);
                 std::ofstream booksFile("../src/Files/Books.txt", std::ios::trunc);
                 std::ofstream peopleFile("../src/Files/People.txt", std::ios::trunc);
+                std::ofstream bookStoreFile("../src/Files/BookStores.txt", std::ios::trunc);
+                infoFile.close();
+                booksFile.close();
+                peopleFile.close();
+                bookStoreFile.close();
                 exit(-1);
             }
             else if (answer == "n" || answer == "no" || answer == "N" || answer == "No")
@@ -1796,6 +1853,8 @@ void saveInfo(Club& c)
     std::cout << CLEAR_SCREEN;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void menu(Club &c){
     if(index == 0) mainMenu(c);
     if(index == 1) showCostumersMenu(c);
@@ -1816,6 +1875,8 @@ void menu(Club &c){
     if (index == 16) MenuPreferences(c);
     if (index == 17) saveInfo(c);
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 void MenuBeginning()
 {
@@ -1841,6 +1902,10 @@ void MenuBeginning()
                 std::ofstream booksFile("../src/Files/Books.txt", std::ios::trunc);
                 std::ofstream booksStoresFile("../src/Files/BookStores.txt", std::ios::trunc);
                 std::ofstream peopleFile("../src/Files/People.txt", std::ios::trunc);
+                infoFile.close();
+                booksFile.close();
+                booksStoresFile.close();
+                peopleFile.close();
                 exit(-1);
             }
             else if (answer == "n" || answer == "no" || answer == "N" || answer == "No")
@@ -1861,7 +1926,12 @@ void MenuBeginning()
         std::cout << " New files will be created, but all the old info will be lost." << std::endl << std::endl;
         std::ofstream infoFile("../src/Files/Info.txt", std::ios::trunc);
         std::ofstream booksFile("../src/Files/Books.txt", std::ios::trunc);
+        std::ofstream booksStoresFile("../src/Files/BookStores.txt", std::ios::trunc);
         std::ofstream peopleFile("../src/Files/People.txt", std::ios::trunc);
+        infoFile.close();
+        booksFile.close();
+        booksStoresFile.close();
+        peopleFile.close();
         std::cout << "Press ENTER to return...";
         std::getline(std::cin, answer); //only to acknowledge that the user pressed a key
         exit(-1);
@@ -1907,3 +1977,4 @@ void MenuBeginning()
     saveInfo(club);
 }
 
+//----------------------------------------------------------------------------------------------------------------

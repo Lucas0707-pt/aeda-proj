@@ -131,6 +131,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named Doxygen
+
+# Build rule for target.
+Doxygen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Doxygen
+.PHONY : Doxygen
+
+# fast build rule for target.
+Doxygen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Doxygen.dir/build.make CMakeFiles/Doxygen.dir/build
+.PHONY : Doxygen/fast
+
+#=============================================================================
 # Target rules for targets named Projeto_AEDA
 
 # Build rule for target.
@@ -394,6 +407,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... Doxygen"
 	@echo "... Projeto_AEDA"
 	@echo "... src/Book/Book.o"
 	@echo "... src/Book/Book.i"

@@ -1,74 +1,47 @@
 #include "Book.h"
 #include <ctime>
 
+//----------------------------------------------------------------------------------------------------------------
+
 int Book::id = 1;
 
-Book::Book(std::string t) : title(t) {setBookId(this->id++);}
-
-/**
- * Book default constructor, that will set the book ID based on a counter id initialized in the beginning as 1, and then increment it
- */
+//----------------------------------------------------------------------------------------------------------------
 
 Book::Book() {setBookId(this->id++);}
 
-/**
- * Destructor of class Book
- */
+//----------------------------------------------------------------------------------------------------------------
 
 Book::~Book() = default;
 
-/**
- * Sets the book's title to the specified one
- * @param title The book's title
- */
+//----------------------------------------------------------------------------------------------------------------
 
 void Book::setTitle(std::string title){this->title = title;}
 
-/**
- * Returns the book's name
- * @return The book's name
- */
+//----------------------------------------------------------------------------------------------------------------
 
 std::string Book::getTitle() const {return title;}
 
-/**
- * Sets the book's ID to the specified one
- * @param bookId The book's ID
- */
+//----------------------------------------------------------------------------------------------------------------
 
 void Book::setBookId(unsigned int bookId) {this->unique_ID = bookId;}
 
-/**
- * Decrement the static id from the book, will be used when a book was removed
- */
+//----------------------------------------------------------------------------------------------------------------
 
 void Book::updateBookStaticId(){id--;}
 
-/**
- * Returns the book's ID
- * @return The book's ID
- */
+//----------------------------------------------------------------------------------------------------------------
 
 unsigned int Book::getBookId() const {return unique_ID;}
 
-/**
- * Sets the owner ID to the specified one
- * @param owner The ID of the book's owner
- */
+//----------------------------------------------------------------------------------------------------------------
 
 void Book::setOwner(unsigned int owner) {this->owner = owner;}
 
-/**
- * Returns the book's owner
- * @return The book's owner
- */
+//----------------------------------------------------------------------------------------------------------------
 
 unsigned int Book::getOwner() const {return owner;}
 
-/**
- * Sets the book's category to the specified number
- * @param number The enumeration value for the book's category
- */
+//----------------------------------------------------------------------------------------------------------------
 
 void Book::setCategory(unsigned int number)
 {
@@ -129,10 +102,9 @@ void Book::setCategory(unsigned int number)
             break;
     }
 }
-/**
- * Retuns the book's category
- * @return The book's category
- */
+
+//----------------------------------------------------------------------------------------------------------------
+
 std::string Book::getCategory() const
 {
     switch(category)
@@ -176,121 +148,71 @@ std::string Book::getCategory() const
     }
 }
 
-/**
- * Returns the book category number
- * @return The book category number
- */
+//----------------------------------------------------------------------------------------------------------------
 
 Category Book::getCategoryNumber() const {return category;}
 
-/**
- * Sets the book's value to the specified one
- * @param value The book's value
- */
+//----------------------------------------------------------------------------------------------------------------
 
 void Book::setValue(float value) {this->value = value;}
 
-/**
- * Returns the book's value
- * @return The book's value
- */
+//----------------------------------------------------------------------------------------------------------------
+
 float Book::getValue() const {return value;}
 
-/**
- * Sets if the book is borrowed or not, by the specified boolean
- * @param isBorrowed True if the book is borrowed, false otherwise
- */
+//----------------------------------------------------------------------------------------------------------------
 
 void Book::setIsBorrowed(bool isBorrowed) {this->isBorrowed = isBorrowed;}
 
-/**
- * Returns if the book is borrowed or not
- * @return True if the book is borrowed, false otherwise
- */
+//----------------------------------------------------------------------------------------------------------------
 
 bool Book::getIsBorrowed() const {return isBorrowed;}
 
-/**
- * Sets if a book's loan was already renewed by some member
- * @param loanRenew True if the book's loan was already renewed, false otherwise
- */
+//----------------------------------------------------------------------------------------------------------------
 
 void Book::setLoanRenew(bool loanRenew) {this->loanRenew = loanRenew;}
 
-/**
- * Returns if the book's loan was already renewed by some member
- * @return True if the book's loan was already renewed, false otherwise
- */
+//----------------------------------------------------------------------------------------------------------------
 
 bool Book::getLoanRenew() const {return loanRenew;}
 
-/**
- * Sets the book's begin of loan to the specified one
- * @param beginOfLoan The book's begin of loan
- */
+//----------------------------------------------------------------------------------------------------------------
 
 void Book::setBeginOfLoan(unsigned long long int beginOfLoan){this->beginOfLoan = beginOfLoan;}
 
-/**
- * Returns the book's begin of loan
- * @return The book's begin of loan, will be 0 if the book is not loaned
- */
+//----------------------------------------------------------------------------------------------------------------
 
 unsigned long long int Book::getBeginOfLoan() const {return beginOfLoan;}
 
-/**
- * Sets the book's maximum loan time to the specified one
- * @param maximumLoantime The book's maximum loan time
- */
+//----------------------------------------------------------------------------------------------------------------
 
 void Book::setMaximumLoanTime(unsigned long long int maximumLoantime) {this->maximumLoanTime = maximumLoantime;}
 
-/**
- * Returns the book's maximum loan time
- * @return The book's maximum loan time
- */
+//----------------------------------------------------------------------------------------------------------------
 
 unsigned long long int Book::getMaximumLoanTime() const { return maximumLoanTime;}
 
-/**
-* Sets the book's end of loan to the specified one
-* @param endOfLoan The book's end of loan
-*/
+//----------------------------------------------------------------------------------------------------------------
 
 void Book::setEndOfLoan(unsigned long long int endOfLoan) {this->endOfLoan = endOfLoan;}
 
-/**
- * Returns the book's end of loan
- * @return The book's end of loan, will be 0 if the book is not loaned
- */
+//----------------------------------------------------------------------------------------------------------------
 
 unsigned long long int Book::getEndOfLoan() const {return endOfLoan;}
 
-/**
- * Returns the loan time remaining of the book
- * @return The loan time remaining of the book
- */
+//----------------------------------------------------------------------------------------------------------------
 
 long long int Book::getLoanTimeRemaining() const {return endOfLoan - time(nullptr);}
 
-/**
- * Adds a rating to the book's ratings
- * @param rating The rating to be added
- */
+//----------------------------------------------------------------------------------------------------------------
 
 void Book::addRating(unsigned int rating) {ratings.push_back(rating);}
 
-/**
- * Returns all the ratings from the book
- * @return Vector containing all the ratings from the book
- */
+//----------------------------------------------------------------------------------------------------------------
 
-std::vector<unsigned int> Book::getRatings() const { return this->ratings; }
+std::vector<unsigned int> Book::getRatings() const {return this->ratings;}
 
-/**
- * Returns the book's average rating
- * @return The book's average rating
- */
+//----------------------------------------------------------------------------------------------------------------
 
 float Book::getRating() const
 {
@@ -302,28 +224,36 @@ float Book::getRating() const
     return sum/ratings.size();
 }
 
-/**
- * Adds a comments to the book's comments
- * @param comment The comment to be added
- */
+//----------------------------------------------------------------------------------------------------------------
 
 void Book::addComment(std::string comment) {comments.push_back(comment);}
 
-/**
- * Returns all the book's comments
- * @return Vector containing all the book's comments
- */
+//----------------------------------------------------------------------------------------------------------------
 
 std::vector<std::string> Book::getComments() const {return comments;}
 
+//----------------------------------------------------------------------------------------------------------------
+
 void Book::addToWaitingList(Person p) {waitingList.push(p);}
+
+//----------------------------------------------------------------------------------------------------------------
 
 std::priority_queue<Person> Book::getWaitingList() const {return waitingList;}
 
+//----------------------------------------------------------------------------------------------------------------
+
 void Book::manageQueue() {waitingList.pop();}
+
+//----------------------------------------------------------------------------------------------------------------
 
 Person Book::getQueueFront() const {return waitingList.top();}
 
+//----------------------------------------------------------------------------------------------------------------
+
 unsigned int Book::getQueueSize() const {return waitingList.size();}
 
+//----------------------------------------------------------------------------------------------------------------
+
 std::priority_queue<Person> Book::getQueue() const {return waitingList;}
+
+//----------------------------------------------------------------------------------------------------------------

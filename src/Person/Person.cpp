@@ -3,29 +3,55 @@
 #include <cmath>
 #include <algorithm>
 
+//----------------------------------------------------------------------------------------------------------------
+
 int Person::id = 1;
+
+//----------------------------------------------------------------------------------------------------------------
 
 Person::Person() {setId(this->id++);}
 
+//----------------------------------------------------------------------------------------------------------------
+
 Person::~Person() = default;
+
+//----------------------------------------------------------------------------------------------------------------
 
 void Person::setName(std::string name) {this->name = name;}
 
+//----------------------------------------------------------------------------------------------------------------
+
 std::string Person::getName() const {return name;}
+
+//----------------------------------------------------------------------------------------------------------------
 
 void Person::setId(unsigned int id) {this->unique_id = id;}
 
+//----------------------------------------------------------------------------------------------------------------
+
 unsigned int Person::getID() const {return unique_id;}
+
+//----------------------------------------------------------------------------------------------------------------
 
 void Person::updatePersonStaticId() {this->id--;}
 
+//----------------------------------------------------------------------------------------------------------------
+
 void Person::setEmailAddress(std::string emailAddress) {this->emailAddress = emailAddress;}
+
+//----------------------------------------------------------------------------------------------------------------
 
 std::string Person::getEmailAddress() const {return emailAddress;}
 
+//----------------------------------------------------------------------------------------------------------------
+
 void Person::setIsMember(bool isMember) {this->isMember = isMember;}
 
+//----------------------------------------------------------------------------------------------------------------
+
 bool Person::getIsMember() const {return isMember;}
+
+//----------------------------------------------------------------------------------------------------------------
 
 unsigned int Person::borrowBook(Book* book, unsigned int loanDays)
 {
@@ -48,7 +74,11 @@ unsigned int Person::borrowBook(Book* book, unsigned int loanDays)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void Person::addBorrowedBook(Book* book) {borrowedBooks.push_back(book);}
+
+//----------------------------------------------------------------------------------------------------------------
 
 bool Person::searchBorrowedBook(Book* book)
 {
@@ -59,7 +89,11 @@ bool Person::searchBorrowedBook(Book* book)
         return false;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 std::vector<Book*> Person::getBorrowedBooks() const {return borrowedBooks;}
+
+//----------------------------------------------------------------------------------------------------------------
 
 Book* Person::getBookFromBorrowedBooks(unsigned int id) const
 {
@@ -69,6 +103,8 @@ Book* Person::getBookFromBorrowedBooks(unsigned int id) const
     else
         return nullptr;
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 double Person::returnBook(Club &club, Book* book)
 {
@@ -89,6 +125,16 @@ double Person::returnBook(Club &club, Book* book)
     else {return 2*valueToPay;}
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
+void Person::setOwnedBooksSize(unsigned int size){ownedBooksSize = size;}
+
+//----------------------------------------------------------------------------------------------------------------
+
+unsigned int Person::getOwnedBooksSize() const {return ownedBooksSize;}
+
+//----------------------------------------------------------------------------------------------------------------
+
 bool Person::operator<(const Person &p) const {
     if(this->isMember && !p.isMember) return false;
     if(this->isMember && p.isMember)
@@ -96,16 +142,26 @@ bool Person::operator<(const Person &p) const {
         if (this->getOwnedBooksSize()/(this->getBorrowedBooks().size()+1) < p.getOwnedBooksSize()/(this->getBorrowedBooks().size()+1))
             return true;
     }
-    return false;
+    return true;
 }
+
+//----------------------------------------------------------------------------------------------------------------
 
 Member::Member() : Person() {}
 
+//----------------------------------------------------------------------------------------------------------------
+
 Member::~Member() = default;
+
+//----------------------------------------------------------------------------------------------------------------
 
 std::vector<Book*> Member::getOwnedBooks() const { return ownedBooks; }
 
+//----------------------------------------------------------------------------------------------------------------
+
 void Member::addOwnedBook(Book *book) {ownedBooks.push_back(book);}
+
+//----------------------------------------------------------------------------------------------------------------
 
 bool Member::searchOwnedBook(Book *book) const
 {
@@ -117,6 +173,8 @@ bool Member::searchOwnedBook(Book *book) const
     return false;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 unsigned int Member::removeOwnedBook(Book *book)
 {
     unsigned int bookID = book->getBookId();
@@ -126,7 +184,11 @@ unsigned int Member::removeOwnedBook(Book *book)
     return bookID;
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 NonMember::NonMember() : Person() {}
+
+//----------------------------------------------------------------------------------------------------------------
 
 NonMember::~ NonMember() = default;
 

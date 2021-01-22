@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['updatebookid_167',['updateBookID',['../class_club.html#a2c35ff64fb14d655c630589655ca30e6',1,'Club']]],
-  ['updatebookstaticid_168',['updateBookStaticId',['../class_book.html#a79f553a777a1b6212303fd65f01466ad',1,'Book']]]
+  ['person_217',['Person',['../class_person.html#a0397c6f89fafc12e738923f612bc41a3',1,'Person']]],
+  ['personrecords_218',['PersonRecords',['../class_person_records.html#a7b32544c5e2f0539eb11a4ad1f43b0a7',1,'PersonRecords']]],
+  ['preferenceexists_219',['preferenceExists',['../class_club.html#ae469dd628c853694193e8e8a07adc701',1,'Club']]]
 ];
